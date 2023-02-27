@@ -15,13 +15,13 @@ export default function Carousel() {
         <div className="container">
           <Slider {...settings}>
             <div>
-              <img src="http://placekitten.com/g/400/200" alt="Cat"/>
+              <img src="http://placekitten.com/g/800/200" alt="Cat"/>
             </div>
             <div>
-              <img src="http://placekitten.com/g/400/200" alt="Cat"/>
+              <img src="http://placekitten.com/g/700/200" alt="Cat"/>
             </div>
             <div>
-              <img src="http://placekitten.com/g/400/200" alt="Cat"/>
+              <img src="http://placekitten.com/g/600/200" alt="Cat"/>
             </div>
             <div>
               <img src="http://placekitten.com/g/400/200" alt="Cat"/>
