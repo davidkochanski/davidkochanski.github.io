@@ -63,10 +63,11 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(96, 96, 96, 0.4);
     backdrop-filter: blur(5px);
     height: var(--nav-height);
     z-index: 10000;
+    padding: 0 0.25rem 0 1rem;
 }
 
 header nav {
@@ -124,6 +125,12 @@ h1 {
     margin-left: 1rem;
 }
 
+.container {
+    margin: auto;
+    width: 500px;
+    outline: red 1px solid;
+}
+
 /* span#one {
     color: red
 }
@@ -147,16 +154,13 @@ a {
     justify-content: center;
     text-align: center;
     min-height: 100vh;
-
-    background: url(../img/test.jpg);
-
 }
 
 @media only screen and (max-width: 596px) {
     
     header nav ul {
         display: flex;
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(166, 166, 166, 0.4);
         border-radius: 0 0 16px 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
