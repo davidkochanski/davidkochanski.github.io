@@ -1,6 +1,5 @@
 :root {
     --nav-height: 5rem;
-
 }
 
 * {
@@ -73,6 +72,7 @@ header {
 }
 
 header nav {
+    font-family: "Source Code Pro", monospace;
     display: flex;
     height: 100%;
     max-width: 1200px;
@@ -95,7 +95,7 @@ header nav ul li {
     list-style: none;
     display: inline-block;
     line-height: 3rem;
-    padding: 0 1rem;
+    padding: 0 0.9rem;
     font-size: 1.4rem;
 }
 
@@ -131,7 +131,9 @@ header nav ul li:nth-of-type(3):hover a {
 }
 
 main {
-    height: 600px;
+    /* width: min(1200px, 100% - 3rem);
+    margin: auto; */
+    width: 100%;
 }
 
 h1 {
@@ -165,7 +167,15 @@ a {
     text-align: center;
     min-height: 100vh;
 
-    background: url(../img/test.jpg);
+    /* background: url(../img/test.jpg); */
+}
+
+.carousel {
+    height: 80vh;
+}
+
+.carousel .legend {
+    font-size: 100px;
 }
 
 @media only screen and (max-width: 576px) {

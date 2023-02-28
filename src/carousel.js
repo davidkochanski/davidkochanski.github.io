@@ -1,32 +1,26 @@
-import React from "react";
-import Slider from "react-slick";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
-export default function Carousel() {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        autoplay: true,
-        autoplaySpeed: 2500,
-        easing: "ease-in-out",
-      };
-      return (
-        <div className="container">
-          <Slider {...settings}>
-            <div>
-              <img src="http://placekitten.com/g/800/200" alt="Cat"/>
-            </div>
-            <div>
-              <img src="http://placekitten.com/g/700/200" alt="Cat"/>
-            </div>
-            <div>
-              <img src="http://placekitten.com/g/600/200" alt="Cat"/>
-            </div>
-            <div>
-              <img src="http://placekitten.com/g/400/200" alt="Cat"/>
-            </div>
-          </Slider>
-        </div>
-      );
+export default class MyCarousel extends Component {
+
+    render() {
+        return (
+            <Carousel emulateTouch={true} showThumbs={false}>
+                <div>
+                    <img src="../img/e.jpg" />
+                    <p className="legend">Legend 1</p>
+                </div>
+                <div>
+                    <img src="../img/e.jpg" />
+                    <p className="legend">Legend 2</p>
+                </div>
+                <div>
+                    <img src="../img/e.jpg" />
+                    <p className="legend">Legend 3</p>
+                </div>
+            </Carousel>
+        );
+    }
 }
