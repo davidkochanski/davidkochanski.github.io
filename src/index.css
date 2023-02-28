@@ -17,18 +17,21 @@
     background-color: #555;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Lato", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 200vh;
-    overflow-x: hidden;
     color: white;
 }
 
 .background, .fade-in {
     display: block;
-    background: linear-gradient(to bottom, #000000, #222);
+    background: linear-gradient(to bottom, #000, #1e1d27);
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -85,7 +88,7 @@ header nav ul {
     align-items: center;
     justify-content: center;
     text-align: center;
-
+    margin-right: 0.5rem;
 }
 
 header nav ul li {
@@ -106,16 +109,30 @@ header nav ul li a:hover {
     color:#fff;
 }
 
-
-main {
-    /* margin-top: 4rem; */
-    height: 600px;
-}
-
-.drop {
+.drop-toggle, .drop {
     display: none;
 }
 
+header nav ul li:hover a {
+    scale: 1.075;
+    transition: all 0.25s;
+}
+
+header nav ul li:nth-of-type(1):hover a {
+    color: rgb(247, 13, 26);
+}
+
+header nav ul li:nth-of-type(2):hover a {
+    color: rgb(57 255 20);
+}
+
+header nav ul li:nth-of-type(3):hover a {
+    color: rgb(0 150 255);
+}
+
+main {
+    height: 600px;
+}
 
 h1 {
     color: white;
@@ -149,10 +166,9 @@ a {
     min-height: 100vh;
 
     background: url(../img/test.jpg);
-
 }
 
-@media only screen and (max-width: 596px) {
+@media only screen and (max-width: 576px) {
     
     header nav ul {
         display: flex;
@@ -163,6 +179,7 @@ a {
         -webkit-backdrop-filter: blur(5px);
         flex-direction: column;
         height: fit-content;
+        margin: 0;
     
         width: 100%;
         position: absolute;
@@ -193,38 +210,37 @@ a {
         border-radius: 0 0 16px 16px;
     }
     
-    
-
-
     header nav ul {
         flex-direction: row;
         justify-content: center;
         align-items: center;
     }
 
-    header nav .drop:hover + ul, header nav ul:hover {
-        top: 0rem;
-    }
 
     .drop {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        margin-right: 0.8rem;
-        z-index: 5;
-    }
-    
-    .drop i {
         color: white;
         display: block;
         font-size: 2.2rem;
-        line-height: 3rem;
-        width: 3rem;
+        line-height: var(--nav-height);
+        width: 4rem;
+        height: 100%;
+        text-align: center;
+        z-index: 5;
+    }
+    
+
+    .drop-toggle {
+        display: block;
+        scale: 3.5;
+        position: absolute;
+        right: 1.5rem;
+        z-index: 10;
+        opacity: 0;
         cursor: pointer;
+
     }
 
-    header nav .drop:hover + ul, header nav ul:hover {
+    header nav .drop-toggle:checked + ul {
         display: flex;
         flex-direction: column;
         top: var(--nav-height);
@@ -233,24 +249,47 @@ a {
         z-index: 10;
     }
     
-    header nav .drop:hover + ul li a, header nav ul:hover li a {
+    header nav .drop-toggle:checked + ul li a {
         opacity: 1;
+        color: #fff;
         filter: blur(0);
     }
-    
-    header nav ul li:hover {
-        background-color: grey;
+
+
+    header nav ul li:nth-of-type(1):hover a,
+    header nav ul li:nth-of-type(2):hover a,
+    header nav ul li:nth-of-type(3):hover a {
+        scale: unset;
+    }
+
+    header nav ul li:nth-of-type(1):hover {
+        background-color: rgba(210 4 45 / 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    header nav ul li:nth-of-type(2):hover {
+        background-color: rgba(57 255 20 / 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    header nav ul li:nth-of-type(3):hover {
+        background-color: rgba(0 150 255 / 0.3);
+        backdrop-filter: blur(10px);
     }
 
     header nav ul li:nth-of-type(1) a {
         transition-delay: 0.15s;
     }
-    
+
     header nav ul li:nth-of-type(2) a {
         transition-delay: 0.3s;
     }
     
     header nav ul li:nth-of-type(3) a {
         transition-delay: 0.45s;
+    }
+
+    h1 {
+        font-size: 1.33rem;
     }
 }
