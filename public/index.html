@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="/">
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,21 +25,12 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <link
-    rel="stylesheet"
-    type="text/css"
-    charset="UTF-8"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-    />
-    <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-    />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link type="style/css" href="carousel.css"/>
 
     <title>david</title>
   </head>
@@ -50,11 +42,10 @@
 
     <header>
         <nav>
-            <h1><a href="#home">
-                <span id="one">david</span><span id="two">kochanski</span>.<span id="three">dev</span></a></h1>
-            <div class="drop">
-                <i class="fas fa-bars"></i>
-            </div>
+            <h1><a href="#home">davidkochanski.dev</a></h1>
+            
+            <i class="fas fa-bars drop"></i>
+            <input class="drop-toggle" type="checkbox">
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Projects</a></li>
@@ -63,14 +54,23 @@
         </nav>
 
     </header>
-    <main>
-        <div class="hero">
-            <h2>Welcome</h2>
+
+    <div class="hero">
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h2>Hey! I'm David</h2>
+                <div class="bar"></div>
+                <div class="hero-box">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. These mountains are placeholders. Commodi tempore sunt incidunt facilis. Qui illum obcaecati suscipit placeat commodi recusandae nisi repellendus quibusdam fugit unde, omnis consequatur, repellat veritatis culpa!</p>
+                </div>
+            </div>
         </div>
 
+    </div>
 
 
-        <div id="root"></div>
+    <main>
+        <div id="image-carousel"></div>
 
     </main>
   </body>

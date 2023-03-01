@@ -1,32 +1,35 @@
-import React from "react";
-import Slider from "react-slick";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import "./carousel.css";
+import { Carousel } from 'react-responsive-carousel';
 
-export default function Carousel() {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        autoplay: true,
-        autoplaySpeed: 2500,
-        easing: "ease-in-out",
-      };
-      return (
-        <div className="container">
-          <Slider {...settings}>
-            <div>
-              <img src="http://placekitten.com/g/800/200" alt="Cat"/>
-            </div>
-            <div>
-              <img src="http://placekitten.com/g/700/200" alt="Cat"/>
-            </div>
-            <div>
-              <img src="http://placekitten.com/g/600/200" alt="Cat"/>
-            </div>
-            <div>
-              <img src="http://placekitten.com/g/400/200" alt="Cat"/>
-            </div>
-          </Slider>
-        </div>
-      );
+export default class MyCarousel extends Component {
+
+    render() {
+        return (
+            <Carousel emulateTouch={true} showThumbs={false}>
+                <div className="slide-image" style={{"background": "url('../img/fox2.jpg') no-repeat"}}>
+                    <div className="legend">
+                        <div className="legend-content">
+                        </div>
+                    </div>
+                </div>
+
+                <div className="slide-image" style={{"background": "url('../img/fox1.jpg') no-repeat"}}>
+
+                    <div className="legend">
+                        <div className="legend-content">
+                        </div>
+                    </div>
+                </div>
+
+                <div className="slide-image" style={{"background": "url('../img/fox3.jpg') no-repeat"}}>
+                    <div className="legend">
+                        <div className="legend-content">
+                        </div>
+                    </div>
+                </div>
+            </Carousel>
+        );
+    }
 }
