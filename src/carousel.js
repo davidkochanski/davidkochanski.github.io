@@ -13,7 +13,7 @@ export default class MyCarousel extends Component {
                         <div className="legend-content">
                             <h4>February 2023 - March 2023</h4>
 
-                            <h2>davidkochanski.dev</h2>
+                            <h2>davidkochanski.dev <a href=""><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
                                 <div className="tag" id="html">HTML</div>
@@ -32,7 +32,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>September 2022 - October 2022</h4>
-                            <h2>Midnight Fox</h2>
+                            <h2>Midnight Fox <a href=""><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
 
                             <div className="tags">
                                 <div className="tag" id="vscode">VSCode Ext.</div>
@@ -49,7 +49,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>February 2023 - Current</h4>
-                            <h2>Pokeguesser</h2>
+                            <h2>Pokeguesser <a href=""><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
 
                             <div className="tags">
                                 <div className="tag" id="react">React.js</div>
@@ -59,6 +59,25 @@ export default class MyCarousel extends Component {
 
                             <div className="bar"></div>
                             <p>A simple Pokemon guessing game built with React.js; my first main React project.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="slide-image" style={{"background": "url('../img/fox2.jpg') no-repeat"}}>
+                    <div className="legend">
+                        <div className="legend-content">
+                            <h4>October 2021 - January 2023</h4>
+
+                            <h2>DaveedBot <a href=""><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <div className="tags">
+                            
+                                <div className="tag" id="python">Python</div>
+                                <div className="tag" id="discord-py">Discord.py</div>
+
+                            </div>
+
+                            <div className="bar"></div>
+                            <p>A bot for Discord using the Discord.py framework. Features dozens of commands from simple text responses, to interactive guessing games, to image manipulation.</p>
                         </div>
                     </div>
                 </div>
