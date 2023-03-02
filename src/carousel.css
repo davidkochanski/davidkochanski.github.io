@@ -13,7 +13,7 @@
   -ms-transition: all 0.25s ease-in;
   -o-transition: all 0.25s ease-in;
   transition: all 0.25s ease-in;
-  opacity: 0.4;
+  opacity: 1;
   filter: alpha(opacity=40);
   position: absolute;
   z-index: 2;
@@ -47,12 +47,12 @@
 
 .carousel-root {
   outline: none;
-  max-width: 1400px;
-  margin: 0 auto; }
+  max-width: 1444px;
+  margin: 0 auto;
+ }
 
 .carousel {
   position: relative;
-  height: 80vh;
  }
   .carousel * {
     -webkit-box-sizing: border-box;
@@ -174,14 +174,15 @@
     text-align: center;
      }
 
-     .carousel .slide div {
-        height: 80vh;
+     .carousel .slide .slide-image {
+        height: 90vh;
      }
     .carousel .slide-image {
 
       border: 0;
       object-fit: cover;
       background-size: cover !important;
+      background-position: center center !important;
       
     }
     .carousel .slide iframe {
@@ -200,12 +201,13 @@
       left: 0;
       margin-left: 0;
       width: 100%;
-      border-radius: 10px;
-      background: linear-gradient(to top, #000000AA 50%, #00000000);
+      /* border-radius: 10px; */
+      background: linear-gradient(to top, #000000AA 40%, #00000000);
       color: #fff;
       padding: 10px;
       font-size: 12px;
       /* opacity: 0.25; */
+      opacity: 1;
       height: 50%;
       user-select: none;
       display: flex;
@@ -256,3 +258,12 @@
     font-size: 10px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
     color: #fff; }
+    .carousel:hover .slide .legend {
+        opacity: 1;
+    }
+
+@media only screen and (max-width: 768px)  {
+    .carousel .slide .legend {
+        opacity: 1;
+    }
+}

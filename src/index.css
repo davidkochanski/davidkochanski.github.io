@@ -152,10 +152,9 @@ a {
 }
 
 .hero {
-
     min-height: 100vh;
 
-    background: url(../img/mountains.jpg) no-repeat;
+    background: url(../public/img/mountains.jpg) no-repeat;
     background-size: cover;
     background-position: center center;
 }
@@ -186,7 +185,7 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.3);
 
     padding: 1rem;
-    /* height: 16rem; */
+    margin-top: 1rem;
 }
 
 .hero h2 {
@@ -197,13 +196,88 @@ a {
 
 .bar {
     width: 100%;
-    height: 0.3rem;
+    height: 0.28rem;
     background-color: white;
-    margin: 0.5rem 0 1rem;
+    margin: 0.5rem 0;
     border-radius: 100rem;
 }
 
+.legend {
+    display: flex;
+    flex-direction: column;
+}
 
+.legend-content {
+    text-align: left;
+    max-width: 600px;
+    margin-left: 0.8rem;
+}
+
+.legend h2 {
+    font-size: 48px;
+    width: 100%;
+    margin-bottom: 0.3rem;
+}
+
+.legend h4 {
+    font-size: 18px;
+    color: #ccc;
+}
+
+.legend p {
+    font-size: 15px;
+}
+
+.tags {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.tag {
+    width: 4.5rem;
+    height: 1.5rem;
+
+    line-height: 1.5rem;
+    text-align: center;
+    border-radius: 7px;
+}
+
+#python {
+    background: linear-gradient(135deg, #ffde57 50%, #4584b6 50%);
+    color: black;
+}
+
+#discord-py {
+    background-color: #5865F2;
+}
+
+#javascript {
+    background-color: #f0db4f;
+    color: #323330;
+}
+
+
+#css {
+    background: linear-gradient(135deg, #264de4 50%, #2965f1 50%);
+}
+
+#html {
+    background: linear-gradient(135deg, #e34c26 50%, #f06529 50%);
+}
+
+#react {
+    background-color: #00d8ff;
+    color: black;
+}
+
+#vscode {
+    background-color: #0078d7;
+}
+
+#typescript {
+    background-color: #3178c6;
+    color: #00273f;
+}
 
 @media only screen and (max-width: 768px) {
     
@@ -231,6 +305,7 @@ a {
     header nav ul li {
         display: inline-block;
         width: 100%;
+        transition: background-color 0.25s;
     }
     
     header nav ul li a {
@@ -342,6 +417,24 @@ a {
         margin-right: 0;
         font-size: 3rem;
     }
+
+    .legend-content {
+        margin-left: 0;
+    }
+
+    .tags {
+        gap: 0.3rem;
+    }
+
+    .tag {
+        width: 4.1rem;
+    }
+
+    .legend h2 {
+        font-size: 38px;
+        width: 100%;
+    }
+
 }
 
 @media (prefers-reduced-motion) {
