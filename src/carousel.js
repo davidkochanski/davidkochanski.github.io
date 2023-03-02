@@ -7,13 +7,13 @@ export default class MyCarousel extends Component {
 
     render() {
         return (
-            <Carousel autoPlay={true} interval={5000} infiniteLoop={true} emulateTouch={true} showThumbs={false}>
-                <div className="slide-image" style={{"background": "url('../img/fox2.jpg') no-repeat"}}>
+            <Carousel autoPlay={false} interval={5000} infiniteLoop={true} emulateTouch={true} showThumbs={false}>
+                <div className="slide-image" style={{"background": "url('../img/e.jpg') no-repeat"}}>
                     <div className="legend">
                         <div className="legend-content">
                             <h4>February 2023 - March 2023</h4>
 
-                            <h2>davidkochanski.dev <a href=""><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <h2>davidkochanski.dev <a href="#home"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
                                 <div className="tag" id="html">HTML</div>
@@ -32,7 +32,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>September 2022 - October 2022</h4>
-                            <h2>Midnight Fox <a href=""><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <h2>Midnight Fox <a href="https://github.com/davidkochanski/midnight-fox"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
 
                             <div className="tags">
                                 <div className="tag" id="vscode">VSCode Ext.</div>
@@ -49,7 +49,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>February 2023 - Current</h4>
-                            <h2>Pokeguesser <a href=""><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <h2>Pokeguesser <a href="#"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
 
                             <div className="tags">
                                 <div className="tag" id="react">React.js</div>
@@ -63,12 +63,12 @@ export default class MyCarousel extends Component {
                     </div>
                 </div>
 
-                <div className="slide-image" style={{"background": "url('../img/fox2.jpg') no-repeat"}}>
+                <div className="slide-image" style={{"background": "url('../img/fox4.jpg') no-repeat"}}>
                     <div className="legend">
                         <div className="legend-content">
                             <h4>October 2021 - January 2023</h4>
 
-                            <h2>DaveedBot <a href=""><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <h2>DaveedBot <a href="https://github.com/davidkochanski/DaveedBot"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
                                 <div className="tag" id="python">Python</div>

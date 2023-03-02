@@ -16,6 +16,10 @@
     background-color: #555;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html, body {
     overflow-x: hidden;
 }
@@ -161,6 +165,7 @@ a {
 
 .hero-wrapper {
     height: 100vh;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -173,7 +178,6 @@ a {
 .hero-content {
     max-width: 500px;
     margin: 0 1rem 0 3rem;
-
 }
 
 .hero-box {
@@ -185,13 +189,77 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.3);
 
     padding: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    opacity: 0;
+    animation: show 1s ease-out 1s forwards;
+}
+
+.hero-box p {
+    font-size: 18px;
 }
 
 .hero h2 {
     font-size: 3.5rem;
     text-align: right;
     margin-right: 0.5rem;
+    opacity: 0;
+
+    animation: show 1s ease-out forwards 0.5s;
+}
+
+.hero-bottom {
+    position: absolute;
+    width: 400px;
+    bottom: 2rem;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.hero-bottom h2 {
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+}
+
+.hero-bottom i {
+    display: inline-block;
+    animation: bounce 0.5s ease-in-out 0s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        translate: 0 5px;   
+    }
+    100% {
+        translate: 0 -5px;
+    }
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        translate: 0 10px;
+    } to {
+        opacity: 1;
+        translate: 0;
+    }
+}
+
+@keyframes bar-grow {
+    from {
+        width: 0;
+    } to {
+        width: 100%;
+    }
+    
+}
+
+.fa-arrow-up-right-from-square {
+    transition: 0.1s ease-out;
+}
+
+.fa-arrow-up-right-from-square:hover { /* Link icon */
+    color: rgb(0 150 255);
 }
 
 .bar {
@@ -200,6 +268,13 @@ a {
     background-color: white;
     margin: 0.5rem 0;
     border-radius: 100rem;
+
+}
+
+.bar-anim {
+    float: right;
+    width: 0;
+    animation: bar-grow 0.75s ease-out 0.75s forwards;
 }
 
 .legend {
@@ -225,7 +300,7 @@ a {
 }
 
 .legend p {
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .legend i {
@@ -239,12 +314,76 @@ a {
 }
 
 .tag {
-    width: 4.5rem;
-    height: 1.5rem;
+    width: 5.8rem;
+    height: 1.8rem;
+    font-size: 14px;
 
-    line-height: 1.5rem;
+    line-height: 1.8rem;
     text-align: center;
     border-radius: 7px;
+}
+
+footer {
+    width: 100%;
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+.footer-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    /* outline: 1px solid blue; */
+}
+
+.footer-content:first-child {
+    font-size: 18px;
+}
+
+
+.footer-wrapper > * {
+    flex-basis: 50%;
+    max-width: 300px;
+    width: 300px;
+    /* outline: 1px solid red; */
+}
+
+.footer-content:first-child {
+    border-right: 2px solid white;
+}
+
+.footer-content:first-child > p:nth-of-type(2) {
+    color: #ddd;
+}
+
+.footer-wrapper .footer-links {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+}
+
+.footer-wrapper .footer-links a:hover {
+    transition: all 0.1s ease-out;
+}
+
+.footer-wrapper .footer-links a:hover {
+    color: rgb(247, 13, 26);
+}
+
+.footer-content p:first-of-type {
+    margin-bottom: 0.6rem;
 }
 
 #python {
@@ -423,6 +562,12 @@ a {
         font-size: 3rem;
     }
 
+    .hero-bottom h2 {
+        font-size: 1.6rem;
+        margin: 0;
+        text-align: center;
+    }
+
     .legend-content {
         margin-left: 0;
     }
@@ -432,7 +577,8 @@ a {
     }
 
     .tag {
-        width: 4.1rem;
+        width: 4.4rem;
+        font-size: 12px;
     }
 
     .legend h2 {
@@ -443,25 +589,51 @@ a {
     .legend i {
         font-size: 15px;
     }
-    
 
+    .footer-wrapper {
+        flex-direction: column;
+    }
+
+    .footer-content:first-child {
+        border-right: none;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid white;
+    }
+    
+    .footer-links {
+        padding-top: 1rem;
+    }
+    
 }
 
 @media (prefers-reduced-motion) {
+    .fade-in {
+        display: none;
+    }
+
+    .hero-bottom i {
+        animation: none;
+    }
+
     @keyframes fade {
         from {
-            background: rgba(0 0 0 / 1);
-        } 
-        0.01% {
             background: rgba(0 0 0 / 0);
-            visibility: visible;
             width: 100%;
             height: 100vh;
         } 
-        to {
+        0.01% {
+            background: rgba(0 0 0 / 0);
             visibility: hidden;
             width: 0;
             height: 0;
+
+        } 
+        to {
+            visibility: hidden;
         }
+    }
+
+    header nav ul {
+        transition: all 0s;
     }
 }
