@@ -8,7 +8,7 @@ export default class MyCarousel extends Component {
     render() {
         return (
             <Carousel autoPlay={false} interval={5000} infiniteLoop={true} emulateTouch={true} showThumbs={false}>
-                <div className="slide-image" style={{"background": "url('../img/e.jpg') no-repeat"}}>
+                <div className="slide-image" style={{"background": "url('../img/fox2.jpg') no-repeat"}}>
                     <div className="legend">
                         <div className="legend-content">
                             <h4>February 2023 - March 2023</h4>
@@ -78,6 +78,26 @@ export default class MyCarousel extends Component {
 
                             <div className="bar"></div>
                             <p>A bot for Discord using the Discord.py framework. Features dozens of commands from simple text responses, to interactive guessing games, to image manipulation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="slide-image" style={{"background": "url('../img/fox5.jpg') no-repeat"}}>
+                    <div className="legend">
+                        <div className="legend-content">
+                            <h4>October 2021 - January 2023</h4>
+
+                            <h2>TESTTTTTTTTTTTTT <a href="https://github.com/davidkochanski/DaveedBot"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <div className="tags">
+                            
+                                <div className="tag" id="python">Python</div>
+                                <div className="tag" id="discord-py">Discord.py</div>
+                                <div className="tag" id="github">Git/Github</div>
+
+                            </div>
+
+                            <div className="bar"></div>
+                            <p>Loworem ipsuwum dolowor sit amet cowonsectetur adipisicing elit. Nisi nibh pretiuwum quwuam praesent aliquwuet ante uwu cowonuwubia? Enim. Pellentesquwue owodiowo uwullamcoworper owo! Sed semper tristiquwue amet? Vitae dowolowor. Diam sowociowosquwu mattis :3 cowonsectetuwur! Placerat quwuis uwut felis owo! Viverra cowommowodowo uwultricies bibenduwum integer. Fringilla? Fermentuwum aptent eleifend laoworeet, mowolestie uwut cowonvallis.</p>
                         </div>
                     </div>
                 </div>
