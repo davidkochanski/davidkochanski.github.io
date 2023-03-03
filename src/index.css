@@ -158,9 +158,9 @@ a {
 .hero {
     min-height: 100vh;
 
-    background: url(../public/img/mountains.jpg) no-repeat;
+    background: url(../public/img/temp.jpg) no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: left center;
 }
 
 .hero-wrapper {
@@ -168,7 +168,7 @@ a {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: center;
     text-align: center;
     max-width: 1000px;
@@ -177,16 +177,16 @@ a {
 
 .hero-content {
     max-width: 500px;
-    margin: 0 1rem 0 3rem;
+    margin: 0 3rem 0 1rem;
 }
 
 .hero-box {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(200, 200, 200, 0.5);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid white;
 
     padding: 1rem;
     margin-top: 1.5rem;
@@ -195,14 +195,17 @@ a {
 }
 
 .hero-box p {
-    font-size: 18px;
+    font-size: 22px;
+    padding: 0 1rem;
 }
 
 .hero h2 {
     font-size: 3.5rem;
-    text-align: right;
+    text-align: left;
     margin-right: 0.5rem;
     opacity: 0;
+    text-shadow: 2px 2px 1px #333;
+
 
     animation: show 1s ease-out forwards 0.5s;
 }
@@ -273,7 +276,7 @@ a {
 }
 
 .bar-anim {
-    float: right;
+    float: left;
     width: 0;
     animation: bar-grow 0.75s ease-out 0.75s forwards;
 }
@@ -484,7 +487,7 @@ h3 {
 }
 
 .skill.show-skill .skill-bar.low {
-    animation: skill-low 1s ease forwards;
+    animation: skill-low 1s ease 1s forwards;
 }
 
 @keyframes skill-eh {
@@ -494,7 +497,7 @@ h3 {
 }
 
 .skill.show-skill .skill-bar.eh {
-    animation: skill-eh 1s ease forwards;
+    animation: skill-eh 1s ease 1s  forwards;
 }
 
 @keyframes skill-okay {
@@ -504,7 +507,7 @@ h3 {
 }
 
 .skill.show-skill .skill-bar.okay {
-    animation: skill-okay 1s ease forwards;
+    animation: skill-okay 1s ease 1s  forwards;
 }
 
 @keyframes skill-good {
@@ -514,7 +517,7 @@ h3 {
 }
 
 .skill.show-skill .skill-bar.good {
-    animation: skill-good 1s ease forwards;
+    animation: skill-good 1s ease 1s forwards;
 }
 
 @keyframes skill-great {
@@ -524,7 +527,7 @@ h3 {
 }
 
 .skill.show-skill .skill-bar.great {
-    animation: skill-great 1s ease forwards;
+    animation: skill-great 1s ease 1s forwards;
 }
 
 @keyframes skill-perfect {
@@ -534,7 +537,7 @@ h3 {
 }
 
 .skill.show-skill .skill-bar.perfect {
-    animation: skill-perfect 1s ease forwards;
+    animation: skill-perfect 1s ease 1s forwards;
 
 }
 
@@ -596,7 +599,7 @@ footer {
 }
 
 .footer-wrapper .footer-links a:hover {
-    color: rgb(247, 13, 26);
+    scale: 1.3;
 }
 
 .footer-content p:first-of-type {
@@ -642,12 +645,24 @@ footer {
 
 .github {
     background: linear-gradient(135deg, #333 50%, #4078c0 50%);
-
 }
 
 .java {
-    background: linear-gradient(135deg, #f89820  50%, #5382a1  50%);
-    
+    background: linear-gradient(135deg, #f89820  50%, #5382a1  50%);   
+}
+
+.twitter:hover {
+    color: #1DA1F2;
+}
+
+.git:hover {
+    background: linear-gradient(135deg, #333 33%, #4078c0 33%);
+    background-clip: text;
+    color: transparent;
+}
+
+.linkedin:hover {
+    color: #0077B5;
 }
 
 @media only screen and (max-width: 768px) {

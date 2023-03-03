@@ -1,5 +1,3 @@
-// TODO
-
 const skillBars = document.querySelectorAll(".skill");
 
 const mySkillObserver = new IntersectionObserver((skillElements) => {

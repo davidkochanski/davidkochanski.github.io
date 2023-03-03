@@ -7,7 +7,7 @@ export default class MyCarousel extends Component {
 
     render() {
         return (
-            <Carousel autoPlay={false} interval={5000} infiniteLoop={true} emulateTouch={true} showThumbs={false}>
+            <Carousel autoPlay={true} infiniteLoop={true} interval={4000} transitionTime={1000} emulateTouch={true} showThumbs={false}>
                 <div className="slide-image" style={{"background": "url('../img/fox2.jpg') no-repeat"}}>
                     <div className="legend">
                         <div className="legend-content">
@@ -48,7 +48,7 @@ export default class MyCarousel extends Component {
                 <div className="slide-image" style={{"background": "url('../img/fox3.jpg') no-repeat"}}>
                     <div className="legend">
                     <div className="legend-content">
-                            <h4>February 2023 - Current</h4>
+                            <h4>February 2023 - In Progress</h4>
                             <h2>Pokeguesser <a href="#"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
 
                             <div className="tags">
