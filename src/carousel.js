@@ -13,7 +13,7 @@ export default class MyCarousel extends Component {
                         <div className="legend-content">
                             <h4>February 2023 - March 2023</h4>
 
-                            <h2>davidkochanski.dev <a href="#home"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <h2>davidkochanski.dev <a href="#home"><i className="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
                                 <div className="tag html">HTML</div>
@@ -32,7 +32,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>September 2022 - October 2022</h4>
-                            <h2>Midnight Fox <a href="https://github.com/davidkochanski/midnight-fox"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <h2>Midnight Fox <a href="https://github.com/davidkochanski/midnight-fox"><i className="fas fa-arrow-up-right-from-square"></i></a></h2>
 
                             <div className="tags">
                                 <div className="tag vscode">VSCode Ext.</div>
@@ -68,7 +68,7 @@ export default class MyCarousel extends Component {
                         <div className="legend-content">
                             <h4>October 2021 - January 2023</h4>
 
-                            <h2>DaveedBot <a href="https://github.com/davidkochanski/DaveedBot"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <h2>DaveedBot <a href="https://github.com/davidkochanski/DaveedBot"><i className="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
                                 <div className="tag python">Python</div>
@@ -87,7 +87,7 @@ export default class MyCarousel extends Component {
                         <div className="legend-content">
                             <h4>October 2021 - January 2023</h4>
 
-                            <h2>TESTTTTTTTTTTTTT <a href="https://github.com/davidkochanski/DaveedBot"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
+                            <h2>TESTTTTTTTTTTTTT <a href="https://github.com/davidkochanski/DaveedBot"><i className="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
                                 <div className="tag python">Python</div>
