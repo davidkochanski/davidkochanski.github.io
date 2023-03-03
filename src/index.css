@@ -327,20 +327,21 @@ a {
 .about {
     max-width: 1200px;
     margin: 50px auto;
-    font-size: 2.8rem;
     text-align: center;
     padding: clamp(1vw 10rem 20rem);
 }
 
 .about h2 {
     font-size: 3.3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .about-content {
     display: flex;
-    gap: 4rem;
+    gap: 3rem;
+    width: fit-content;
 }
+
 
 .about .about-left, .about .about-right {
     display: flex;
@@ -348,16 +349,34 @@ a {
     flex-basis: 50%;
 }
 
+.about .about-left {
+    flex-grow: 1;
+}
+
+
+
 .about .about-right {
+    flex-grow: 10;
     justify-content: center;
 }
 
-.about img {
+.about .img-wrap {
     display: block;
-    aspect-ratio: 7/9;
-    object-fit: cover;
     width: 50%;
     margin-left: auto;
+}
+
+.about .img-wrap img {
+    width: 100%;
+    aspect-ratio: 7/9;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.about-left h4 {
+    text-align: center;
+    color: #aaa;
+    font-size: 12px;
 }
 
 .about-bar {
@@ -368,7 +387,7 @@ a {
 
 .about-bar p {
     text-align: left;
-    
+    font-size: 20px;
 }
 
 .about-bar h4 {
@@ -387,6 +406,75 @@ a {
     vertical-align: middle;
     line-height: normal;
 }
+
+.skills {
+    display: grid;
+    max-width: 1000px;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+h3 {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.skill h4 {
+    flex-grow: 0;
+    font-size: 18px;
+    width: 100px;
+}
+
+.skill-bar-wrapper {
+    flex: 1;
+    margin-left: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.skill .skill-bar {
+    flex: 1;
+    height: 1rem;
+    width: 0%;
+    border-radius: 100px;
+}
+
+
+.skill .skill-bar.low {
+    width: 17%;
+}
+
+.skill .skill-bar.eh {
+    width: 34%;
+}
+
+.skill .skill-bar.okay {
+    width: 51%;
+}
+
+.skill .skill-bar.good {
+    width: 68%;
+}
+
+.skill .skill-bar.great {
+    width: 85%;
+}
+
+.skill .skill-bar.perfect {
+    width: 100%;
+}
+
 
 
 footer {
@@ -452,46 +540,51 @@ footer {
     margin-bottom: 0.6rem;
 }
 
-#python {
+.python {
     background: linear-gradient(135deg, #ffde57 50%, #4584b6 50%);
     color: black;
 }
 
-#discord-py {
+.discord-py {
     background-color: #5865F2;
 }
 
-#javascript {
+.javascript {
     background-color: #f0db4f;
     color: #323330;
 }
 
 
-#css {
+.css {
     background: linear-gradient(135deg, #264de4 50%, #2965f1 50%);
 }
 
-#html {
+.html {
     background: linear-gradient(135deg, #e34c26 50%, #f06529 50%);
 }
 
-#react {
+.react {
     background-color: #00d8ff;
     color: black;
 }
 
-#vscode {
+.vscode {
     background-color: #0078d7;
 }
 
-#typescript {
+.typescript {
     background-color: #3178c6;
     color: #00273f;
 }
 
-#github {
+.github {
     background: linear-gradient(135deg, #333 50%, #4078c0 50%);
 
+}
+
+.java {
+    background: linear-gradient(135deg, #f89820  50%, #5382a1  50%);
+    
 }
 
 @media only screen and (max-width: 768px) {
@@ -664,12 +757,12 @@ footer {
     .about .about-content {
         flex-direction: column;
         gap: 0;
+        margin: auto;
     }
     
     .about .about-right {
         margin: 1rem auto 0;
         padding: 0 0.5rem;
-        width: fit-content;
 
     }
 
@@ -685,6 +778,12 @@ footer {
     .about-right .about-bar {
         margin-right: auto;
 
+    }
+
+
+
+    .skills {
+        grid-template-columns: 1fr;
     }
 
     .footer-wrapper {

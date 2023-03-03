@@ -16,9 +16,9 @@ export default class MyCarousel extends Component {
                             <h2>davidkochanski.dev <a href="#home"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
-                                <div className="tag" id="html">HTML</div>
-                                <div className="tag" id="css">CSS</div>
-                                <div className="tag" id="react">React.js</div>
+                                <div className="tag html">HTML</div>
+                                <div className="tag css">CSS</div>
+                                <div className="tag react">React.js</div>
 
                             </div>
 
@@ -35,8 +35,8 @@ export default class MyCarousel extends Component {
                             <h2>Midnight Fox <a href="https://github.com/davidkochanski/midnight-fox"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
 
                             <div className="tags">
-                                <div className="tag" id="vscode">VSCode Ext.</div>
-                                <div className="tag" id="javascript">JavaScript</div>
+                                <div className="tag vscode">VSCode Ext.</div>
+                                <div className="tag javascript">JavaScript</div>
                             </div>
 
                             <div className="bar"></div>
@@ -52,9 +52,9 @@ export default class MyCarousel extends Component {
                             <h2>Pokeguesser <a href="#"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
 
                             <div className="tags">
-                                <div className="tag" id="react">React.js</div>
-                                <div className="tag" id="html">HTML</div>
-                                <div className="tag" id="css">CSS</div>
+                                <div className="tag react">React.js</div>
+                                <div className="tag html">HTML</div>
+                                <div className="tag css">CSS</div>
                             </div>
 
                             <div className="bar"></div>
@@ -71,8 +71,8 @@ export default class MyCarousel extends Component {
                             <h2>DaveedBot <a href="https://github.com/davidkochanski/DaveedBot"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
-                                <div className="tag" id="python">Python</div>
-                                <div className="tag" id="discord-py">Discord.py</div>
+                                <div className="tag python">Python</div>
+                                <div className="tag discord-py">Discord.py</div>
 
                             </div>
 
@@ -90,9 +90,9 @@ export default class MyCarousel extends Component {
                             <h2>TESTTTTTTTTTTTTT <a href="https://github.com/davidkochanski/DaveedBot"><i class="fas fa-arrow-up-right-from-square"></i></a></h2>
                             <div className="tags">
                             
-                                <div className="tag" id="python">Python</div>
-                                <div className="tag" id="discord-py">Discord.py</div>
-                                <div className="tag" id="github">Git/Github</div>
+                                <div className="tag python">Python</div>
+                                <div className="tag discord-py">Discord.py</div>
+                                <div className="tag github">Git/Github</div>
 
                             </div>
 
