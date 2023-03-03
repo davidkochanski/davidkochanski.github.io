@@ -384,6 +384,7 @@ a {
     display: flex;
     font-size: 24px;
     margin-bottom: 10px;
+    opacity: 0;
 }
 
 .about-bar p {
@@ -406,6 +407,31 @@ a {
 
     vertical-align: middle;
     line-height: normal;
+}
+
+.show-about {
+    animation: about-show 0.5s ease-in forwards;
+}
+
+@keyframes about-show {
+    from {
+        opacity: 0;
+        translate: 0 10px;
+    } to {
+        opacity: 1;
+    }
+}
+
+.about-bar:nth-of-type(2) {
+    animation-delay: 0.33s;
+}
+
+.about-bar:nth-of-type(3) {
+    animation-delay: 0.66s;
+}
+
+.about-bar:nth-of-type(4) {
+    animation-delay: 1s;
 }
 
 .skills {
@@ -447,33 +473,69 @@ h3 {
 .skill .skill-bar {
     flex: 1;
     height: 1rem;
-    width: 0%;
+    width: 0;
     border-radius: 100px;
 }
 
-
-.skill .skill-bar.low {
-    width: 17%;
+@keyframes skill-low {
+    to {
+        width: 17%;
+    }
 }
 
-.skill .skill-bar.eh {
-    width: 34%;
+.skill.show-skill .skill-bar.low {
+    animation: skill-low 1s ease forwards;
 }
 
-.skill .skill-bar.okay {
-    width: 51%;
+@keyframes skill-eh {
+    to {
+        width: 34%;
+    }
 }
 
-.skill .skill-bar.good {
-    width: 68%;
+.skill.show-skill .skill-bar.eh {
+    animation: skill-eh 1s ease forwards;
 }
 
-.skill .skill-bar.great {
-    width: 85%;
+@keyframes skill-okay {
+    to {
+        width: 51%;
+    }
 }
 
-.skill .skill-bar.perfect {
-    width: 100%;
+.skill.show-skill .skill-bar.okay {
+    animation: skill-okay 1s ease forwards;
+}
+
+@keyframes skill-good {
+    to {
+        width: 68%;
+    }
+}
+
+.skill.show-skill .skill-bar.good {
+    animation: skill-good 1s ease forwards;
+}
+
+@keyframes skill-great {
+    to {
+        width: 85%;
+    }
+}
+
+.skill.show-skill .skill-bar.great {
+    animation: skill-great 1s ease forwards;
+}
+
+@keyframes skill-perfect {
+    to {
+        width: 100%;
+    }
+}
+
+.skill.show-skill .skill-bar.perfect {
+    animation: skill-perfect 1s ease forwards;
+
 }
 
 
