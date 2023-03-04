@@ -30,7 +30,7 @@ export default class MyCarousel extends Component {
                     </div>
                 </div>
 
-                <div className="slide-image" style={{"background-image": "url('../img/fox2.jpg')"}}>
+                <div className="slide-image" style={{"background-image": "url('../img/website.jpg')"}}>
                     <div className="legend">
                         <div className="legend-content">
                             <h4>February 2023 - March 2023</h4>
