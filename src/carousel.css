@@ -47,8 +47,8 @@
 
 .carousel-root {
   outline: none;
-  max-width: 1444px;
-  margin: 100px auto;
+  max-width: 1600px;
+  margin: 0 auto;
  }
 
 .carousel {
@@ -185,7 +185,7 @@
       border: 0;
       object-fit: cover;
       background-size: cover !important;
-      background-position: center center !important;
+      background-position: center center;
       
     }
     .carousel .slide iframe {

@@ -87,6 +87,16 @@ header nav {
     margin: 0 auto;
 }
 
+header nav h1 {
+    display: inline-block;
+}
+
+header nav img {
+    width: 4rem;
+    display: inline-block;
+}
+
+
 header nav ul {
     display: flex;
     flex-direction: row;
@@ -147,7 +157,7 @@ h1 {
     color: white;
     font-family: "Source Code Pro", monospace;
     margin-right: auto;
-    margin-left: 1rem;
+    margin-left: 0.1rem;
 }
 
 a {
@@ -157,10 +167,9 @@ a {
 
 .hero {
     min-height: 100vh;
-
-    background: url(../public/img/temp.jpg) no-repeat;
+    background: url(../public/img/david2.jpg) no-repeat;
     background-size: cover;
-    background-position: left center;
+    background-position: right top;
 }
 
 .hero-wrapper {
@@ -168,7 +177,7 @@ a {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
     text-align: center;
     max-width: 1000px;
@@ -201,13 +210,30 @@ a {
 
 .hero h2 {
     font-size: 3.5rem;
-    text-align: left;
+    text-align: right;
     margin-right: 0.5rem;
     opacity: 0;
-    text-shadow: 2px 2px 1px #333;
+    text-shadow: 3px 3px 2px #333;
 
 
     animation: show 1s ease-out forwards 0.5s;
+}
+
+section#imgs {
+    margin: 4rem auto;
+}
+
+section#imgs h3, section#imgs h3 > a {
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    color: #bbb;
+}
+
+section#imgs h3 > a:hover {
+    text-decoration: underline;
+    color: #fff;
 }
 
 .hero-bottom {
@@ -276,7 +302,7 @@ a {
 }
 
 .bar-anim {
-    float: left;
+    float: right;
     width: 0;
     animation: bar-grow 0.75s ease-out 0.75s forwards;
 }
@@ -542,6 +568,11 @@ h3 {
 }
 
 
+.slide-image-top {
+    background-position-y: top !important;
+}
+
+
 
 footer {
     width: 100%;
@@ -791,6 +822,10 @@ footer {
 
     h1 {
         font-size: 1.33rem;
+    }
+
+    .hero {
+        background-position: 80% top;
     }
 
     .hero-content {
