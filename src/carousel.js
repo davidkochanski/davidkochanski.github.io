@@ -7,7 +7,7 @@ export default class MyCarousel extends Component {
 
     render() {
         return (
-            <Carousel autoPlay={true} infiniteLoop={true} interval={5000} transitionTime={1000} emulateTouch={true} showThumbs={false}>
+            <Carousel preventMovementUntilSwipeScrollTolerance={true} swipeScrollTolerance={10} autoPlay={true} infiniteLoop={true} interval={5000} transitionTime={1000} emulateTouch={true} showThumbs={false}>
                 
 
                 <div className="slide-image slide-image-top" style={{"background-image": "url('../img/pokeguesser.jpg')"}}>
