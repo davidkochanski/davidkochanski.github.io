@@ -94,6 +94,7 @@ header nav h1 {
 header nav img {
     width: 3.5rem;
     display: inline-block;
+    margin-left: 0.5rem;
 }
 
 
@@ -377,6 +378,7 @@ section#imgs h3 > a:hover {
     display: flex;
     flex-direction: column;
     flex-basis: 50%;
+    position: relative;
 }
 
 .about .about-left {
@@ -414,7 +416,12 @@ section#imgs h3 > a:hover {
     font-size: 24px;
     margin-bottom: 10px;
     opacity: 0;
+    position: relative;
 }
+
+.about-inner-flex {
+    position: relative;
+}   
 
 .about-bar p {
     text-align: left;
@@ -440,6 +447,7 @@ section#imgs h3 > a:hover {
 
 .show-about {
     animation: about-show 0.5s ease-in forwards;
+    position: relative;
 }
 
 @keyframes about-show {
@@ -523,7 +531,7 @@ h3 {
 }
 
 .skill.show-skill .skill-bar.eh {
-    animation: skill-eh 1s ease 1s  forwards;
+    animation: skill-eh 1s ease 1s forwards;
 }
 
 @keyframes skill-okay {
@@ -533,7 +541,7 @@ h3 {
 }
 
 .skill.show-skill .skill-bar.okay {
-    animation: skill-okay 1s ease 1s  forwards;
+    animation: skill-okay 1s ease 1s forwards;
 }
 
 @keyframes skill-good {
@@ -572,8 +580,6 @@ h3 {
     background-position-y: top !important;
 }
 
-
-
 footer {
     width: 100%;
     min-height: 20vh;
@@ -585,7 +591,6 @@ footer {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-
 }
 
 .footer-wrapper {
@@ -694,6 +699,36 @@ footer {
 
 .linkedin:hover {
     color: #0077B5;
+}
+
+#mail:hover {
+    text-decoration: underline;
+    color: #fff;
+    cursor: pointer;
+}
+
+#mail:active + * + .copied {
+    opacity: 1;
+    transition: opacity 0.15s ease;
+}
+
+.copied {
+    opacity: 0;
+    position: absolute;
+    top: 50px;
+    font-size: 16px;
+
+    left: 50%;
+    translate: -50%;
+
+    transition: opacity 0.5s ease;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
 }
 
 @media only screen and (max-width: 768px) {
