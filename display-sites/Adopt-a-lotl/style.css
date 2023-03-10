@@ -1,0 +1,1217 @@
+/*font-family: 'Public Sans', sans-serif; */
+/* font-family: 'Coiny', cursive; */
+
+/*! General Styles  */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 20px;
+    font-family: 'Public Sans', sans-serif;
+    background-color: #dfe9f5;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+}
+
+a { 
+    text-decoration: none;
+}
+
+section:after {
+    content: "";
+    display: block;
+    clear: both;
+
+}
+
+h2 {
+    margin-top: 2%;
+    font-size: 36px;
+    font-family: 'Coiny', cursive;
+    color: #38002a;
+    text-align: center;
+}
+
+h3 {
+    margin: 0;
+    font-size: 24px;
+    font-family: 'Coiny', cursive;
+    color: #38002a;
+    text-align: center;
+}
+
+p {
+    font-family: 'Public Sans', sans-serif;
+    color: #111;
+}
+
+.mobile-hidden {
+    display: block;
+
+}
+
+.mobile-only {
+    display: none;
+}
+
+.no-shadow {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0) !important; /* ughhhhhhhhhhhhhhhhhhh */
+}
+
+
+/*! Header  */
+
+header {
+    background: #38002a;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    font-family: 'Coiny', cursive;
+
+}
+
+header div.logo {
+    width: 50%;
+    float: left;
+}
+
+header nav {
+    width: 50%;
+    float: right;
+}
+
+header div.logo h1 {
+    text-align: center;
+    font-size: 142%;
+    margin: 1%;
+}
+
+header div.logo h1 .span1 {
+    color: rgb(255, 98, 242);
+    font-style: italic;
+    text-shadow: -2px 2px 1px #a10079;
+}
+
+header div.logo h1 #span2 {
+    color: #fff;
+    text-shadow: -2px 2px 1px #a10079;
+}
+
+header nav a {
+    color: #aaa;
+    display: block;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+header nav ul li ul li > a:hover {
+    background-color: #5A0043;
+}
+
+header nav > ul {
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    padding-top: 20px;
+    line-height: 100%;
+    width: 100%;
+}
+
+header nav li {
+    position: relative;
+    z-index: 10;
+    line-height: 120%;
+}
+
+header > nav > ul > li {
+    margin-left: 4%;
+    display: inline-block;
+}
+
+header nav ul li a:hover {
+    color: #fff;
+}
+
+header nav ul li a.no-link:hover {
+    text-decoration: none;
+}
+
+header nav ul li ul {
+    display: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    text-shadow: none;
+    width: 250px;
+    list-style: none;
+}
+
+header nav ul li ul li {
+    background-color: #27001d;
+    border-left: 1px white solid;
+    border-right: 1px white solid;
+}
+
+header nav ul li ul li a {
+    padding: 4px 0;
+    text-align: left;
+    padding-left: 10px;
+}
+
+header nav ul li ul li:first-child {
+    padding-top: 10px;
+}
+
+header nav ul li ul li:last-child {
+    padding-bottom: 10px;
+    border-radius: 0 0 10px 10px;
+    border-bottom: 2px white solid;
+}
+
+header nav li:hover ul {
+    display: block;
+}
+
+#adopt a {
+    background-color: #a10079;
+    border-radius: 10px;
+    width: 135%;
+
+}
+
+/*! First Section */
+
+section.first-section {
+    position: relative;
+    min-height: 600px;
+    background-image: url(images/axo2.jpg);
+    background-size: cover;
+}
+
+section.first-section h2 {
+    width: 55%;
+    position: absolute;
+    left: 22%;
+    top: 37%;
+    text-align: center;
+    color: #7a005c;
+    font-size: 400%;
+    text-shadow: -5px 5px 1px #fff
+}
+
+/*! Second Section */
+
+section.second-section {
+    background: #38002a;
+    border-top: #fff solid 1px;
+    border-bottom: #fff solid 1px;
+
+}
+section.second-section p {
+    font-family: 'Coiny', cursive;
+    float: left;
+    color: white;
+    width: 100%;
+    margin-top: 0.3333%;
+    text-align: center;
+}
+
+section.second-section form {
+    text-align: center;
+}
+
+section.second-section form input {
+    padding: 5px 10px;
+    margin: 0 0 1%;
+    font-size: 90%;
+}
+
+section.second-section form input[type = "email"]:focus {
+    background: #eee;
+}
+
+section.second-section form input[type = "submit"] {
+    background-color: #7a005c;
+    color: #fff;
+}
+
+section.second-section form input[type = "submit"]:hover {
+    background-color: #610049;
+}
+
+/*! General Third Section */
+
+section.third-section img {
+    width: 50%;
+    float: left;
+    background: #ccc;
+}
+
+section.third-section p, section.third-section div {
+    width: 80%;
+    text-align: center;
+    padding: 2% 5%;
+    margin: 1% 5%;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 3px 3px 2px 2px #555;
+}
+
+section.third-section p.default, section.third-section div.default {
+    padding: 1%;
+    border-radius: 25px;
+}
+
+section.third-section figure, section.third-section video, section.third-section img, section.third-section p.default, section.third-section div.default {
+    box-shadow: 3px 3px 2px 2px #555;
+}
+
+section.third-section figure.buynow, section.third-section img.trivia-buttons {
+    box-shadow: none;
+}
+
+/*! Paragraphs */
+
+section.third-section p.half-left, section.third-section div.half-left {
+    width: 44%;
+    float: left;
+    margin: 1% 1% 1% 3%;
+}
+
+section.third-section p.half-right, section.third-section div.half-right {
+    width: 44%;
+    float: right;
+    margin: 1% 3% 1% 1%;
+}
+
+section.third-section p.two-third-left, section.third-section div.two-third-left {
+    width: 50%;
+    float: left;
+    margin: 1% 3% 1% 1%;
+}
+
+section.third-section p.two-third-right, section.third-section div.two-third-right {
+    width: 50%;
+    float: right;
+    margin: 1% 1% 1% 3%;
+}
+
+section.third-section p.third, section.third-section div.third {
+    width: 27.333%;
+    float: left;
+    margin: 1%;
+}
+
+section.third-section p.third-left, section.third-section div.third-left {
+    width: 27.333%;
+    float: left;
+    margin: 1% 1% 1% 4%;
+}
+
+section.third-section p.third-right, section.third-section div.third-right {
+    width: 27.333%;
+    float: left;
+    margin: 1% 4% 1% 1%;
+}
+
+section.third-section section.side-p {
+    width: 44%;
+    float: left;
+    margin: 1% 1% 1% 3%;
+}
+
+section.third-section section.side-p p.inner-p {
+    width: 100%;
+    padding: 3%;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px 2px #555;
+}
+
+
+
+
+
+/* Links */
+
+section.third-section a {
+    color: #a10079; 
+}
+
+section.third-section a:hover {
+    color: #52003e;
+    text-decoration: underline;
+}
+
+
+
+/*! background.html Paragraphs */
+
+#background p:first-of-type {
+    margin: 1% 15% 2% 1%;
+    width: 22%
+}
+
+#background p.two-third-left {
+    width: 40%;
+    margin: 2% 1% 2% 15%;
+    clear: both;
+}   
+
+#background p.two-third-right {
+    width: 40%;
+    margin: 2% 15% 2% 1%;
+    clear: both;
+}   
+
+
+
+
+/*! Third Section Figures  */
+
+section.third-section figure {
+    border: 10px white solid;
+    padding: 0;
+    height: auto;
+}
+
+section.third-section figure.img-right, section.third-section img.img-right {
+    width: 44%;
+    border-radius: 50px;
+    float: right;
+    padding: auto;
+    margin: 1% 3% 1% 1%;
+}
+
+section.third-section figure.img-right-small {
+    width: 23%;
+    background-color: white;
+    border-radius: 33px;
+    float: right;
+    margin: 1% 15% 1% 0;
+}
+
+section.third-section figure.img-left-small {
+    width: 23%;
+    background-color: white;
+    border-radius: 33px;
+    float: left;
+    margin: 1% 0 1% 15%;
+}
+
+section.third-section figure.img-bottom-left, section.third-section figure.img-bottom-mid, section.third-section figure.img-bottom-right {
+    width: 23%;
+    height: auto;
+    background-color: white;
+    border-radius: 33px;
+    float: left;
+}
+
+section.third-section figure.img-bottom-left {
+    clear: both;
+    margin: 1% 1% 1% 12%;
+}
+
+section.third-section figure.img-bottom-mid {
+    margin: 1% 0;
+}
+
+section.third-section figure.img-bottom-right {
+    margin: 1% 12% 1% 1%;
+}
+
+section.third-section img.left-small, section.third-section img.right-small {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border-radius: 33px;
+}
+
+section.third-section video {
+    border: 10px white solid;
+    border-radius: 33px;
+    margin: 1% 1% 1% 15%;
+    float: left;
+    display: block;
+    width: 42%;
+}
+
+figcaption {
+    text-align: center;
+    width: 100%;
+    height: 5%;
+    margin-top: 1%;
+    font-family: 'Coiny', cursive;
+    font-style: none;
+}
+
+
+
+
+/*! Trivia.html  */
+
+#first-btn, #second-btn, #third-btn, #fourth-btn {
+    padding: 0;
+    border-radius: 50px 50px 50px 50px;
+    height: 100%;
+    width: auto;
+    background-color: white;
+    margin: 0;
+    display: block; 
+}
+
+#first, #second, #third, #fourth {
+    width: 40%;
+    height: 3%;
+    float: left;
+    padding: 0.5%;
+    box-shadow: 0 3px 2px 2px #555;
+}
+
+#first, #third {
+    margin: 1% 1% 1% 7%;
+}
+
+#second, #fourth {
+    margin: 1% 5% 1% 1%;
+}
+
+.trivia-heads {
+    line-height: 24px;
+    box-shadow: 0;
+    font-size: 24px;
+    padding-top: 5%;
+}
+
+#first-p, #second-p, #third-p, #fourth-p {
+    clear: both;
+}
+
+
+
+
+/*! Footer */
+
+footer {
+    background-color: #38002a;
+    
+}
+
+footer p {
+    font-family: 'Coiny', cursive;
+    text-align: center;
+    color: #fff;
+    padding: 1% 0;
+    font-style: italic;
+    font-size: 100%;
+}
+
+.bottom-footer {
+    margin-top: 10%;
+}
+
+
+
+
+/*! about.html */
+
+section.third-section img.adopt-img {
+    width: 50%;
+    margin: 1% 25% 5% 25%;
+    border-radius: 600px;
+    box-shadow: 0 0 3px 5px #b8008a;
+}
+
+section.third-section div.adopt-div {
+    min-height: 350px;
+    width: 22%;
+}
+
+section.third-section div.third-left.adopt-div {
+   margin: 1% 1% 1% 12%; 
+}
+
+section.third-section div.third-right.adopt-div {
+    margin: 1% 12% 1% 1%; 
+}
+
+section.third-section#aboutus p.two-third-left {
+    width: 42%;
+    margin: 1% 0 1% 12%;
+    padding: 5% 3%;
+}
+
+section.third-section#aboutus figure.adopt-img-small {
+    margin: 1% 12% 1% 1%;
+}
+
+span#h {
+    color: hotpink;
+}
+
+section.third-section#aboutus figure.adopt-img-small figcaption {
+    font-size: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+/*! adopt.html */
+
+section.services {
+    max-width: 1200px;
+    margin: auto;
+}
+
+section.services div {
+    width: 27.3333%;
+    max-width: 350px;
+    min-height: 300px;
+    margin: 2%;
+    float: left;
+    background: #eee;
+    padding: 1%;
+    border-radius: 15px;
+    box-shadow: 3px 3px 2px 2px #555;
+}
+
+section.services div h2 {
+    text-align: center;
+    margin-bottom: 3px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+section.services div p {
+    text-align: center;
+    font-size: 20px;
+    min-height: 150px;
+    padding: auto;
+    color: #fff;
+    border-radius: 10px;
+    font-style: italic;
+}
+
+section.services div ul {
+    width: 90%;
+    margin: 3% auto;
+    color: #555;
+}
+
+section.services div h3 {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    color: #b8b8b8;
+}
+
+section.services div figure.card-img img {
+    width: 100%;
+    margin-top: 1%;
+    border-radius: 10px;
+
+}
+
+section.services div h3:hover {
+    color: #fff;
+}
+
+
+section.services div.card-one h3:hover, 
+section.services div.card-two h3:hover,
+section.services div.card-three h3:hover, 
+section.services div.card-four h3:hover, 
+section.services div.card-five h3:hover,
+section.services div.card-six h3:hover  {
+    background: #e02eb4;
+    cursor: pointer;
+
+}
+
+section.services div.card-one h2, 
+section.services div.card-one p,
+section.services div.card-one h3,
+section.services div.card-four h2, 
+section.services div.card-four p,
+section.services div.card-four h3 {
+    background: #9c0075;
+
+}
+
+section.services div.card-two h2, 
+section.services div.card-two p,
+section.services div.card-two h3,
+section.services div.card-five h2, 
+section.services div.card-five p,
+section.services div.card-five h3 {
+    background: #5f0047;
+}
+
+section.services div.card-three h2, 
+section.services div.card-three p,
+section.services div.card-three h3,
+section.services div.card-six h2, 
+section.services div.card-six p,
+section.services div.card-six h3 {
+    background: #38002a;
+}
+
+
+
+
+/*! adopt.html menu */
+
+section.section-one, 
+section.section-two, 
+section.section-three, 
+section.section-four, 
+section.section-five, 
+section.section-six {
+    display: none;
+}
+
+h2.back-button, h2.buy-now-button-one,h2.buy-now-button-two, h2.buy-now-button-three, h2.buy-now-button-four, h2.buy-now-button-five, h2.buy-now-button-six  {
+    clear: both;
+    background: #5A0043;
+    text-align: center;
+    margin: 0.5% auto;
+    font-size: 30px;
+    width: 100px;
+    color: #999;
+    border-radius: 30px;
+    padding: 5px 20px;
+}
+
+h2.buy-now-button-one, h2.buy-now-button-two, h2.buy-now-button-three,h2.buy-now-button-four,h2.buy-now-button-five,h2.buy-now-button-six {
+    width: 200px;
+    margin-top: 4%;
+}
+
+h2.back-button:hover,
+h2.buy-now-button-one:hover,
+h2.buy-now-button-two:hover,
+h2.buy-now-button-three:hover,
+h2.buy-now-button-four:hover,
+h2.buy-now-button-five:hover,
+h2.buy-now-button-six:hover {
+    color: white;
+    cursor: pointer;
+}
+
+section.third-section figure.buynow {
+    width: 33%;
+    margin: 1% 0 1% 10%;
+    border: none;
+
+}
+
+section.third-section figure img.buynow-img {
+    float: left;
+    width: 100%;
+    border-radius: 25px;
+    border: 10px white solid;
+    margin-bottom: 4%;
+}
+
+section.third-section p.buynow-p, section.third-section p.buynow-price,
+section.third-section p.buynow-price-one, 
+section.third-section p.buynow-price-two, 
+section.third-section p.buynow-price-three, 
+section.third-section p.buynow-price-four, 
+section.third-section p.buynow-price-five {
+    float: right;
+    width: 33%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: 1% 10% 1% 0;
+}
+
+section.third-section div.buynow-div {
+    float: right;
+    width: 33%;
+    margin: 1% 10% 1% 0;
+
+}
+
+label {
+    font-size: 16px;
+}
+
+
+
+
+/* Responsiveness! */
+
+/* 0-768 px */
+@media only screen and (max-width: 768px) {
+
+    /* General Styles */
+    body {
+        font-size: 18px;
+        overflow: visible;
+    }
+
+    .mobile-hidden {
+        display: none;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+
+
+
+    /* Header */
+
+    header div.logo {
+        width: 100%;
+        font-size: 120%;
+        padding-bottom: 0;
+        float: none;
+    }
+
+    header nav {
+        float: none;
+        width: 100%;
+    }
+
+    header nav ul {
+        padding-top: 1%;
+    }
+
+    header nav ul li a {
+        font-size: 18px;
+    }
+
+    header nav ul li:first-child {
+        margin-left: 0;
+
+    }
+
+
+
+    /* First Section */
+
+    section.first-section h2 {
+        width: 90%;
+        top: 40%;
+        left: 4%;
+    }
+
+    section.third-section section.side-p {
+        width: 90%;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    section.third-section img.img-right {
+        width: 90%;
+        margin: 2% auto;
+        border: 5px solid white;
+        float: none;
+    }
+
+    section.second-section form input {
+        padding: 2px 4px;
+    }
+
+    footer p {
+        font-size: 120%;
+    }
+
+
+
+    /* Third Section */
+    
+    section.third-section div.third-left.adopt-div, section.third-section div.third-right.adopt-div {
+        margin: 4%;
+    }
+     
+    section.third-section img {
+        width: 100%;
+        float: none;
+        display: block;
+    }
+
+
+    /* background.html styles */
+
+    #background video {
+        width: 97%;
+        height: auto;
+        margin: 5px auto 2% auto;
+        display: block;
+        text-align: center;
+    }
+
+    #background p:first-of-type {
+        width: 90%;
+        margin: 1% 4% 1%;
+        clear: both;
+    }
+
+    #background p, #background figure {
+        font-size: 18px;
+        float: none;
+        width: 95%;
+        margin: 1% auto;
+    }
+
+    #background p.two-third-left, #background p.two-third-right, section.third-section div.third, section.third-section div.third-left, section.third-section div.third-right, section.third-section div.half-left, section.third-section div.half-right {
+        float: none;
+        clear: both;
+
+        width: 90%;
+        margin: 2% auto;
+    }
+
+
+
+    /* trivia.html styles */
+
+    #first-btn, #second-btn, #third-btn, #fourth-btn {
+        margin: 0 auto;
+        width: 20%;
+        height: auto;
+        border-radius: 25px;
+    }
+
+
+    #first, #second, #third, #fourth {
+        width: 48%;
+    }
+
+    #first, #third {
+        clear: both;
+        margin: 1% 0.5% 1% 0.5%;
+    }
+
+    #second, #fourth {
+        margin: 1% 0.5% 1% 0.5%;
+
+    }
+
+    .trivia-heads {
+        line-height: 24px;
+        box-shadow: 0;
+        font-size: 20px;
+        padding: 3% 2px 0 2px;
+
+    }
+
+
+
+    /* about.html styles */
+
+    section.third-section#aboutus p.two-third-left {
+        width: 92%;
+        margin: 3% 1%;
+        padding: 3%;
+    }
+    
+    section.third-section#aboutus figure.adopt-img-small {
+        width: 60%;
+        margin: 0 20% 2% 20%;
+        display: flex;
+        align-items: center;
+    }
+
+    section.third-section#aboutus figure.adopt-img-small figcaption {
+        font-size: 65px;
+        display: inline-block;
+        vertical-align: center;
+    }
+
+
+    /* adopt.html styles */
+
+    #adopt a {
+        border-radius: 5px;
+    }
+
+    section.services div {
+        width: 100%;
+        float: none;
+        margin: 4px auto 2px auto;
+    }
+
+    section.third-section figure.buynow {
+        width: 95%;
+        margin: 1% 0 1% 1%;
+    }
+    
+    section.third-section figure img.buynow-img {
+        float: left;
+        width: 100%;
+        border-radius: 25px;
+        border: 10px white solid;
+        margin-bottom: 4%;
+    }
+
+    section.third-section div.buynow-div, section.third-section p.buynow-p,  section.third-section p.buynow-price-one, section.third-section p.buynow-price-two, section.third-section p.buynow-price-three, section.third-section p.buynow-price-four, section.third-section p.buynow-price-five  {
+        float: none;
+        clear: both;
+        width: 85%;
+        margin: 2% auto;
+    }
+
+    
+        
+}
+
+/* 768-1024px */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    /* General Styles */
+
+    .mobile-hidden {
+        display: block;
+    }
+    
+    .mobile-only {
+        display: none;
+    }
+
+    header nav ul {
+        margin-top: 10px;
+    }
+
+    header nav ul li {
+        margin-left: 5px;
+    }
+
+    header nav ul li a {
+        font-size: 19px;
+    }
+
+    #adopt a {
+        border-radius: 5px;
+        padding: 1px;
+    }
+
+    section.first-section h2 {
+        width: 80%;
+        left: 10%;
+        top: 40%;
+    }
+
+
+    /* Third Section */
+
+    section.third-section div.third, section.third-section div.third-left, section.third-section div.third-right, section.third-section div.half-left, section.third-section div.half-right{
+        float: none;
+        clear: both;
+
+        width: 90%;
+        margin: 2% auto;
+    }
+
+    section.third-section figure.img-bottom-left, section.third-section figure.img-bottom-mid, section.third-section figure.img-bottom-right {
+        width: 25%;
+    }
+    
+    section.third-section figure.img-bottom-left {
+        clear: both;
+        margin: 1% 1% 1% 6%;
+    }
+    
+    section.third-section figure.img-bottom-mid {
+        margin: 1%;
+    }
+    
+    section.third-section figure.img-bottom-right {
+        margin: 1% 6% 1% 1%;
+    }
+
+
+    /* background.html styles */
+
+    #background p.two-third-left {
+        width: 55%;
+        margin: 1% 0 2% 4%;
+        clear: both;
+    }   
+    
+    #background p.two-third-right {
+        width: 55%;
+        margin: 1% 4% 2% 0;
+        clear: both;
+    }   
+
+    #background video {
+        width: 90%;
+        height: auto;
+        margin: 4%;
+        display: block;
+        text-align: center;
+    }
+
+    #background p:first-of-type {
+        width: 90%;
+        margin: 0 4% 1%;
+    }
+
+    #background p {
+        font-size: 18px;
+    }
+
+    #background figcaption {
+        font-size: 16px;
+        line-height: 2;
+        
+    }
+
+    section#background.third-section figure.img-right-small {
+        margin: 1% 5% 1% 0;
+        width: 25%;
+        height: auto;
+    }
+
+    section#background.third-section figure.img-left-small {
+        margin: 1% 0 1% 5%;
+        width: 25%;
+        height: auto;
+    }
+
+
+    /* trivia.html styles  */
+
+    #first, #second, #third, #fourth {
+        width: 47%;
+    
+    }
+    
+    #first, #third, #second, #fourth {
+        margin: 1%
+    }
+    
+    .trivia-heads {
+        padding-top: 7%;
+        font-size: 22px;
+    }
+
+    section.third-section div.third.adopt-div, section.third-section div.third-left.adopt-div, section.third-section div.third-right.adopt-div {
+        width: 29%;
+        float: left;
+        clear: none;
+        margin: 1%;
+    }
+    
+    section.third-section div.adopt-div {
+        min-height: 350px;
+    }
+
+
+
+    /* about.html styles */
+
+    section.third-section#aboutus p.two-third-left {
+        width: 90%;
+        margin: 2%;
+        padding: 3%;
+    }
+    
+    section.third-section#aboutus figure.adopt-img-small {
+        width: 60%;
+        margin: 1% 20%;
+        display: flex;
+        align-items: center;
+    }
+
+    section.third-section#aboutus figure.adopt-img-small figcaption {
+        font-size: 77px;
+        display: inline-block;
+        vertical-align: center;
+    }
+    
+
+    /* adopt.html styles */
+
+    #adopt a {
+        width: 100%;
+    }
+
+    section.services div {
+        width: 30.3333%;
+        margin: 1%;
+        padding: 0.5%;
+    }
+
+    section.services div ul {
+        width: 100%;
+    }
+
+    header div.logo h1 {
+        margin: 3% auto;
+        font-size: 125%;
+    }
+
+    section.third-section div.buynow-div, section.third-section p.buynow-p,  section.third-section p.buynow-price-one, section.third-section p.buynow-price-two, section.third-section p.buynow-price-three, section.third-section p.buynow-price-four, section.third-section p.buynow-price-five  {
+        width: 40%;
+        margin: 1% 2%;
+    }
+
+    
+
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1450px) {
+
+    /* General styles */
+    .mobile-hidden {
+        display: block;
+    }
+    
+    .mobile-only {
+        display: none;
+    }
+
+
+    /* Third section styles */
+
+    section.third-section figure.img-bottom-left, section.third-section figure.img-bottom-mid, section.third-section figure.img-bottom-right {
+        width: 25%;
+    }
+    
+    section.third-section figure.img-bottom-left {
+        margin: 1% 1% 1% 8%;
+    }
+    
+    section.third-section figure.img-bottom-right {
+        margin: 1% 8% 1% 1%;
+    }
+
+    
+    /* background.html styles */
+
+    #background p:first-of-type, #background video {
+        width: 65%;
+        margin: 1% 16.6666% 1%;
+        clear: both;
+    }
+
+    #background figure {
+        margin-top: 2%;
+    }
+
+
+
+}
+/* 1024+ px is handled by default :) */
+
+
+
+
