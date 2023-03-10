@@ -687,6 +687,10 @@ footer {
     background: linear-gradient(135deg, #f89820  50%, #5382a1  50%);   
 }
 
+.jquery {
+    background: linear-gradient(135deg, #0769AD 50%, #7ACEF4 50%);
+}
+
 .twitter:hover {
     color: #1DA1F2;
 }
@@ -729,6 +733,11 @@ footer {
     -webkit-backdrop-filter: blur(5px);
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 10px 20px;
+}
+
+.static-site {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
