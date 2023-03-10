@@ -77,7 +77,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>November 2022 - December 2022</h4>
-                            <a href="../display-sites/Tutor/index.html" target="_blank"><h2 className="static-site">Mathify Tutor <i className="fas fa-arrow-up-right-from-square"></i></h2></a>
+                            <a href="../sites/mathify-tutor/index.html" target="_blank"><h2 className="static-site">Mathify Tutor <i className="fas fa-arrow-up-right-from-square"></i></h2></a>
 
                             <div className="tags">
                                 <div className="tag css">CSS</div>
@@ -114,7 +114,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>March 2022 - April 2022</h4>
-                            <a href="../display-sites/Adopt-a-lotl/index.html" target="_blank"><h2 className="static-site">Adopt-a-lotl <i className="fas fa-arrow-up-right-from-square"></i></h2></a>
+                            <a href="../sites/adopt-a-lotl/index.html" target="_blank"><h2 className="static-site">Adopt-a-lotl <i className="fas fa-arrow-up-right-from-square"></i></h2></a>
 
                             <div className="tags">
                                 <div className="tag css">CSS</div>
@@ -134,7 +134,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>November 2021</h4>
-                            <a href="../display-sites/Gallery/index.html" target="_blank"><h2 className="static-site">Gallery of Poland <i className="fas fa-arrow-up-right-from-square"></i></h2></a>
+                            <a href="../sites/gallery/index.html" target="_blank"><h2 className="static-site">Gallery of Poland <i className="fas fa-arrow-up-right-from-square"></i></h2></a>
 
                             <div className="tags">
                                 <div className="tag css">CSS</div>
