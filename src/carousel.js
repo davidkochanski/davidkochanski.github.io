@@ -25,7 +25,7 @@ export default class MyCarousel extends Component {
                             </div>
 
                             <div className="bar"></div>
-                            <p>A simple Pokemon guessing game built with React.js; my first main React project. Features settings for difficulty and time, and plans for keeping track of leaderboards.</p>
+                            <p>A Pokemon guessing game built with React.js; my first main React project. Features settings for difficulty and time, and plans for keeping track of leaderboards.</p>
                         </div>
                     </div>
                 </div>
