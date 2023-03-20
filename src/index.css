@@ -148,6 +148,10 @@ header nav ul li:nth-of-type(3):hover a {
     color: rgb(0 150 255);
 }
 
+header nav ul li:nth-of-type(4):hover a {
+    color: rgb(255, 0, 251);
+}
+
 main {
     /* width: min(1200px, 100% - 3rem);
     margin: auto; */
@@ -656,7 +660,6 @@ footer {
     color: #323330;
 }
 
-
 .css {
     background: linear-gradient(135deg, #264de4 50%, #2965f1 50%);
 }
@@ -798,6 +801,7 @@ footer {
 
 .interaction-text {
     height: 40%;
+    width: 100%;
     position: absolute;
     bottom: 0;
     background: linear-gradient(to top, #000000AA 40%, #00000000);
@@ -815,6 +819,18 @@ footer {
 
 .interaction-text p {
     padding: 0 2px;
+}
+
+#interactions h2 {
+    user-select: none;
+}
+
+#interaction-button {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 36px;
+    vertical-align: middle;
 }
 
 @media only screen and (max-width: 768px) {
@@ -910,7 +926,8 @@ footer {
 
     header nav ul li:nth-of-type(1):hover a,
     header nav ul li:nth-of-type(2):hover a,
-    header nav ul li:nth-of-type(3):hover a {
+    header nav ul li:nth-of-type(3):hover a,
+    header nav ul li:nth-of-type(4):hover a {
         scale: unset;
     }
 
@@ -926,6 +943,11 @@ footer {
 
     header nav ul li:nth-of-type(3):hover {
         background-color: rgba(0 150 255 / 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    header nav ul li:nth-of-type(4):hover {
+        background-color: rgba(255, 0, 251, 0.3);
         backdrop-filter: blur(10px);
     }
 
@@ -1036,8 +1058,9 @@ footer {
     }
 
     .interactions-wrapper {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         margin: 0 auto;
+        max-width: 500px;
     
     }
     
