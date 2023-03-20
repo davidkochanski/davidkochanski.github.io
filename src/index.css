@@ -823,15 +823,41 @@ footer {
 
 #interactions h2 {
     user-select: none;
+    margin-bottom: 0;
 }
 
 #interaction-button {
+    user-select: none;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    font-size: 18px;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#interaction-button i {
     display: inline-block;
     width: 40px;
-    height: 40px;
-    font-size: 36px;
+    font-size: 30px;
     vertical-align: middle;
 }
+
+.interactions-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
 
 @media only screen and (max-width: 768px) {
     

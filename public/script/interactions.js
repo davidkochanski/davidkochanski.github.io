@@ -1,5 +1,5 @@
-const btn = document.querySelector("#interactions h2");
-const icon = document.getElementById("interaction-button");
+const btn = document.getElementById("interaction-button");
+const icon = document.querySelector("#interaction-button > i");
 const wrapper = document.querySelector(".interactions-wrapper");
 const inters = document.querySelectorAll(".interaction");
 let active = false;
