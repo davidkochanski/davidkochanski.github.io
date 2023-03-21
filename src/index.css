@@ -784,8 +784,6 @@ footer {
     height: 100%;
     background-color: rgba(0 0 0 / 0.5);
     z-index: 1;
-    outline: 1px solid red;
-
     transition: background-color 0.3s ease;
 }
 
