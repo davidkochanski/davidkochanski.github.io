@@ -16,11 +16,15 @@ const checkForAndApplyShown = () => {
 
     numShown = media.matches ? 2 : 3;
 
-    let shown = Array.from(inters).slice(0, numShown);
-    shown.forEach((element) => { element.classList.remove("interaction-hide")})
+    if(!active) {
+        let shown = Array.from(inters).slice(0, numShown);
+        shown.forEach((element) => { element.classList.remove("interaction-hide")})
 
-    let tail = Array.from(inters).slice(numShown);
-    tail.forEach((element) => { element.classList.add("interaction-hide")})
+        let tail = Array.from(inters).slice(numShown);
+        tail.forEach((element) => { element.classList.add("interaction-hide")})
+    
+    }
+
 }
 
 // Calculate shown elements when page is initially loaded..
@@ -45,9 +49,7 @@ btn.onmousedown = e => {
             element.classList.toggle("interaction-show");
             element.classList.toggle("interaction-hide");
 
-    }, idx * SHOW_DELAY)
-        
-
+        }, idx * SHOW_DELAY)
     })
 
     

@@ -14,7 +14,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>February 2023 - COMING SOON</h4>
-                            <a href="#home"><h2>Pokeguesser <i class="fas fa-arrow-up-right-from-square"></i></h2></a>
+                            <a href="#home"><h2>Pokeguesser <i class="fab fa-github"></i></h2></a>
 
                             <div className="tags">
                                 <div className="tag react">React.js</div>
@@ -58,7 +58,7 @@ export default class MyCarousel extends Component {
                         <div className="legend-content">
                             <h4>October 2021 - January 2023</h4>
 
-                            <a href="https://github.com/davidkochanski/DaveedBot"><h2>DaveedBot <i className="fas fa-arrow-up-right-from-square"></i></h2></a>
+                            <a href="https://github.com/davidkochanski/DaveedBot"><h2>DaveedBot <i className="fab fa-github"></i></h2></a>
                             <div className="tags">
                             
                                 <div className="tag python">Python</div>
@@ -96,7 +96,7 @@ export default class MyCarousel extends Component {
                     <div className="legend">
                     <div className="legend-content">
                             <h4>September 2022 - October 2022</h4>
-                            <a href="https://github.com/davidkochanski/midnight-fox" target="_blank"><h2>Midnight Fox <i className="fas fa-arrow-up-right-from-square"></i></h2></a>
+                            <a href="https://github.com/davidkochanski/midnight-fox" target="_blank"><h2>Midnight Fox <i className="fab fa-github"></i></h2></a>
 
                             <div className="tags">
                                 <div className="tag vscode">VSCode Ext.</div>

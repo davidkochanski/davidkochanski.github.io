@@ -285,17 +285,10 @@ section#imgs h3 > a:hover {
         width: 0;
     } to {
         width: 100%;
-    }
-    
+    }    
 }
 
-.fa-arrow-up-right-from-square {
-    transition: 0.1s ease-out;
-}
 
-.fa-arrow-up-right-from-square:hover { /* Link icon */
-    color: rgb(0 150 255);
-}
 
 .bar {
     width: 100%;
@@ -341,6 +334,11 @@ section#imgs h3 > a:hover {
 .legend i {
     font-size: 22px;
     vertical-align: middle;
+    transition: 0.1s ease-out;
+}
+
+.legend i:hover {
+    color: rgb(0 150 255);
 }
 
 .tags {
@@ -737,11 +735,11 @@ footer {
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 10px 20px;
 }
-
+/* 
 .static-site {
     text-decoration: underline;
     cursor: pointer;
-}
+} */
 
 #interactions {
     margin: 100px auto;
@@ -889,7 +887,7 @@ footer {
         width: 95%;
         height: 95%;
         opacity: 1;
-    } 80% {
+    } 85% {
         width: 95%;
         height: 95%;
         opacity: 0;
@@ -898,6 +896,25 @@ footer {
         height: 0;
         opacity: 0;
     }
+}
+
+.interaction.banner::after {
+    content: attr(data-banner-text);
+    position: absolute;
+    width: 75%;
+    padding: 10px;
+    text-align: center;
+    rotate: 45deg;
+    top: 4.5%;
+    right: -28%;
+
+    background: rgba(200, 200, 200, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid white;
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -1078,7 +1095,7 @@ footer {
     }
 
     .legend i {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .about .about-content {
