@@ -3,9 +3,13 @@ const icon = document.querySelector("#interaction-button > i");
 const wrapper = document.querySelector(".interactions-wrapper");
 const inters = document.querySelectorAll(".interaction");
 let active = false;
-let numShown;
+let numShown = 3;
+const SHOW_DELAY = 150;
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 let media = window.matchMedia("(max-width: 768px)");
+
+
 
 const checkForAndApplyShown = () => {
     media = window.matchMedia("(max-width: 768px)");
@@ -13,12 +17,10 @@ const checkForAndApplyShown = () => {
     numShown = media.matches ? 2 : 3;
 
     let shown = Array.from(inters).slice(0, numShown);
-    shown.forEach((element) => {element.style.display = "block"})
-
-    let action = active ? "block" : "none";
+    shown.forEach((element) => { element.classList.remove("interaction-hide")})
 
     let tail = Array.from(inters).slice(numShown);
-    tail.forEach((element) => {element.style.display = action})
+    tail.forEach((element) => { element.classList.add("interaction-hide")})
 }
 
 // Calculate shown elements when page is initially loaded..
@@ -33,10 +35,21 @@ btn.onmousedown = e => {
     icon.classList.toggle("fa-chevron-right");
     icon.classList.toggle("fa-chevron-down");
     let tail = Array.from(inters).slice(numShown);
-    
-    let action = active ? "block" : "none";
 
-    tail.forEach( (element) => {
-        element.style.display = action; 
-    });
+    if(!active) {
+        tail = tail.reverse();
+    }
+
+    tail.forEach((element, idx) => {
+        setTimeout(() => {
+            element.classList.toggle("interaction-show");
+            element.classList.toggle("interaction-hide");
+
+    }, idx * SHOW_DELAY)
+        
+
+    })
+
+    
+    
 }
