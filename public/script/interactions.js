@@ -30,7 +30,6 @@ const checkForAndApplyShown = () => {
     }
 }
 
-
 btn.onmousedown = e => {
     active = !active;
     icon.classList.toggle("fa-chevron-right");

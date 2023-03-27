@@ -87,8 +87,11 @@ header nav {
     margin: 0 auto;
 }
 
-header nav h1 {
+header nav a {
     display: inline-block;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
 }
 
 header nav img {
@@ -791,8 +794,35 @@ footer {
     border: 2px solid rgba(255, 255, 255, 1);
 }
 
+
 .interaction:hover::before {
     background-color: rgba(0 0 0 / 0);
+}
+
+.interaction.disabled:hover::before {
+    background-color: rgba(0 0 0 / 0.5);
+}
+
+.interaction.disabled:active {
+    animation: bg-shake 0.25s linear forwards;
+}
+
+@keyframes bg-shake {
+    from { 
+        background-position-x: center;
+    }
+    25% {
+        background-position-x: 45%;
+    }
+    50% {
+        background-position-x: center;
+    }
+    75% {
+        background-position-x: 55%;
+    }
+    to {
+        background-position-x: center;
+    }
 }
 
 .interaction-text {
@@ -914,7 +944,10 @@ footer {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid white;
+}
 
+.interaction.banner:hover::after {
+    z-index: 100;
 }
 
 @media only screen and (max-width: 768px) {
