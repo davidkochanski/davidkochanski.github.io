@@ -228,8 +228,12 @@
         max-width: 500px;
     }
 
+    .interaction-text {
+        padding: 0 2%;
+    }
+
     .interaction-text h1 {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .interaction-text p {

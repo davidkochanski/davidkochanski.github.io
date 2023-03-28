@@ -1,0 +1,75 @@
+.python {
+    background: linear-gradient(135deg, #ffde57 50%, #4584b6 50%);
+    color: black;
+}
+
+.discord-py {
+    background-color: #5865F2;
+}
+
+.javascript {
+    background-color: #f0db4f;
+    color: #323330;
+}
+
+.css {
+    background: linear-gradient(135deg, #264de4 50%, #2965f1 50%);
+}
+
+.html {
+    background: linear-gradient(135deg, #e34c26 50%, #f06529 50%);
+}
+
+.react {
+    background-color: #00d8ff;
+    color: black;
+}
+
+.vscode {
+    background-color: #0078d7;
+}
+
+.typescript {
+    background-color: #3178c6;
+    color: #00273f;
+}
+
+.github {
+    background: linear-gradient(135deg, #333 50%, #4078c0 50%);
+}
+
+.java {
+    background: linear-gradient(135deg, #f89820 50%, #5382a1 50%);   
+}
+
+.jquery {
+    background: linear-gradient(135deg, #0769AD 50%, #7ACEF4 50%);
+}
+
+.twitter:hover {
+    color: #1DA1F2;
+}
+
+.git:hover {
+    background: linear-gradient(135deg, #333 33%, #4078c0 33%);
+    background-clip: text;
+    color: transparent;
+}
+
+.linkedin:hover {
+    color: #0077B5;
+}
+
+.ai {
+    background: linear-gradient(135deg, #555 50%, #333 50%);
+}
+
+.api {
+    background: linear-gradient(135deg, #fd67b2 50%, #dd398b 50%);
+}
+
+.firebase {
+    background: linear-gradient(135deg, #ffca28 50%, #f57c00 50%);
+    color: black;
+
+}

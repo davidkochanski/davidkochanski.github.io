@@ -8,6 +8,7 @@
     box-sizing: border-box;
     scrollbar-color: #555 #222;
 }
+
 *::-webkit-scrollbar-track {
     background: #222;
 }
@@ -156,8 +157,6 @@ header nav ul li:nth-of-type(4):hover a {
 }
 
 main {
-    /* width: min(1200px, 100% - 3rem);
-    margin: auto; */
     width: 100%;
 }
 
@@ -291,8 +290,6 @@ section#imgs h3 > a:hover {
     }    
 }
 
-
-
 .bar {
     width: 100%;
     height: 0.28rem;
@@ -323,6 +320,7 @@ section#imgs h3 > a:hover {
     font-size: 48px;
     width: 100%;
     margin-bottom: 0.3rem;
+    white-space: nowrap;
 }
 
 .legend h4 {
@@ -359,6 +357,7 @@ section#imgs h3 > a:hover {
     border-radius: 7px;
 }
 
+
 .about {
     max-width: 1200px;
     margin: 50px auto;
@@ -389,7 +388,6 @@ section#imgs h3 > a:hover {
 .about .about-left {
     flex-grow: 1;
 }
-
 
 
 .about .about-right {
@@ -475,6 +473,37 @@ section#imgs h3 > a:hover {
 .about-bar:nth-of-type(4) {
     animation-delay: 1s;
 }
+
+#mail:hover {
+    text-decoration: underline;
+    color: #fff;
+    cursor: pointer;
+}
+
+#mail:active + * + .copied {
+    opacity: 1;
+    transition: opacity 0.15s ease;
+}
+
+.copied {
+    opacity: 0;
+    position: absolute;
+    top: 50px;
+    font-size: 16px;
+
+    left: 50%;
+    translate: -50%;
+
+    transition: opacity 0.5s ease;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+}
+
 
 .skills {
     display: grid;
@@ -580,7 +609,6 @@ h3 {
 
 }
 
-
 .slide-image-top {
     background-position-y: top !important;
 }
@@ -647,102 +675,6 @@ footer {
     margin-bottom: 0.6rem;
 }
 
-.python {
-    background: linear-gradient(135deg, #ffde57 50%, #4584b6 50%);
-    color: black;
-}
-
-.discord-py {
-    background-color: #5865F2;
-}
-
-.javascript {
-    background-color: #f0db4f;
-    color: #323330;
-}
-
-.css {
-    background: linear-gradient(135deg, #264de4 50%, #2965f1 50%);
-}
-
-.html {
-    background: linear-gradient(135deg, #e34c26 50%, #f06529 50%);
-}
-
-.react {
-    background-color: #00d8ff;
-    color: black;
-}
-
-.vscode {
-    background-color: #0078d7;
-}
-
-.typescript {
-    background-color: #3178c6;
-    color: #00273f;
-}
-
-.github {
-    background: linear-gradient(135deg, #333 50%, #4078c0 50%);
-}
-
-.java {
-    background: linear-gradient(135deg, #f89820  50%, #5382a1  50%);   
-}
-
-.jquery {
-    background: linear-gradient(135deg, #0769AD 50%, #7ACEF4 50%);
-}
-
-.twitter:hover {
-    color: #1DA1F2;
-}
-
-.git:hover {
-    background: linear-gradient(135deg, #333 33%, #4078c0 33%);
-    background-clip: text;
-    color: transparent;
-}
-
-.linkedin:hover {
-    color: #0077B5;
-}
-
-#mail:hover {
-    text-decoration: underline;
-    color: #fff;
-    cursor: pointer;
-}
-
-#mail:active + * + .copied {
-    opacity: 1;
-    transition: opacity 0.15s ease;
-}
-
-.copied {
-    opacity: 0;
-    position: absolute;
-    top: 50px;
-    font-size: 16px;
-
-    left: 50%;
-    translate: -50%;
-
-    transition: opacity 0.5s ease;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    padding: 10px 20px;
-}
-/* 
-.static-site {
-    text-decoration: underline;
-    cursor: pointer;
-} */
 
 #interactions {
     margin: 100px auto;
@@ -753,12 +685,10 @@ footer {
     text-align: center;
 }
 
-
 .interactions-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin: 0 auto;
-
 }
 
 .interaction {
