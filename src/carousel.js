@@ -7,7 +7,7 @@ export default class MyCarousel extends Component {
 
     render() {
         return (
-            <Carousel preventMovementUntilSwipeScrollTolerance={true} swipeScrollTolerance={10} stopOnHover={true} autoPlay={true} infiniteLoop={true} interval={5000} transitionTime={500} emulateTouch={true} showThumbs={false}>
+            <Carousel preventMovementUntilSwipeScrollTolerance={true} swipeScrollTolerance={10} stopOnHover={true} autoPlay={true} infiniteLoop={true} interval={5000} transitionTime={500} emulateTouch={true} showThumbs={false} selectedItem={1}>
 
                 {/* placefox */}
                 <div className="slide-image slide-image-top" style={{"background-image": "url('../img/fox.jpeg')"}}>
@@ -33,7 +33,7 @@ export default class MyCarousel extends Component {
                 <div className="slide-image slide-image-top" style={{"background-image": "url('../img/pokeguesser.jpg')"}}>
                     <div className="legend">
                     <div className="legend-content">
-                            <h4>February 2023 (in dev)</h4>
+                            <h4>February 2023 - April 2023</h4>
                             <a href="#home"><h2>Pokeguesser <i class="fab fa-github"></i></h2></a>
 
                             <div className="tags">
@@ -46,7 +46,7 @@ export default class MyCarousel extends Component {
                             </div>
 
                             <div className="bar"></div>
-                            <p>A Pokemon guessing game built with React.js; my first main React project. Features settings for difficulty and time, and plans for keeping track of leaderboards.</p>
+                            <p>A Pokemon guessing game built with React.js; my first main React project. Features different game settings, a user leaderboard with user authentication (via Firebase), sharing features and fully responsive layout!</p>
                         </div>
                     </div>
                 </div>
