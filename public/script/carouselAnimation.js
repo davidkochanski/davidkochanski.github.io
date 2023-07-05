@@ -47,7 +47,7 @@ function updateSqueeze() {
     allTitles.forEach((title, idx) => {
         let container = allSlideContents[idx];
 
-        let maxHeight = container.clientHeight - 150;
+        let maxHeight = container.clientHeight - 200;
         let titleHeight = title.clientHeight;
 
         let squeezeFactor = maxHeight / titleHeight;

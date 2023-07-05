@@ -80,39 +80,40 @@ nav.onmouseover = () => onNav = true;
 nav.onmouseout = () => onNav = false;
 
 
-document.addEventListener("mousedown", dragStart);
-document.addEventListener("mousemove", drag);
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", drag);
 document.addEventListener("mouseup", dragEnd);
 
 
-document.addEventListener("touchdown", dragStart);
-document.addEventListener("touchmove", drag);
-document.addEventListener("touchup", dragEnd);
+carousel.addEventListener("touchdown", dragStart);
+carousel.addEventListener("touchmove", drag);
+carousel.addEventListener("touchup", dragEnd);
 
-const observer = new IntersectionObserver((element) => {
-    element.forEach((el) => {
-        if (el.isIntersecting) {
-            document.addEventListener("mousedown", dragStart);
-            document.addEventListener("mousemove", drag);
-            document.addEventListener("mouseup", dragEnd);
+// idk if this is necessary
+// const observer = new IntersectionObserver((element) => {
+//     element.forEach((el) => {
+//         if (el.isIntersecting) {
+//             document.addEventListener("mousedown", dragStart);
+//             document.addEventListener("mousemove", drag);
+//             document.addEventListener("mouseup", dragEnd);
 
-            document.addEventListener("touchdown", dragStart);
-            document.addEventListener("touchmove", drag);
-            document.addEventListener("touchup", dragEnd);
+//             document.addEventListener("touchdown", dragStart);
+//             document.addEventListener("touchmove", drag);
+//             document.addEventListener("touchup", dragEnd);
 
-        } else {
-            document.removeEventListener("mousedown", dragStart);
-            document.removeEventListener("mousemove", drag);
-            document.removeEventListener("mouseup", dragEnd);
+//         } else {
+//             document.removeEventListener("mousedown", dragStart);
+//             document.removeEventListener("mousemove", drag);
+//             document.removeEventListener("mouseup", dragEnd);
 
-            document.removeEventListener("touchdown", dragStart);
-            document.removeEventListener("touchmove", drag);
-            document.removeEventListener("touchup", dragEnd);
-        }
-    })
-})
+//             document.removeEventListener("touchdown", dragStart);
+//             document.removeEventListener("touchmove", drag);
+//             document.removeEventListener("touchup", dragEnd);
+//         }
+//     })
+// })
 
-observer.observe(carousel);
+// observer.observe(carousel);
 
 
 let dragStartX = 0;
