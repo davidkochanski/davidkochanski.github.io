@@ -174,7 +174,7 @@ a {
 
 .hero {
     min-height: 100vh;
-    background: url(../public/img/david2.jpg) no-repeat;
+    background: url(../public/img/david3.jpg) no-repeat;
     background-size: cover;
     background-position: right top;
 }
@@ -228,7 +228,7 @@ a {
 }
 
 section#imgs {
-    margin: 4rem auto;
+    margin: 60px auto;
 }
 
 section#imgs h3, section#imgs h3 > a {
@@ -262,6 +262,19 @@ section#imgs h3 > a:hover {
     display: inline-block;
     margin-left: 10px;
     animation: bounce 0.5s ease-in-out 0s infinite alternate;
+}
+
+
+.hero-location {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 20px;
+    text-shadow: 2px 2px 2px #000;
+}
+
+.hero-location i {
+    margin-right: 5px;
 }
 
 @keyframes bounce {
@@ -343,20 +356,17 @@ section#imgs h3 > a:hover {
     color: rgb(0 150 255);
 }
 
-.tags {
-    display: flex;
-    gap: 0.8rem;
-}
-
 .tag {
-    width: 5.8rem;
-    height: 1.8rem;
-    font-size: 14px;
-
-    line-height: 1.8rem;
     text-align: center;
+    color: white;
     border-radius: 7px;
+    font-size: 16px;
+    height: 30px;
+    line-height: 28px;
+    width: 100px;
+    outline: 2px solid black;
 }
+
 
 
 .about {

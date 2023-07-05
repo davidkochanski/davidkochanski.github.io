@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './mobile.css';
 import "./brands.css";
-import MyCarousel from './carousel';
+import MyCarousel from './carouselOLD';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('image-carousel'));
