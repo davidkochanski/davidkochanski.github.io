@@ -80,7 +80,7 @@ function Carousel() {
     }, [dragX, currentSlide]);
 
 
-    const handleStartDrag = (event) => {
+    const handleDragStart = (event) => {
         if(onNav) return;
 
         setDragging(true);
@@ -130,7 +130,10 @@ function Carousel() {
 
 
     return (
-        <div id="carousel" onMouseDown={handleStartDrag} onMouseMove={handleDragging} onMouseUp={handleDragEnd} onMouseLeave={handleDragEnd}>
+        <div id="carousel" 
+            onMouseDown={handleDragStart} onMouseMove={handleDragging} onMouseUp={handleDragEnd} onMouseLeave={handleDragEnd}
+            onTouchStart={handleDragStart} onTouchMove={handleDragging} onTouchEnd={handleDragEnd} onTouchCancel={handleDragEnd}
+        >
             <button id="left-btn" onClick={() => setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)}>
                 <i className="fas fa-chevron-left"></i>
             </button>
