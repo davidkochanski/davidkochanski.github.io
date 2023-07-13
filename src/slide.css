@@ -100,7 +100,7 @@
 }
 
 .slide-description li {
-    margin-left: 12px;
+    margin-left: 16px;
 }
 
 .slide-tags {
@@ -147,6 +147,7 @@
 
 #page-nav .page-tab {
     all: unset;
+    font-family: "Lato", sans-serif;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
