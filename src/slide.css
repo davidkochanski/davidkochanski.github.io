@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.slide-content {
+    max-width: 1050px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    grid-template-rows: 4fr 2fr;
+}
+
+
+.slide-content .slide-date {
+    position: absolute;
+    top: 20px;
+    left: 55px;
+    z-index: 6210;
+    color: #111;
+}
+
+
+.slide-image-wrapper {
+    background-color: #111;
+    box-shadow: 0 0 50px #fff;
+    border-radius: 16px;
+    padding: 3px;
+    margin-bottom: 16px;
+    transform-style: preserve-3d;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    z-index: 1000;
+    transform-style: preserve-3d;
+
+}
+
+.slide-title {
+    grid-area: 1 / 2 / 3 / 3;
+    position: relative;
+    margin-left: 10px;
+}
+
+.slide-title h2 {
+    writing-mode: vertical-rl;
+    font-size: 100px;
+    color: #111;
+    margin-left: 3px;
+    transform-origin: 0 0;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.slide-title .slide-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 8px;
+    font-size: 28px;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+}
+
+.slide-title .slide-links i {
+    cursor: pointer;
+    color: #333;
+}
+
+.slide-info {
+    width: 100%;
+    height: 24px;
+    display: flex;
+}
+
+.slide-description {
+    width: 100%;
+    font-family: Lato;
+    
+    z-index: 6210;
+    color: #111;
+    font-size: 18px;
+}
+
+.slide-description ul {
+    list-style-position: outside;
+}
+
+.slide-description li {
+    margin-left: 12px;
+}
+
+.slide-tags {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    text-align: center;
+    color: white;
+    border-radius: 7px;
+    font-size: 16px;
+    height: 30px;
+    line-height: 28px;
+    width: 100px;
+    outline: 2px solid black;
+}
+
+/*
+#page-counter {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 621;
+    font-family: Consolas;
+    border: 2px solid #111;
+    color: black;
+    padding: 8px;
+    border-radius: 8px;
+} */
+
+#page-nav {
+    z-index: 6210;
+    position: absolute;
+    bottom: 0;
+    padding: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+#page-nav .page-tab {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-family: Consolas;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #333;
+    color: white;
+    border-radius: 16px;
+    text-decoration: none;
+    user-select: none;
+}
+
+#page-nav .page-tab.selected-tab {
+    background-color: white;
+    color: #333;
+
+}
+
+#carousel .fa-arrow-up-right-from-square, #carousel .fa-github, #carousel .page-tab:not(.page-tab.selected-tab) {
+    transition: color 0.25s ease, scale 0.25s ease, opacity 0.25s ease;
+}
+
+#carousel .fa-arrow-up-right-from-square:hover, #carousel .fa-github:hover {
+    color: black;
+    scale: 1.1;
+}
+
+#carousel .page-tab:hover:not(.page-tab.selected-tab) {
+    opacity: 0.5;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .slide {
+        gap: 1px;
+    }
+
+    .slide-content {
+        padding: 50px 5px;
+    }
+
+    .slide-content .slide-title {
+        margin: 0;
+        width: 64px;
+        margin-right: 5px;
+    }
+
+    .slide-content .slide-title h2 {
+        font-size: 64px;
+    }
+
+    .slide-content .slide-date {
+        left: 10px;
+    }
+
+    .slide-content .slide-tags {
+        font-size: 11.5px;
+        gap: 5px;
+        margin-bottom: 6px;
+    }
+
+    .slide-tags .tag {
+        width: 90px;
+    }
+
+    .slide-description {
+        font-size: 15px;
+    }
+
+    .slide-content .slide-image-wrapper {
+        margin-bottom: 6px;
+    }
+
+    #carousel button {
+        width: 24px;
+        height: 24px;
+        top: unset;
+        bottom: 0;
+    }
+
+    #carousel button i {
+        font-size: 16px;
+    }
+
+    #carousel .page-nav {
+        padding-bottom: 14px;
+    }
+
+    #page-nav .page-tab {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 16px;
+        gap: 8px;
+    }
+
+}

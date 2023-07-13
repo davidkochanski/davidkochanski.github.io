@@ -161,14 +161,14 @@
         margin-left: 0;
     }
 
-    .tags {
+    /* .tags {
         gap: 0.15rem;
     }
 
     .tag {
         width: 4rem;
         font-size: 11.5px;
-    }
+    } */
 
     .legend h2 {
         font-size: 36px;
