@@ -118,7 +118,7 @@
     height: 30px;
     line-height: 28px;
     width: 100px;
-    outline: 2px solid black;
+    box-shadow: 0 0 0.5px 2.2px black;
 }
 
 /*
