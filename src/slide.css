@@ -118,21 +118,8 @@
     height: 30px;
     line-height: 28px;
     width: 100px;
-    box-shadow: 0 0 0.5px 2.2px black;
+    box-shadow: 0 0 0.25px 2px black;
 }
-
-/*
-#page-counter {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    z-index: 621;
-    font-family: Consolas;
-    border: 2px solid #111;
-    color: black;
-    padding: 8px;
-    border-radius: 8px;
-} */
 
 #page-nav {
     z-index: 6210;
@@ -146,16 +133,14 @@
 }
 
 #page-nav .page-tab {
-    all: unset;
     font-family: "Lato", sans-serif;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-    font-family: Consolas;
     width: 24px;
     height: 24px;
-    line-height: 24px;
+    line-height: 22px;
     background-color: #333;
     color: white;
     border-radius: 16px;
@@ -247,7 +232,7 @@
         width: 20px;
         height: 20px;
         line-height: 20px;
-        font-size: 16px;
+        font-size: 14px;
         gap: 8px;
     }
 

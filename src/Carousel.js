@@ -95,11 +95,35 @@ function Carousel() {
         });
     };
 
+    const handleMobileDragStart = (event) => {
+        if(onNav) return;
+
+        setDragging(true);
+        setStartX(event.touches[0].clientX);
+
+        slideRefs.current.forEach((slide) => {
+            slide.classList.add("dragging");
+        });
+
+        slideTransitions.current.forEach((slide) => {
+            slide.classList.add("dragging");
+        });
+    };
+
     const handleDragging = (event) => {
         if (!isDragging) return;
         const deltaX = event.clientX - startX;
 
         if(isMobile && Math.abs(deltaX) <= 10) return;  // Swipe tollerance
+
+        setDragX(deltaX);
+    };
+
+    const handleMobileDragging = (event) => {
+        if (!isDragging) return;
+        const deltaX = event.touches[0].clientX - startX;
+
+        if(Math.abs(deltaX) <= 10) return;  // Swipe tollerance
 
         setDragX(deltaX);
     };
@@ -132,7 +156,7 @@ function Carousel() {
     return (
         <div id="carousel" 
             onMouseDown={handleDragStart} onMouseMove={handleDragging} onMouseUp={handleDragEnd} onMouseLeave={handleDragEnd}
-            onTouchStart={handleDragStart} onTouchMove={handleDragging} onTouchEnd={handleDragEnd} onTouchCancel={handleDragEnd}
+            onTouchStart={handleMobileDragStart} onTouchMove={handleMobileDragging} onTouchEnd={handleDragEnd} onTouchCancel={handleDragEnd}
         >
             <button id="left-btn" onClick={() => setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)}>
                 <i className="fas fa-chevron-left"></i>
