@@ -29,7 +29,7 @@ function Carousel() {
 
         navRef.current.replaceChildren();  // Just in case; removes duplicate navs
 
-        for(let idx = 0; idx < slideRefs.current.length; idx++) {
+        for (let idx = 0; idx < slideRefs.current.length; idx++) {
             const tab = document.createElement("a");
 
             tab.classList.add("page-tab");
@@ -37,7 +37,7 @@ function Carousel() {
             tab.addEventListener("mousedown", () => { setCurrentSlide(idx) })
 
             if (idx === currentSlide) tab.classList.add("selected-tab");
-    
+
             navRef.current.appendChild(tab);
         }
 
@@ -55,7 +55,7 @@ function Carousel() {
         return () => {
             mediaQuery.removeEventListener('change', mediaQueryListener);
         }
-        
+
     })
 
 
@@ -81,25 +81,12 @@ function Carousel() {
 
 
     const handleDragStart = (event) => {
-        if(onNav) return;
+        if (onNav) return;
+
+        const x = event.touches ? event.touches[0].clientX : event.clientX;
 
         setDragging(true);
-        setStartX(event.clientX);
-
-        slideRefs.current.forEach((slide) => {
-            slide.classList.add("dragging");
-        });
-
-        slideTransitions.current.forEach((slide) => {
-            slide.classList.add("dragging");
-        });
-    };
-
-    const handleMobileDragStart = (event) => {
-        if(onNav) return;
-
-        setDragging(true);
-        setStartX(event.touches[0].clientX);
+        setStartX(x);
 
         slideRefs.current.forEach((slide) => {
             slide.classList.add("dragging");
@@ -112,18 +99,12 @@ function Carousel() {
 
     const handleDragging = (event) => {
         if (!isDragging) return;
-        const deltaX = event.clientX - startX;
 
-        if(isMobile && Math.abs(deltaX) <= 10) return;  // Swipe tollerance
+        const x = event.touches ? event.touches[0].clientX : event.clientX;
 
-        setDragX(deltaX);
-    };
+        const deltaX = x - startX;
 
-    const handleMobileDragging = (event) => {
-        if (!isDragging) return;
-        const deltaX = event.touches[0].clientX - startX;
-
-        if(Math.abs(deltaX) <= 10) return;  // Swipe tollerance
+        if (isMobile && Math.abs(deltaX) <= 10) return;  // Swipe tollerance
 
         setDragX(deltaX);
     };
@@ -154,18 +135,41 @@ function Carousel() {
 
 
     return (
-        <div id="carousel" 
-            onMouseDown={handleDragStart} onMouseMove={handleDragging} onMouseUp={handleDragEnd} onMouseLeave={handleDragEnd}
-            onTouchStart={handleMobileDragStart} onTouchMove={handleMobileDragging} onTouchEnd={handleDragEnd} onTouchCancel={handleDragEnd}
+        <div id="carousel"
+            onMouseDown={handleDragStart}
+            onMouseMove={handleDragging}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={handleDragEnd}
+            onTouchStart={handleDragStart}
+            onTouchMove={handleDragging}
+            onTouchEnd={handleDragEnd}
+            onTouchCancel={handleDragEnd}
         >
-            <button id="left-btn" onClick={() => setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)}>
+            <button id="left-btn"
+                onClick={() =>
+                    setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)
+                }
+                onTouchStart={() =>
+                    setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)
+                }
+            >
                 <i className="fas fa-chevron-left"></i>
             </button>
-            <button id="right-btn" onClick={() => setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}>
+            <button id="right-btn"
+                onClick={() => setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}
+                onTouchStart={() => setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}
+            >
                 <i className="fas fa-chevron-right"></i>
             </button>
 
-            <div ref={navRef} id="page-nav" className="page-nav" onMouseOver={() => {setOnNav(true)}} onMouseOut={() => {setOnNav(false)}}></div>
+            <div ref={navRef} id="page-nav" className="page-nav" 
+                onMouseOver={() => {setOnNav(true)}}
+                onMouseOut={() => {setOnNav(false)}}
+                onTouchStart={() => {setOnNav(true)}}
+                onTouchEnd={() => {setOnNav(false)}}
+            >
+            {/* populated by JS */}
+            </div>
 
             <Slide
                 ref={(ref) => (slideRefs.current[0] = ref)}
@@ -187,7 +191,7 @@ function Carousel() {
                 githubURL="https://github.com/davidkochanski/placeholder-fox"
             />
 
-            <div style={{backgroundImage: "url(img/slide-trans/0.svg)"}}ref={(ref) => (slideTransitions.current[0] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/0.svg)" }} ref={(ref) => (slideTransitions.current[0] = ref)}></div>
 
             <Slide
                 ref={(ref) => (slideRefs.current[1] = ref)}
@@ -198,9 +202,9 @@ function Carousel() {
                 imagePos="50% 50%"
                 description={<>
                     <ul>
-                    <li>Pokémon guessing game developed with React.js - my first major React project.</li>
-                    <li>Includes various game settings, user authentication (using Firebase), sharing capabilities, and a fully responsive layout.</li>
-                    <li>Offers a user leaderboard to track and display user rankings within the game.</li>
+                        <li>Pokémon guessing game developed with React.js - my first major React project.</li>
+                        <li>Includes various game settings, user authentication (using Firebase), sharing capabilities, and a fully responsive layout.</li>
+                        <li>Offers a user leaderboard to track and display user rankings within the game.</li>
                     </ul>
                 </>}
                 tagList={["React.js", "Firebase", "JavaScript", "CSS", "HTML"]}
@@ -210,7 +214,7 @@ function Carousel() {
             />
 
 
-            <div style={{backgroundImage: "url(img/slide-trans/1.svg)"}}ref={(ref) => (slideTransitions.current[1] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/1.svg)" }} ref={(ref) => (slideTransitions.current[1] = ref)}></div>
 
 
             <Slide
@@ -228,7 +232,7 @@ function Carousel() {
             />
 
 
-            <div style={{backgroundImage: "url(img/slide-trans/2.svg)"}}ref={(ref) => (slideTransitions.current[2] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/2.svg)" }} ref={(ref) => (slideTransitions.current[2] = ref)}></div>
 
 
             <Slide
@@ -248,7 +252,7 @@ function Carousel() {
                 githubURL="https://github.com/davidkochanski/DaveedBot"
             />
 
-            <div style={{backgroundImage: "url(img/slide-trans/3.svg)"}}ref={(ref) => (slideTransitions.current[3] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/3.svg)" }} ref={(ref) => (slideTransitions.current[3] = ref)}></div>
 
 
             <Slide
@@ -259,14 +263,14 @@ function Carousel() {
                 imageURL="img/slide-images/tutor.jpg"
                 imagePos="50% 0%"
                 description={<>
-                        <p>Offline website, designed to advertize a fictional math tutor company. Used CSS and HTML with a hint of JavaScript to make some onscroll effects. Fully responsive.</p>
+                    <p>Offline website, designed to advertize a fictional math tutor company. Used CSS and HTML with a hint of JavaScript to make some onscroll effects. Fully responsive.</p>
                 </>}
                 tagList={["CSS", "HTML", "JavaScript"]}
                 background="#E6E6FA"
                 hasInteraction={true}
             />
 
-            <div style={{backgroundImage: "url(img/slide-trans/4.svg)"}}ref={(ref) => (slideTransitions.current[4] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/4.svg)" }} ref={(ref) => (slideTransitions.current[4] = ref)}></div>
 
 
             <Slide
@@ -277,7 +281,7 @@ function Carousel() {
                 imageURL="img/slide-images/midnightfox.jpg"
                 imagePos="0 0"
                 description={<>
-                        <p>A deep, vibrant theme for the leading code editor VSCode. Includes UI colour design and proper token and syntax highlighting. 200+ downloads on the VSCode Marketplace.</p>
+                    <p>A deep, vibrant theme for the leading code editor VSCode. Includes UI colour design and proper token and syntax highlighting. 200+ downloads on the VSCode Marketplace.</p>
                 </>}
                 tagList={["VSCode", "JavaScript"]}
                 background="#D291BC"
@@ -285,7 +289,7 @@ function Carousel() {
                 githubURL="https://github.com/davidkochanski/midnight-fox"
             />
 
-            <div style={{backgroundImage: "url(img/slide-trans/5.svg)"}}ref={(ref) => (slideTransitions.current[5] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/5.svg)" }} ref={(ref) => (slideTransitions.current[5] = ref)}></div>
 
 
             <Slide
@@ -296,7 +300,7 @@ function Carousel() {
                 imageURL="img/slide-images/adopt.jpg"
                 imagePos="50% 0"
                 description={<>
-                        <p>A static website immitating an axolotl adoption center. Of course, I do not actually own an underground axolotl selling business! This was my playground for beginning JS and JQuery.</p>
+                    <p>A static website immitating an axolotl adoption center. Of course, I do not actually own an underground axolotl selling business! This was my playground for beginning JS and JQuery.</p>
                 </>}
                 tagList={["CSS", "JQuery", "JavaScript", "HTML"]}
                 background="#FFB6C1"
@@ -304,7 +308,7 @@ function Carousel() {
             />
 
 
-            <div style={{backgroundImage: "url(img/slide-trans/6.svg)"}} ref={(ref) => (slideTransitions.current[6] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/6.svg)" }} ref={(ref) => (slideTransitions.current[6] = ref)}></div>
 
 
             <Slide
@@ -315,7 +319,7 @@ function Carousel() {
                 imageURL="img/slide-images/gallery.jpg"
                 imagePos="50% 0"
                 description={<>
-                        <p>Very simple static website displaying a responsive image gallary of the beautiful landscapes and cityscapes of my home background, Poland.</p>
+                    <p>Very simple static website displaying a responsive image gallary of the beautiful landscapes and cityscapes of my home background, Poland.</p>
                 </>}
                 tagList={["CSS", "HTML"]}
                 background="#98FB98"
