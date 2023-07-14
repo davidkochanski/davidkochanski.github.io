@@ -165,7 +165,8 @@ function Carousel() {
             <div ref={navRef} id="page-nav" className="page-nav" 
                 onMouseOver={() => {setOnNav(true)}}
                 onMouseOut={() => {setOnNav(false)}}
-                onTouchStart={() => {setOnNav(true)}}
+                onTouchStart={() => {setOnNav(false)}}
+                onTouchMove={() => {setOnNav(false)}}
                 onTouchEnd={() => {setOnNav(false)}}
             >
             {/* populated by JS */}

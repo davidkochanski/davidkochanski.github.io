@@ -55,13 +55,13 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
 
     function putInteraction() {
         if (hasInteraction) {
-            return <a href="#interactions"><i className="fas fa-arrow-up-right-from-square"></i></a>
+            return <a onTouchStart={() => {window.location.href = "#interactions"}} href="#interactions"><i className="fas fa-arrow-up-right-from-square"></i></a>
         }
     }
 
     function putGithub() {
         if (githubURL) {
-            return <a href={githubURL} target="_blank" rel="noreferrer"><i className="fab fa-github"></i></a>
+            return <a onTouchStart={() => {window.open(githubURL, "_blank")}} href={githubURL} target="_blank" rel="noreferrer"><i className="fab fa-github"></i></a>
         }
     }
 
