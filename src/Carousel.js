@@ -35,6 +35,7 @@ function Carousel() {
             tab.classList.add("page-tab");
             tab.innerText = `${idx + 1}`
             tab.addEventListener("mousedown", () => { setCurrentSlide(idx) })
+            tab.addEventListener("touchstart", () => { setCurrentSlide(idx) })
 
             if (idx === currentSlide) tab.classList.add("selected-tab");
 
@@ -45,6 +46,7 @@ function Carousel() {
 
         function handleMediaQueryChange(event) {
             setIsMobile(event.matches);
+            if(isMobile) setOnNav(false);
         }
 
         handleMediaQueryChange(mediaQuery); // Check initial state
@@ -82,6 +84,8 @@ function Carousel() {
 
     const handleDragStart = (event) => {
         if (onNav) return;
+
+        setOnNav(false);
 
         const x = event.touches ? event.touches[0].clientX : event.clientX;
 
@@ -132,8 +136,6 @@ function Carousel() {
         });
     };
 
-
-
     return (
         <div id="carousel"
             onMouseDown={handleDragStart}
@@ -163,11 +165,14 @@ function Carousel() {
             </button>
 
             <div ref={navRef} id="page-nav" className="page-nav" 
-                onMouseOver={() => {setOnNav(true)}}
+                onMouseOver={() => {
+                    if(!isMobile) setOnNav(true)
+                }}
                 onMouseOut={() => {setOnNav(false)}}
                 onTouchStart={() => {setOnNav(false)}}
                 onTouchMove={() => {setOnNav(false)}}
                 onTouchEnd={() => {setOnNav(false)}}
+                onTouchCancel={() => {setOnNav(false)}}
             >
             {/* populated by JS */}
             </div>

@@ -237,4 +237,11 @@
         gap: 8px;
     }
 
+    #carousel .fa-arrow-up-right-from-square, #carousel .fa-github, #carousel .page-tab:not(.page-tab.selected-tab) {
+        transition: none;
+        pointer-events: all;
+        user-select: all;
+    }
+    
+
 }
