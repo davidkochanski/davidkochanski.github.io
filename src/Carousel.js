@@ -83,6 +83,8 @@ function Carousel() {
 
 
     const handleDragStart = (event) => {
+        event.stopPropagation()
+
         if (onNav) return;
 
         setOnNav(false);
@@ -102,6 +104,7 @@ function Carousel() {
     };
 
     const handleDragging = (event) => {
+
         if (!isDragging) return;
 
         const x = event.touches ? event.touches[0].clientX : event.clientX;
@@ -115,6 +118,7 @@ function Carousel() {
 
 
     const handleDragEnd = () => {
+
         const threshold = 0.3 * slideRefs.current[0].clientWidth;
 
         if (dragX <= -threshold && currentSlide < slideRefs.current.length - 1) {
@@ -142,32 +146,27 @@ function Carousel() {
             onMouseMove={handleDragging}
             onMouseUp={handleDragEnd}
             onMouseLeave={handleDragEnd}
+
             onTouchStart={handleDragStart}
             onTouchMove={handleDragging}
             onTouchEnd={handleDragEnd}
-            onTouchCancel={handleDragEnd}
         >
             <button id="left-btn"
-                onClick={() =>
-                    setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)
-                }
-                onTouchStart={() =>
-                    setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)
-                }
+                onMouseDown={() => {if(!isMobile) setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)}}
+                onTouchStart={() => setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)}
             >
                 <i className="fas fa-chevron-left"></i>
             </button>
+            
             <button id="right-btn"
-                onClick={() => setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}
+                onMouseDown={() => {if(!isMobile) setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}}
                 onTouchStart={() => setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}
             >
                 <i className="fas fa-chevron-right"></i>
             </button>
 
             <div ref={navRef} id="page-nav" className="page-nav" 
-                onMouseOver={() => {
-                    if(!isMobile) setOnNav(true)
-                }}
+                onMouseOver={() => {setOnNav(true)}}
                 onMouseOut={() => {setOnNav(false)}}
                 onTouchStart={() => {setOnNav(false)}}
                 onTouchMove={() => {setOnNav(false)}}
@@ -222,7 +221,6 @@ function Carousel() {
 
             <div style={{ backgroundImage: "url(img/slide-trans/1.svg)" }} ref={(ref) => (slideTransitions.current[1] = ref)}></div>
 
-
             <Slide
                 ref={(ref) => (slideRefs.current[2] = ref)}
 
@@ -231,7 +229,7 @@ function Carousel() {
                 imageURL="img/slide-images/website.jpg"
                 imagePos="50% 50%"
                 description={<>
-                    <p>The website you're on right now! Fully responsive and accessable, using CSS technologies like flexbox and keyframes, and a carousel powered by JavaScript.</p>
+                    <p>The website you're on right now! Fully responsive and accessable, using CSS technologies like flexbox and keyframes, and a carousel first built in vanilla JavaScript, and then upgraded to React.JS.</p>
                 </>}
                 tagList={["CSS", "HTML", "JavaScript", "React.js"]}
                 background="#B7C9E2"

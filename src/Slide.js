@@ -14,7 +14,6 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
         // Clean-up
         return () => {
             window.removeEventListener("resize", updateSqueeze);
-
         };
     }, [])
 
@@ -55,15 +54,15 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
 
     function putInteraction() {
         if (hasInteraction) {
-            return <a onTouchStart={() => {window.location.href = "#interactions"}} href="#interactions">
+            return <a onTouchEnd={() => {window.location.href = "#interactions"}} href="#interactions">
                 <i className="fas fa-arrow-up-right-from-square"></i></a>
         }
     }
 
     function putGithub() {
         if (githubURL) {
-            return <a href={githubURL} target="_blank" rel="noreferrer">
-                    ploob
+            return <a onTouchEnd={() => {window.open(githubURL, "_blank")}} href={githubURL} target="_blank" rel="noreferrer">
+                    <i className="fab fa-github"></i>
             </a>
         }
     }

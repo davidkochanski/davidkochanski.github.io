@@ -241,6 +241,7 @@
         transition: none;
         pointer-events: all;
         user-select: all;
+        z-index: 6210000000000;
     }
     
 
