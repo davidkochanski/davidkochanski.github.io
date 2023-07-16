@@ -138,6 +138,12 @@
 
     .hero {
         background-position: 80% top;
+        height: 90vh;
+        position: relative;
+    }
+
+    .hero-wrapper {
+        height: 90vh;
     }
 
     .hero-content {

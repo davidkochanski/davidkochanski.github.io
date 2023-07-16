@@ -44,6 +44,7 @@ body {
     z-index: -100;
 }
 
+
 .fade-in {
     z-index: 10000000;
     background: black;
@@ -173,7 +174,7 @@ a {
 }
 
 .hero {
-    min-height: 100vh;
+    height: 100vh;
     background: url(../public/img/david3.jpg) no-repeat;
     background-size: cover;
     background-position: right top;

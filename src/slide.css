@@ -6,7 +6,7 @@
 
 
 .slide-content {
-    max-width: 1050px;
+    max-width: 975px;
     position: relative;
     height: 100%;
     width: 100%;
@@ -34,6 +34,17 @@
     padding: 3px;
     margin-bottom: 16px;
     transform-style: preserve-3d;
+    transform-origin: center center;
+    scale: 0 0;
+}
+
+@keyframes scale-in {
+    from {
+        scale: 0 0;
+    } to {
+        scale: 1 1;
+    }
+
 }
 
 .slide-image {
@@ -52,6 +63,8 @@
     grid-area: 1 / 2 / 3 / 3;
     position: relative;
     margin-left: 10px;
+    width: 100px;
+
 }
 
 .slide-title h2 {
@@ -62,6 +75,9 @@
     transform-origin: 0 0;
     display: inline-block;
     white-space: nowrap;
+
+    padding-bottom: 8px;
+    border-bottom: medium none;
 }
 
 .slide-title .slide-links {
@@ -119,7 +135,20 @@
     line-height: 28px;
     width: 100px;
     box-shadow: 0 0 0.25px 2px black;
+    opacity: 0;
 }
+
+@keyframes tag-animation {
+    from {
+        transform: translateY(5px);
+        opacity: 0;
+
+    } to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 
 #page-nav {
     z-index: 6210;
@@ -215,10 +244,11 @@
     }
 
     #carousel button {
-        width: 24px;
-        height: 24px;
+        width: 32px;
+        height: 32px;
         top: unset;
-        bottom: 0;
+        bottom: -8px;
+        padding: 0;
     }
 
     #carousel button i {
@@ -241,7 +271,7 @@
         transition: none;
         pointer-events: all;
         user-select: all;
-        z-index: 6210000000000;
+        z-index: 62100;
     }
     
 

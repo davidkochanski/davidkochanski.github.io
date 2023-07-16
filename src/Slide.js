@@ -1,26 +1,91 @@
 import "./slide.css";
-import { forwardRef, useRef, useEffect } from "react";
+import { forwardRef, useRef, useEffect, useState } from "react";
 
 const Slide = forwardRef(({ title, date, imageURL, imagePos, description, background, hasInteraction, githubURL, tagList }, ref) => {
 
     const imageRef = useRef();
     const titleWrapperRef = useRef();
     const titleRef = useRef();
-    
+    const slideRef = useRef();
+    const tabsRef = useRef();
+
+    const [titleAnim, setTitleAnim] = useState("");
+    const [idx, setIdx] = useState(0);
+    const [seenTitle, setSeenTitle] = useState(false);
+
     useEffect(() => {
         updateSqueeze();
         window.addEventListener("resize", updateSqueeze);
+
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setSeenTitle(true);
+                    animateImage();
+                    animateTabs();
+                }
+            });
+        }, {threshold: 0.01});
+
+        setTimeout(() => {
+            observer.observe(slideRef.current);
+        }, 500)
+
+
+        titleRef.current.style.borderBottom = "5px solid black";
+
+        setInterval(() => {
+            const title = titleRef.current;
+            if(title.style.borderBottom === "medium none") {
+                title.style.borderBottom = "5px solid black";
+            } else {
+                title.style.borderBottom = "medium none";
+            }
+        }, 530)
 
         // Clean-up
         return () => {
             window.removeEventListener("resize", updateSqueeze);
         };
-    }, [])
+    }, []);
+
+    // Title animation
+    useEffect(() => {
+        if (!seenTitle) return;
+
+        if (idx < title.length) {
+            setTimeout(() => {
+                setTitleAnim(title.substring(0, idx + 1));
+                setIdx(prevIdx => prevIdx + 1);
+                updateSqueeze();
+            }, 75);
+        }
+    }, [idx, title, seenTitle]);
+
+    function animateImage() {
+        const image = imageRef.current;
+
+        image.style.animation = "scale-in 0.33s ease-out forwards";
+        // image.style.animationDelay = "0.12s";
+    }
+
+    function animateTabs() {
+        const tabs = Array.from(tabsRef.current.children);
+        const DELAY_BETWEEN = 200;
+        const DELAY_INITIAL = 300;
+
+        tabs.forEach((tab, idx) => {
+            tab.style.animation = "tag-animation 1s forwards";
+            tab.style.animationDelay = `${DELAY_BETWEEN * idx + DELAY_INITIAL}ms`;
+        })
+    }
+
 
     function updateImageTilt(e) {
 
         const img = imageRef.current;
-        const RESISTANCE = 300;
+        const RESISTANCE = 200;
 
         const rect = img.getBoundingClientRect();
         const divCenterX = rect.left + rect.width / 2;
@@ -31,7 +96,7 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
         const angleX = -(mouseY - divCenterY) / RESISTANCE;
         const angleY = (mouseX - divCenterX) / RESISTANCE;
 
-        img.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+        img.style.transform = `perspective(500px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
     }
 
 
@@ -54,15 +119,15 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
 
     function putInteraction() {
         if (hasInteraction) {
-            return <a onTouchEnd={() => {window.location.href = "#interactions"}} href="#interactions">
+            return <a onTouchEnd={() => { window.location.href = "#interactions" }} href="#interactions">
                 <i className="fas fa-arrow-up-right-from-square"></i></a>
         }
     }
 
     function putGithub() {
         if (githubURL) {
-            return <a onTouchEnd={() => {window.open(githubURL, "_blank")}} href={githubURL} target="_blank" rel="noreferrer">
-                    <i className="fab fa-github"></i>
+            return <a onTouchEnd={() => { window.open(githubURL, "_blank") }} href={githubURL} target="_blank" rel="noreferrer">
+                <i className="fab fa-github"></i>
             </a>
         }
     }
@@ -79,13 +144,13 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
 
     return (
         <div ref={ref} className="slide" draggable="false" onMouseMove={updateImageTilt} style={{ background: `${background}` }}>
-            <div className="slide-content">
+            <div ref={slideRef} className="slide-content">
                 <h4 className="slide-date">{date}</h4>
                 <div ref={imageRef} className="slide-image-wrapper">
                     <div className="slide-image" style={{ backgroundImage: `url(${imageURL})`, backgroundPosition: `${imagePos || "center center"}` }}></div>
                 </div>
                 <div ref={titleWrapperRef} className="slide-title">
-                    <h2 ref={titleRef}>{title}</h2>
+                    <h2 ref={titleRef}>{titleAnim}</h2>
 
                     <div className="slide-links">
                         {putGithub()}
@@ -94,7 +159,7 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
                 </div>
 
                 <div className="slide-description">
-                    <div className="slide-tags">
+                    <div ref={tabsRef} className="slide-tags">
                         {putTags()}
                     </div>
                     <div>

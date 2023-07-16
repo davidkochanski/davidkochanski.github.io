@@ -81,14 +81,11 @@ function Carousel() {
         })
     }, [dragX, currentSlide]);
 
-
     const handleDragStart = (event) => {
         event.stopPropagation()
 
-        if (onNav) return;
-
+        if(onNav) return;
         setOnNav(false);
-
         const x = event.touches ? event.touches[0].clientX : event.clientX;
 
         setDragging(true);
@@ -104,14 +101,12 @@ function Carousel() {
     };
 
     const handleDragging = (event) => {
-
         if (!isDragging) return;
 
         const x = event.touches ? event.touches[0].clientX : event.clientX;
-
         const deltaX = x - startX;
 
-        if (isMobile && Math.abs(deltaX) <= 10) return;  // Swipe tollerance
+        if (isMobile && Math.abs(deltaX) <= 15) return;  // Swipe tollerance
 
         setDragX(deltaX);
     };
@@ -140,6 +135,16 @@ function Carousel() {
         });
     };
 
+    useEffect(() => {
+        if(!isMobile) return;
+
+        if(isDragging) {
+            document.documentElement.style.overflow = "hidden";
+        } else {
+            document.documentElement.style.overflow = "auto";
+        }
+    }, [isDragging, isMobile])
+
     return (
         <div id="carousel"
             onMouseDown={handleDragStart}
@@ -152,15 +157,17 @@ function Carousel() {
             onTouchEnd={handleDragEnd}
         >
             <button id="left-btn"
+                onMouseOver={() => setOnNav(true)} onMouseOut={() => setOnNav(false)}
                 onMouseDown={() => {if(!isMobile) setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)}}
-                onTouchStart={() => setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)}
+                onTouchEnd={() => {if(isMobile) setCurrentSlide((currentSlide + slideRefs.current.length - 1) % slideRefs.current.length)}}
             >
                 <i className="fas fa-chevron-left"></i>
             </button>
             
             <button id="right-btn"
+                onMouseOver={() => setOnNav(true)} onMouseOut={() => setOnNav(false)}
                 onMouseDown={() => {if(!isMobile) setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}}
-                onTouchStart={() => setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}
+                onTouchEnd={() => {if(isMobile) setCurrentSlide((currentSlide + 1) % slideRefs.current.length)}}
             >
                 <i className="fas fa-chevron-right"></i>
             </button>
@@ -235,9 +242,7 @@ function Carousel() {
                 background="#B7C9E2"
             />
 
-
             <div style={{ backgroundImage: "url(img/slide-trans/2.svg)" }} ref={(ref) => (slideTransitions.current[2] = ref)}></div>
-
 
             <Slide
                 ref={(ref) => (slideRefs.current[3] = ref)}
