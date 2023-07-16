@@ -82,7 +82,7 @@ function Carousel() {
     }, [dragX, currentSlide]);
 
     const handleDragStart = (event) => {
-        event.stopPropagation()
+        event.stopPropagation();
 
         if(onNav) return;
         setOnNav(false);
@@ -136,14 +136,12 @@ function Carousel() {
     };
 
     useEffect(() => {
-        if(!isMobile) return;
-
-        if(isDragging) {
+        if(Math.abs(dragX) > 15 && isMobile) {
             document.documentElement.style.overflow = "hidden";
         } else {
             document.documentElement.style.overflow = "auto";
         }
-    }, [isDragging, isMobile])
+    }, [dragX, isMobile])
 
     return (
         <div id="carousel"
