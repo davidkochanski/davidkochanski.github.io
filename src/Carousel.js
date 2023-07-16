@@ -114,7 +114,7 @@ function Carousel() {
 
     const handleDragEnd = () => {
 
-        const threshold = 0.3 * slideRefs.current[0].clientWidth;
+        const threshold = 0.2 * slideRefs.current[0].clientWidth;
 
         if (dragX <= -threshold && currentSlide < slideRefs.current.length - 1) {
             setCurrentSlide(currentSlide + 1);
