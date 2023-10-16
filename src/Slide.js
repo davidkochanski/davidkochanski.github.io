@@ -1,7 +1,7 @@
 import "./slide.css";
 import { forwardRef, useRef, useEffect, useState } from "react";
 
-const Slide = forwardRef(({ title, date, imageURL, imagePos, description, background, hasInteraction, githubURL, tagList }, ref) => {
+const Slide = forwardRef(({ title, date, imageURL, imagePos, description, background, interactionURL, githubURL, tagList }, ref) => {
 
     const imageRef = useRef();
     const titleWrapperRef = useRef();
@@ -118,9 +118,10 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
     }
 
     function putInteraction() {
-        if (hasInteraction) {
-            return <a onTouchEnd={() => { window.location.href = "#interactions" }} href="#interactions">
-                <i className="fas fa-arrow-up-right-from-square"></i></a>
+        if (interactionURL) {
+            return <a onTouchEnd={() => { window.open(interactionURL, "_blank") }} href={interactionURL} target="_blank" rel="noreferrer">
+            <i className="fas fa-arrow-up-right-from-square"></i>
+        </a>
         }
     }
 

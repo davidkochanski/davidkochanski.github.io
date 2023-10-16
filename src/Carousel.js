@@ -197,7 +197,7 @@ function Carousel() {
                 </>}
                 tagList={["AI", "API", "Python", "JavaScript", "CSS"]}
                 background="#FF964F"
-                hasInteraction={true}
+                interactionURL="https://placefox.xyz"
                 githubURL="https://github.com/davidkochanski/placeholder-fox"
             />
 
@@ -219,7 +219,7 @@ function Carousel() {
                 </>}
                 tagList={["React.js", "Firebase", "JavaScript", "CSS", "HTML"]}
                 background="#AFEEEE"
-                hasInteraction={true}
+                interactionURL="https://pokeguesser-d2651.web.app/"
                 githubURL="https://github.com/davidkochanski/pokeguesser-react"
             />
 
@@ -274,7 +274,7 @@ function Carousel() {
                 </>}
                 tagList={["CSS", "HTML", "JavaScript"]}
                 background="#E6E6FA"
-                hasInteraction={true}
+                interactionURL="../sites/mathify-tutor/index.html"
             />
 
             <div style={{ backgroundImage: "url(img/slide-trans/4.svg)" }} ref={(ref) => (slideTransitions.current[4] = ref)}></div>
@@ -292,7 +292,7 @@ function Carousel() {
                 </>}
                 tagList={["VSCode", "JavaScript"]}
                 background="#D291BC"
-                hasInteraction={true}
+                interactionURL="https://marketplace.visualstudio.com/items?itemName=davefoxxo.midnight-fox"
                 githubURL="https://github.com/davidkochanski/midnight-fox"
             />
 
@@ -311,7 +311,7 @@ function Carousel() {
                 </>}
                 tagList={["CSS", "JQuery", "JavaScript", "HTML"]}
                 background="#FFB6C1"
-                hasInteraction={true}
+                interactionURL="sites/adopt-a-lotl/index.html"
             />
 
 
@@ -330,7 +330,7 @@ function Carousel() {
                 </>}
                 tagList={["CSS", "HTML"]}
                 background="#98FB98"
-                hasInteraction={true}
+                interactionURL="sites/gallery/index.html"
             />
 
         </div>
