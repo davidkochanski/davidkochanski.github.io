@@ -175,7 +175,7 @@ a {
 
 .hero {
     height: 100vh;
-    background: url(../public/img/david3.jpg) no-repeat;
+    background: url(../img/david3.jpg) no-repeat;
     background-size: cover;
     background-position: right top;
 }
