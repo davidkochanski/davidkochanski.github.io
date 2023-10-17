@@ -717,7 +717,7 @@ footer {
     background-position: center;
     background-size: auto 100%;
 
-    transition: scale 0.3s ease, background-size 0.45s ease, 
+    transition: scale 0.3s ease, background-size 0.45s ease
 }
 
 .interaction:before {
