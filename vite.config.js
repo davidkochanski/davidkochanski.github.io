@@ -1,13 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import viteTsconfigPaths from 'vite-tsconfig-paths'
+import liveReload from 'vite-plugin-live-reload'
 
 export default defineConfig({
     // depending on your application, base can also be "/"
     base: '',
-    plugins: [react()],
+    plugins: [react(), liveReload('script/aboutMe.js')],
     server: {    
         // this ensures that the browser opens upon server start
         open: true,
+        hmr: {
+            host: 'localhost',
+            protocol: 'ws',
+        }
     },
 })

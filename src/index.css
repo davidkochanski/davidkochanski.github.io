@@ -187,46 +187,45 @@ a {
     background: url(../img/david3.jpg) no-repeat;
     height: 100vh;
     width: 100%;
-    background-size: auto 100%;
-    background-position: 95% center;
-
+    background-size: cover;
+    background-position-x: 80%;
+    background-position-y: 30%;
 
     position: absolute;
     pointer-events: none;
     
-    mask-image: url(../img/cool.svg);
+    mask-image: url(../img/mask.svg);
     mask-repeat: no-repeat;
-    mask-size: 700px 700px;
-    mask-position: 95% center;
+    mask-size: 60vh 60vh;
+    mask-position: 80% center;
 
     transform-origin: 50% 50%;
-
-    animation: circle-out 1s ease 1s forwards;
+    transition: mask-size 0.5s ease, background-size 1s ease;
+    /* animation: circle-out 1s ease 1s forwards; */
 }
 
-@keyframes circle-out {
-    from {
-        mask-size: 700px 700px;
-    } to {
-        mask-size: 1000px 1000px;
-    }
-}
 
 .to-about-me {
-    width: 600px;
-    height: 600px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 60vh;
     aspect-ratio: 1/1;
 
-    opacity: 0.4;
-
+    right: 0;
+    top: 50%;
+    right: 20%;
 
     z-index: 50;
     border-radius: 50%;
     position: absolute;
-    right: 5%;
-    top: 50%;
-    translate: 0 -50%;
+
+    translate: 20% -50%;
 }
+
 
 
 

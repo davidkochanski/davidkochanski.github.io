@@ -5,8 +5,8 @@
   <!-- Define the circular gradient with stops for black and transparent -->
   <defs>
     <radialGradient id="circleGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-      <stop offset="85%" style="stop-color: black; stop-opacity: 1" />
-      <stop offset="100%" style="stop-color: black; stop-opacity: 0" />
+      <stop offset="87.5%" style="stop-color: black; stop-opacity: 1" />
+      <stop offset="92.5%" style="stop-color: black; stop-opacity: 0" />
     </radialGradient>
   </defs>
 
