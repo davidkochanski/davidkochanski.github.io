@@ -36,6 +36,7 @@ body {
 .background, .fade-in {
     display: block;
     background: linear-gradient(to bottom, #000, #1e1d27);
+    /* background-image: url(../img/testcode.png); */
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -43,6 +44,7 @@ body {
     left: 0;
     z-index: -100;
 }
+
 
 
 .fade-in {
@@ -175,10 +177,59 @@ a {
 
 .hero {
     height: 100vh;
-    background: url(../img/david3.jpg) no-repeat;
-    background-size: cover;
-    background-position: right top;
+    /* background: url(../img/david3.jpg) no-repeat; */
+    /* background-size: cover;
+    background-position: right top; */
+
 }
+
+.about-me {
+    background: url(../img/david3.jpg) no-repeat;
+    height: 100vh;
+    width: 100%;
+    background-size: auto 100%;
+    background-position: 95% center;
+
+
+    position: absolute;
+    pointer-events: none;
+    
+    mask-image: url(../img/cool.svg);
+    mask-repeat: no-repeat;
+    mask-size: 700px 700px;
+    mask-position: 95% center;
+
+    transform-origin: 50% 50%;
+
+    animation: circle-out 1s ease 1s forwards;
+}
+
+@keyframes circle-out {
+    from {
+        mask-size: 700px 700px;
+    } to {
+        mask-size: 1000px 1000px;
+    }
+}
+
+.to-about-me {
+    width: 600px;
+    height: 600px;
+    aspect-ratio: 1/1;
+
+    opacity: 0.4;
+
+
+    z-index: 50;
+    border-radius: 50%;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+
+
 
 .hero-wrapper {
     height: 100vh;

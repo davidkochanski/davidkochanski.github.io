@@ -136,14 +136,19 @@
         font-size: 1.33rem;
     }
 
-    .hero {
+    .about-me {
         background-position: 80% top;
-        height: 90vh;
+
+        mask-position: center 20%;
+    }
+
+    .hero {
+        height: 100dvh;
         position: relative;
     }
 
     .hero-wrapper {
-        height: 90vh;
+        height: 100dvh;
     }
 
     .hero-content {
