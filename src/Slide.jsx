@@ -1,7 +1,7 @@
 import "./slide.css";
 import { forwardRef, useRef, useEffect, useState } from "react";
 
-const Slide = forwardRef(({ title, date, imageURL, imagePos, description, background, interactionURL, githubURL, tagList }, ref) => {
+const Slide = forwardRef(({ children, title, date, imageURL, imagePos, background, interactionURL, githubURL, tagList }, ref) => {
 
     const imageRef = useRef();
     const titleWrapperRef = useRef();
@@ -176,7 +176,7 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
                         {putTags()}
                     </div>
                     <div>
-                        {description}
+                        {children}
                     </div>
                 </div>
             </div>

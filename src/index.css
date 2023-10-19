@@ -224,6 +224,8 @@ a {
     position: absolute;
 
     translate: 20% -50%;
+    border-color: #ffffff33;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .hero-wrapper {
@@ -239,56 +241,80 @@ a {
 }
 
 .hero-content {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 3rem 0 1rem;
 }
 
+.hero-row {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    padding: 8px;
+    opacity: 0;
+}
+
 .hero-box {
-    background: rgba(200, 200, 200, 0.5);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid white;
+    border: 1px solid rgba(0, 0, 0, 0.3);
 
-    padding: 1rem;
-    margin-top: 1.5rem;
-    opacity: 0;
-    animation: show 1s ease-out 1s forwards;
+    padding: 12px;
 }
 
+.hero-icon {
+    flex: 0 0 auto;
+    height: 100%;
+    background-color: red;
+    aspect-ratio: 1/1;
+}
+
+.hero-row.show-row {
+    animation: show 1s ease-out forwards;
+}
+
+.hero-row:nth-of-type(2n) {
+    padding-right: 50px;
+}
+
+.hero-row:nth-of-type(2n + 1) {
+    padding-left: 50px;
+}
+
+
 .hero-box p {
-    font-size: 22px;
+    font-size: 18px;
     padding: 0 1rem;
     text-shadow: 1px 1px 2px #000;
 }
 
-.hero h2 {
+.hero h2, .about-me h2 {
     font-size: 3.5rem;
-    text-align: right;
-    margin-right: 0.5rem;
-    opacity: 0;
-    text-shadow: 4px 4px 2px #333;
-
-
-    animation: show 1s ease-out forwards 0.5s;
-}
-
-section#imgs {
-    margin: 60px auto;
-}
-
-section#imgs h3, section#imgs h3 > a {
-    font-size: 16px;
-    width: 100%;
     text-align: center;
-    margin-top: 10px;
-    color: #bbb;
+    /* opacity: 0; */
+    text-shadow: 4px 4px 0px #333;
+    width: fit-content;
+    margin: 0 auto;
+    padding-right: 10px;
+
+
+    /* animation: show 1s ease-out forwards 0.5s; */
 }
 
-section#imgs h3 > a:hover {
-    text-decoration: underline;
-    color: #fff;
+.about-me .show {
+    animation: show 1s ease forwards;
+}
+
+.about-me h4 {
+    text-shadow: 2px 2px 0px #333;
+    font-size: 20px;
+    margin: 3px 0;
+    font-family: "Consolas", monospace;
+    opacity: 0;
+
+    animation-delay: 0.85s !important;
 }
 
 .hero-bottom {
@@ -355,15 +381,34 @@ section#imgs h3 > a:hover {
     width: 100%;
     height: 0.28rem;
     background-color: white;
-    margin: 0.5rem 0;
+    margin: 8px auto;
     border-radius: 100rem;
 
 }
 
 .bar-anim {
-    float: right;
     width: 0;
-    animation: bar-grow 0.75s ease-out 0.75s forwards;
+}
+
+.bar-anim-show {
+    animation: bar-grow 1s ease-out 1s forwards;
+}
+
+section#imgs {
+    margin: 60px auto;
+}
+
+section#imgs h3, section#imgs h3 > a {
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    color: #bbb;
+}
+
+section#imgs h3 > a:hover {
+    text-decoration: underline;
+    color: #fff;
 }
 
 .legend {
