@@ -22,7 +22,7 @@ html {
 }
 
 html, body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 body {
@@ -219,16 +219,12 @@ a {
     top: 50%;
     right: 20%;
 
-    z-index: 50;
+    z-index: 62100;
     border-radius: 50%;
     position: absolute;
 
     translate: 20% -50%;
 }
-
-
-
-
 
 .hero-wrapper {
     height: 100vh;

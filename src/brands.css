@@ -12,6 +12,11 @@
     color: #323330;
 }
 
+.javascript-glow {
+    outline: 2px solid white;
+    box-shadow: 0 0 100px 5px #f0db4f;
+}
+
 .css {
     background: linear-gradient(135deg, #264de4 50%, #2965f1 50%);
 }

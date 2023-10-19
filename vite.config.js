@@ -8,6 +8,7 @@ export default defineConfig({
     plugins: [react(), liveReload('script/aboutMe.js')],
     server: {    
         // this ensures that the browser opens upon server start
+        host: true,
         open: true,
         hmr: {
             host: 'localhost',

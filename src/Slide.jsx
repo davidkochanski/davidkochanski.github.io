@@ -133,11 +133,23 @@ const Slide = forwardRef(({ title, date, imageURL, imagePos, description, backgr
         }
     }
 
+    function handleTagOver(e, tagName) {
+        let target = (e.target) ? e.target: e.srcElement;
+
+        target.classList.add(`${tagName.toLowerCase()}-glow`);
+    }
+
+    function handleTagOut(e, tagName) {
+        let target = (e.target) ? e.target: e.srcElement;
+        target.classList.remove(`${tagName.toLowerCase()}-glow`);
+
+    }
+
     function putTags() {
         let out = [];
 
         tagList.forEach((tag, idx) => {
-            out.push(<div key={idx} className={`tag ${tag.toLowerCase().replace(/\./g, "-")}`}>{tag}</div>);
+            out.push(<div key={idx} onMouseOver={(e) => handleTagOver(e, tag)} onMouseOut={(e) => handleTagOut(e, tag)} className={`tag ${tag.toLowerCase().replace(/\./g, "-")}`}>{tag}</div>);
         })
 
         return out;
