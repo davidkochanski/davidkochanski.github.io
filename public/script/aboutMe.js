@@ -28,6 +28,7 @@ button.onmouseover = () => {
 
 button.onmouseleave = () => {
     if(isShowingAboutMe) {
+
         button.style.border = "5px dashed #ffffff33";
         button.style.backgroundColor = "transparent";
     } else {
@@ -39,9 +40,12 @@ button.onclick = () => {
     isShowingAboutMe = !isShowingAboutMe;
 
     if(isShowingAboutMe) {
-        if (animation) {
-            animation.cancel();
-        }
+        if (animation) animation.cancel();
+
+        button.style.transition = null;
+        button.style.backgroundColor = "#ffffff33";
+        button.style.transition = "background-color 0.25s ease, border-color 0.25s ease";
+        
         aboutMeContainer.style.opacity = 1;
 
         typeHeader();
@@ -63,9 +67,6 @@ button.onclick = () => {
 
     } else {
         fadeOut();
-
-
-        
 
         button.style.border = "none";
         button.style.backgroundColor = "transparent";

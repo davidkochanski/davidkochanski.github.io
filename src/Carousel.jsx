@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import './carousel.css';
 import Slide from './Slide';
 
+import { enableBodyScroll, disableBodyScroll } from 'body-scroll-lock';
+
 function Carousel() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isDragging, setDragging] = useState(false);
@@ -10,6 +12,7 @@ function Carousel() {
     const [onNav, setOnNav] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
+    const ref = useRef();
     const slideRefs = useRef([]);
     const slideTransitions = useRef([]);
     const navRef = useRef();
@@ -83,6 +86,7 @@ function Carousel() {
 
     const handleDragStart = (event) => {
         event.stopPropagation();
+        event.preventDefault();
 
         if(onNav) return;
         setOnNav(false);
@@ -101,6 +105,8 @@ function Carousel() {
     };
 
     const handleDragging = (event) => {
+        event.preventDefault();
+        
         if (!isDragging) return;
 
         const x = event.touches ? event.touches[0].clientX : event.clientX;
@@ -136,18 +142,23 @@ function Carousel() {
     };
 
     useEffect(() => {
-        if(Math.abs(dragX) > 15) {
-            document.documentElement.style.overflow = "hidden";
-            document.body.style.overflow = "hidden";
+        if(Math.abs(dragX) > 15 && isMobile) {
+            // document.documentElement.style.overflowY = "hidden";
+            // document.body.style.overflowY = "hidden";
+            disableBodyScroll(ref.current);
 
+            // document.documentElement.style.overscrollBehaviorY = "hide";
         } else {
-            document.documentElement.style.overflow = "auto";
-            document.body.style.overflow = "auto";
+            // document.documentElement.style.overflowY = "auto";
+            // document.body.style.overflowY = "auto";
+            enableBodyScroll(ref.current);
+            // document.documentElement.style.overscrollBehaviorY = "auto";
         }
     }, [dragX, isMobile])
 
     return (
         <div id="carousel"
+            ref={ref}
             onMouseDown={handleDragStart}
             onMouseMove={handleDragging}
             onMouseUp={handleDragEnd}

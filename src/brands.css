@@ -1,3 +1,8 @@
+
+.tag-glow {
+    box-shadow: 0 0 0.25px 2px white;
+}
+
 .python {
     background: linear-gradient(135deg, #ffde57 50%, #4584b6 50%);
     color: black;
@@ -10,11 +15,6 @@
 .javascript {
     background-color: #f0db4f;
     color: #323330;
-}
-
-.javascript-glow {
-    outline: 2px solid white;
-    box-shadow: 0 0 100px 5px #f0db4f;
 }
 
 .css {

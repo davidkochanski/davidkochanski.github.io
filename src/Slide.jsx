@@ -137,11 +137,14 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
         let target = (e.target) ? e.target: e.srcElement;
 
         target.classList.add(`${tagName.toLowerCase()}-glow`);
+        target.classList.add("tag-glow");
     }
 
     function handleTagOut(e, tagName) {
         let target = (e.target) ? e.target: e.srcElement;
         target.classList.remove(`${tagName.toLowerCase()}-glow`);
+
+        target.classList.remove("tag-glow");
 
     }
 
