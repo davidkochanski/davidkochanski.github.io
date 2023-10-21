@@ -291,7 +291,8 @@ a {
 }
 
 .hero h2, .about-me h2 {
-    font-size: 3.5rem;
+    font-size: 64px;
+    line-height: 90px;
     text-align: center;
     /* opacity: 0; */
     text-shadow: 4px 4px 0px #333;
@@ -302,6 +303,7 @@ a {
 
     /* animation: show 1s ease-out forwards 0.5s; */
 }
+
 
 .about-me .show {
     animation: show 1s ease forwards;

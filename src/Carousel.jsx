@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './carousel.css';
 import Slide from './Slide';
 
-import { clearBodyLocks, lock, unlock } from 'tua-body-scroll-lock'
+import { clearBodyLocks, lock as lockBody, unlock as unlockBody } from 'tua-body-scroll-lock'
 
 
 function Carousel() {
@@ -113,17 +113,17 @@ function Carousel() {
         const x = event.touches ? event.touches[0].clientX : event.clientX;
         const deltaX = x - startX;
 
-        if (isMobile && Math.abs(deltaX) <= 15) return;  // Swipe tollerance
-
-        // only lock scrolling on mobile
-        if(isMobile && Math.abs(deltaX) > 15) lock(); 
-
+        if (isMobile) {
+            if (Math.abs(deltaX) <= 15) return; // Swipe tollerance
+                
+            lockBody(ref.current); // Only lock body scrolling on mobile
+        }
         setDragX(deltaX);
     };
 
 
     const handleDragEnd = () => {
-        unlock();
+        unlockBody(ref.current);
 
         const threshold = 0.2 * slideRefs.current[0].clientWidth;
 
@@ -147,7 +147,7 @@ function Carousel() {
     };
 
     useEffect(() => {
-        if(!isDragging) clearBodyLocks();
+        if(!isDragging) clearBodyLocks(ref.current);
     }, [isDragging])
 
     // useEffect(() => {
