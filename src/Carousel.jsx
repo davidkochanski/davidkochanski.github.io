@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import './carousel.css';
 import Slide from './Slide';
 
-import { enableBodyScroll, disableBodyScroll } from 'body-scroll-lock';
+import { clearBodyLocks, lock, unlock } from 'tua-body-scroll-lock'
+
 
 function Carousel() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -11,6 +12,9 @@ function Carousel() {
     const [dragX, setDragX] = useState(0);
     const [onNav, setOnNav] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+
+    // const [canScroll, setScroll] = useState(true);
+    // const stopScroll = usePreventScroll({isDisabled: canScroll});
 
     const ref = useRef();
     const slideRefs = useRef([]);
@@ -86,7 +90,6 @@ function Carousel() {
 
     const handleDragStart = (event) => {
         event.stopPropagation();
-        event.preventDefault();
 
         if(onNav) return;
         setOnNav(false);
@@ -105,8 +108,6 @@ function Carousel() {
     };
 
     const handleDragging = (event) => {
-        event.preventDefault();
-        
         if (!isDragging) return;
 
         const x = event.touches ? event.touches[0].clientX : event.clientX;
@@ -114,11 +115,15 @@ function Carousel() {
 
         if (isMobile && Math.abs(deltaX) <= 15) return;  // Swipe tollerance
 
+        // only lock scrolling on mobile
+        if(isMobile && Math.abs(deltaX) > 15) lock(); 
+
         setDragX(deltaX);
     };
 
 
     const handleDragEnd = () => {
+        unlock();
 
         const threshold = 0.2 * slideRefs.current[0].clientWidth;
 
@@ -142,19 +147,16 @@ function Carousel() {
     };
 
     useEffect(() => {
-        if(Math.abs(dragX) > 15 && isMobile) {
-            // document.documentElement.style.overflowY = "hidden";
-            // document.body.style.overflowY = "hidden";
-            disableBodyScroll(ref.current);
+        if(!isDragging) clearBodyLocks();
+    }, [isDragging])
 
-            // document.documentElement.style.overscrollBehaviorY = "hide";
-        } else {
-            // document.documentElement.style.overflowY = "auto";
-            // document.body.style.overflowY = "auto";
-            enableBodyScroll(ref.current);
-            // document.documentElement.style.overscrollBehaviorY = "auto";
-        }
-    }, [dragX, isMobile])
+    // useEffect(() => {
+    //     if(Math.abs(dragX) > 15 && isMobile) {
+    //         lock();
+    //     } else {
+    //         unlock();
+    //     }
+    // }, [dragX, isMobile])
 
     return (
         <div id="carousel"
