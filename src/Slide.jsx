@@ -37,10 +37,10 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
 
         setInterval(() => {
             const title = titleRef.current;
-            if(title.style.borderBottom === "medium none") {
+            if(title.style.borderBottom === "") {
                 title.style.borderBottom = "5px solid black";
             } else {
-                title.style.borderBottom = "medium none";
+                title.style.borderBottom = "";
             }
         }, 530)
 

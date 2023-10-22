@@ -16,6 +16,7 @@ const bar = document.querySelector("#about-me .bar");
 const rows = Array.from(document.querySelectorAll("#about-me .hero-content .hero-row"));
 
 let isShowingAboutMe = false;
+aboutMeBackground.style.zIndex = 100000;
 
 button.onmouseover = () => {
     if(isShowingAboutMe) {

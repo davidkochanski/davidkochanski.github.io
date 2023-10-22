@@ -178,7 +178,6 @@ a {
 
 .hero {
     height: 100vh;
-    pointer-events: none;
     /* background: url(../img/david3.jpg) no-repeat; */
     /* background-size: cover;
     background-position: right top; */
@@ -570,6 +569,7 @@ section#imgs h3 > a:hover {
     line-height: normal;
 }
 
+
 .show-about {
     animation: about-show 0.5s ease-in forwards;
     position: relative;
@@ -596,7 +596,24 @@ section#imgs h3 > a:hover {
     animation-delay: 1s;
 }
 
-#mail:hover {
+.about-bar:nth-of-type(5) {
+    animation-delay: 1.33s;
+}
+
+.about-bar:nth-of-type(6) {
+    animation-delay: 1.66s;
+}
+
+.about-bar .about-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-top: 10px;
+    margin-left: 60px;
+}
+
+
+#mail:hover, #re:hover {
     text-decoration: underline;
     color: #fff;
     cursor: pointer;
@@ -613,7 +630,7 @@ section#imgs h3 > a:hover {
     top: 50px;
     font-size: 16px;
 
-    left: 50%;
+    left: 75%;
     translate: -50%;
 
     transition: opacity 0.5s ease;
