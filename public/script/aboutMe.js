@@ -47,6 +47,7 @@ button.onclick = () => {
         button.style.transition = "background-color 0.25s ease, border-color 0.25s ease";
         
         aboutMeContainer.style.opacity = 1;
+        aboutMeBackground.style.zIndex = 100000;
 
         typeHeader();
 

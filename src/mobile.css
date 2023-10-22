@@ -2,7 +2,6 @@
     html, body {
         overflow-x: hidden !important;
         position: relative;
-        height: 100vh;
     }
     
         
@@ -53,6 +52,40 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+
+    .about-me {
+        height: 95vh;
+    }
+
+    .to-about-me {
+        top: 20%;
+        right: 50%;
+        translate: 50% -50%;
+    }
+
+
+    .hero-row:nth-of-type(2n) {
+        padding: 6px 0;
+        margin: 0 auto;
+    }
+    
+    .hero-row:nth-of-type(2n + 1) {
+        padding: 6px 0;
+        margin: 0 auto;
+    }
+
+    .about-me h2 {
+        font-size: 38px !important;
+        line-height: 40px;
+    }
+
+    .about-me h4 {
+        font-size: 16px;
+    }
+
+    .about-me .hero-box p {
+        font-size: 16px;
     }
 
 

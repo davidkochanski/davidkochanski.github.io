@@ -26,10 +26,10 @@ html, body {
 }
 
 body {
+    height: 100%;
     font-family: "Lato", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 200vh;
     color: white;
 }
 
@@ -47,11 +47,11 @@ body {
 
 
 
-/* .fade-in {
+.fade-in {
     z-index: 10000000;
     background: black;
 
-    animation: fade 1s ease-out 0.25s forwards;
+    animation: fade 0.75s ease-out 0.25s forwards;
 }
 
 @keyframes fade {
@@ -69,7 +69,7 @@ body {
         width: 0;
         height: 0;
     }
-} */
+}
 
 header {
     width: 100%;
@@ -78,7 +78,7 @@ header {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(5px);
     height: var(--nav-height);
-    z-index: 10000;
+    z-index: 621621621;
 }
 
 header nav {
@@ -177,6 +177,7 @@ a {
 
 .hero {
     height: 100vh;
+    pointer-events: none;
     /* background: url(../img/david3.jpg) no-repeat; */
     /* background-size: cover;
     background-position: right top; */
@@ -218,14 +219,28 @@ a {
     right: 0;
     top: 50%;
     right: 20%;
+    translate: 20% -50%;
+
 
     z-index: 62100;
     border-radius: 50%;
     position: absolute;
 
-    translate: 20% -50%;
-    border-color: #ffffff33;
+    border-color: yellow;
+    /* border-color: #ffffff33; */
     transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.to-about-me:hover {
+    animation: rotate 60s linear infinite forwards;
+}
+
+@keyframes rotate {
+    from {
+        rotate: 0deg;
+    } to {
+        rotate: 360deg;
+    }
 }
 
 .hero-wrapper {
@@ -299,6 +314,7 @@ a {
     width: fit-content;
     margin: 0 auto;
     padding-right: 10px;
+    translate: 10px 0;
 
 
     /* animation: show 1s ease-out forwards 0.5s; */
