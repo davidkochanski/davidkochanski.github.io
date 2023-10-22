@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './carousel.css';
 import Slide from './Slide';
 
-import { clearBodyLocks, lock as lockBody, unlock as unlockBody } from 'tua-body-scroll-lock'
+import { clearBodyLocks, lock, lock as lockBody, unlock as unlockBody } from 'tua-body-scroll-lock'
 
 
 function Carousel() {
@@ -16,7 +16,7 @@ function Carousel() {
     // const [canScroll, setScroll] = useState(true);
     // const stopScroll = usePreventScroll({isDisabled: canScroll});
 
-    const ref = useRef();
+    const carouselRef = useRef();
     const slideRefs = useRef([]);
     const slideTransitions = useRef([]);
     const navRef = useRef();
@@ -116,14 +116,14 @@ function Carousel() {
         if (isMobile) {
             if (Math.abs(deltaX) <= 15) return; // Swipe tollerance
                 
-            lockBody(ref.current); // Only lock body scrolling on mobile
+            lockBody(carouselRef.current); // Only lock body scrolling on mobile
         }
         setDragX(deltaX);
     };
 
 
     const handleDragEnd = () => {
-        unlockBody(ref.current);
+        unlockBody(carouselRef.current);
 
         const threshold = 0.2 * slideRefs.current[0].clientWidth;
 
@@ -147,8 +147,13 @@ function Carousel() {
     };
 
     useEffect(() => {
-        if(!isDragging) clearBodyLocks(ref.current);
-    }, [isDragging])
+        if(!isDragging) {
+            clearBodyLocks(carouselRef.current);
+
+        } else if(Math.abs(dragX) > 15 && isMobile) {
+            lockBody(carouselRef.current);
+        }
+    }, [isDragging, dragX])
 
     // useEffect(() => {
     //     if(Math.abs(dragX) > 15 && isMobile) {
@@ -160,7 +165,7 @@ function Carousel() {
 
     return (
         <div id="carousel"
-            ref={ref}
+            ref={carouselRef}
             onMouseDown={handleDragStart}
             onMouseMove={handleDragging}
             onMouseUp={handleDragEnd}

@@ -42,7 +42,7 @@ button.onclick = () => {
     if(isShowingAboutMe) {
         if (animation) animation.cancel();
 
-        button.style.transition = null;
+        button.style.transition = "";
         button.style.backgroundColor = "#ffffff33";
         button.style.transition = "background-color 0.25s ease, border-color 0.25s ease";
         

@@ -54,14 +54,20 @@
         align-items: center;
     }
 
+    .slide-title a:hover h2 {
+        text-underline-offset: 3px;
+        text-decoration-thickness: 3px;
+    }
+
     .about-me {
-        height: 95vh;
+        height: 90vh;
     }
 
     .to-about-me {
+        background-color: transparent !important;
         top: 20%;
         right: 50%;
-        translate: 50% -50%;
+        translate: 50% -120%;
     }
 
 
