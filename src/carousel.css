@@ -15,6 +15,7 @@ body {
     position: relative;
     min-height: 500px;
     overflow: hidden;
+    z-index: 69;
     background-color: #111;
 }
 

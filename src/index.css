@@ -46,6 +46,9 @@ body {
     z-index: -100;
 }
 
+.background {
+    filter: blur(1000px);
+}
 
 
 .fade-in {
@@ -177,19 +180,23 @@ a {
 }
 
 #hero-blob {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(teal, purple);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(rgb(0, 154, 154), purple);
     opacity: 0.5;
     position: absolute;
-    z-index: 100;
+    z-index: 2;
     top: 0;
     left: 0;
     border-radius: 50%;
-    filter: blur(100px);
     scale: 1 1;
+    transform-origin: center center;
 
-    animation: blob 25s linear infinite;
+    background-size: 200% 200%;
+    background-position: center center;
+
+
+    animation: blob 25s linear infinite, gradientAnimation 5s linear infinite;
 }
 
 @keyframes blob {
@@ -198,18 +205,27 @@ a {
         rotate: 0deg;
 
     } 25% {
-        scale: 1.25 0.75;
+        scale: 1.10 0.90;
 
     } 50% {
         scale: 1 1;
 
     } 75% {
-        scale: 0.75 1.25
+        scale: 0.90 1.10
     } 100% {
         scale: 1 1;
         rotate: 360deg;
     }
 }
+
+@keyframes gradientAnimation {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
 
 .hero {
     height: 100vh;
@@ -217,7 +233,12 @@ a {
     /* background-size: cover;
     background-position: right top; */
 
+    font-size: 48px;
+    font-family: Consolas, monospace;
+    color: #222;
+    text-align: justify;
 }
+
 
 .about-me {
     background: url(../img/david3.jpg) no-repeat;
@@ -512,6 +533,10 @@ section#imgs h3 > a:hover {
     outline: 2px solid black;
 } */
 
+.title {
+    font-family: "Consolas", monospace;
+}
+
 
 
 .about {
@@ -531,6 +556,15 @@ section#imgs h3 > a:hover {
     gap: 3rem;
     width: fit-content;
     margin: 0 auto;
+    padding: 50px 0;
+
+    
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 
@@ -562,6 +596,11 @@ section#imgs h3 > a:hover {
     aspect-ratio: 7/9;
     object-fit: cover;
     border-radius: 10px;
+    transition: scale 0.25s ease;
+}
+
+.about .img-wrap img:hover {
+    scale: 1.02;
 }
 
 .about-left h4 {
@@ -682,9 +721,8 @@ section#imgs h3 > a:hover {
 .skills {
     display: grid;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 10px auto;
     grid-template-columns: 1fr 1fr;
-
 }
 
 h3 {

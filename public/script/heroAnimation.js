@@ -1,22 +1,23 @@
 const blob = document.getElementById("hero-blob");
 
-document.documentElement.addEventListener("mousemove", (e) => {
+// updateScrollBlob();
 
+document.documentElement.addEventListener("mousemove", updateBlob);
+
+// document.addEventListener("scroll", updateScrollBlob)
+
+function updateBlob(e) {
     const x = e.clientX;
     const y = e.clientY;
 
-
-    const rect = blob.getBoundingClientRect();
-
-
-
     blob.animate([
-        {top: blob.style.top, left: blob.style.left},
-        {top: `${y - rect.height / 2}px`, left: `${x - rect.width / 2}px`}
+        {top: `${y - blob.offsetHeight / 2}px`, left: `${x - blob.offsetWidth / 2}px`}
+    ], {easing: "ease-out", duration: 5000, fill: "forwards"});
+}
 
+// function updateScrollBlob() {
+//     const scrolled = window.scrollY;
+//     const height = window.innerHeight;
 
-    ], {easing: "ease-out", duration: 5000})
-
-
-
-})
+//     blob.style.display = scrolled > height ? "none" : "block"
+// }
