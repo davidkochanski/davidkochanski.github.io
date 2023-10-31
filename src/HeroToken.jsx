@@ -1,21 +1,34 @@
-// import "./hero.css"
-// import { useRef } from "react";
+import "./hero.css"
+import { useRef } from "react";
 
-// export default function Token({ children }) {
-//     const ref = useRef(null);
-//     const DEFAULT = "#ffffff33"
+export default function Token({ children, text, colour, link }) {
+    const ref = useRef(null);
+    const DEFAULT = "#ffffff0e"
 
-//     function handleMouseOver() {
-//         ref.current.style.color = "red";
-//     }
+    function handleMouseOver() {
+        ref.current.style.color = colour ?? "white";
+    }
 
-//     function handleMouseOut() {
-//         ref.current.style.color = DEFAULT;
-//     }
+    function handleMouseOut() {
+        ref.current.style.color = DEFAULT;
+    }
 
-//     return (
-//         <div ref={ref} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="token">
-//             {children}
-//         </div>
-//     );
-// }
+
+    function putElement() {
+        if (link) {
+            return <a ref={ref} href={link} target="_blank" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="token">
+                {text}
+            </a>
+        } else {
+            return <div ref={ref} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="token">
+                {text}
+            </div>
+        }
+    }
+
+    return (
+        <>
+            {putElement()}
+        </>
+    );
+}

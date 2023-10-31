@@ -60,14 +60,17 @@
     }
 
     .about-me {
+        background-position: 80% top;
         height: 90vh;
+
+        mask-position: center 50%;
     }
 
     .to-about-me {
         background-color: transparent !important;
         top: 20%;
         right: 50%;
-        translate: 50% -120%;
+        translate: 50% -110%;
     }
 
 
@@ -196,11 +199,6 @@
         font-size: 1.33rem;
     }
 
-    .about-me {
-        background-position: 80% top;
-
-        mask-position: center 20%;
-    }
 
     .hero {
         height: 90vh;
@@ -321,6 +319,10 @@
         right: unset;
         translate: -50% 0;
         white-space: nowrap;
+    }
+
+    .title {
+        font-size: 40px !important;
     }
 
 }
