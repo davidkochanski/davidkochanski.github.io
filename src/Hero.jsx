@@ -3,31 +3,50 @@ import "./hero.css";
 import Token from "./HeroToken";
 
 export default function Hero() {
-
     const [rows, setRows] = useState([]);
-
-    const ROW_HEIGHT_PX = window.matchMedia("(max-width: 768px)").matches ? 47 : 94;
-
-    let NUM_ROWS;
+    const [rowHeight, setRowHeight] = useState(94);
+    const [numRows, setNumRows] = useState(0);
 
     const WORDS_PER_ROW = 10;
     const NUM_DUPES = 4;
+    const NAV_HEIGHT = 75;
+    const BIG_TEXT_HEIGHT = 94;
+    const SMALL_TEXT_HEIGHT = 50;
+
+    function calcRowHeight() {
+        return window.innerWidth >= 768 ? BIG_TEXT_HEIGHT : SMALL_TEXT_HEIGHT;
+    }
+
+    function calcNumRows() {
+        return Math.floor((window.innerHeight - NAV_HEIGHT) / calcRowHeight());
+    }
 
     useEffect(() => {
-        NUM_ROWS = Math.floor((window.innerHeight - 75) / ROW_HEIGHT_PX);
+        const handleResize = () => {
+            const newRowHeight = calcRowHeight();
+            setRowHeight(newRowHeight);
+            setNumRows(calcNumRows());
+        };
 
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        // Clean up
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
         const newRows = [];
-        
-        for(let i = 0; i < NUM_ROWS; i++) {
+        for (let i = 0; i < numRows; i++) {
             const selectedWords = [];
-
-            for(let j = 0; j < WORDS_PER_ROW; j++) {
+            for (let j = 0; j < WORDS_PER_ROW; j++) {
                 selectedWords.push(TOKENS[Math.floor(Math.random() * TOKENS.length)]);
             }
 
             let dupedWords = [];
-
-            for(let j = 0; j < NUM_DUPES; j++) {
+            for (let j = 0; j < NUM_DUPES; j++) {
                 dupedWords = dupedWords.concat(selectedWords);
             }
 
@@ -35,22 +54,20 @@ export default function Hero() {
         }
 
         setRows(newRows);
-
-    }, []);
+    }, [numRows]);
 
     return (
         <div className="hero-words">
-            {rows.map((selected, i) => (
-                <div className="hero-words-row" key={i}>
-                    {selected.map((token, j) => (
-                        <Token key={i * NUM_DUPES + j} text={token.text} colour={token.colour} link={token.link} />
+            {rows.map((selected, rowIndex) => (
+                <div className="hero-words-row" key={rowIndex} style={{ height: `${rowHeight}px` }}>
+                    {selected.map((token, tokenIndex) => (
+                        <Token key={`${rowIndex}-${tokenIndex}`} text={token.text} colour={token.colour} link={token.link} />
                     ))}
                 </div>
             ))}
         </div>
     );
 }
-
 
 
 const TOKENS = [

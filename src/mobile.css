@@ -256,6 +256,8 @@
         flex-direction: column;
         gap: 0;
         margin: 0 auto;
+
+        padding: 50px 0 !important;
     }
 
     .about .about-right {
