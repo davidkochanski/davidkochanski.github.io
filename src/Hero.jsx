@@ -18,7 +18,7 @@ export default function Hero() {
     }
 
     function calcNumRows() {
-        return Math.floor((window.innerHeight - NAV_HEIGHT) / calcRowHeight());
+        return Math.floor((document.documentElement.clientHeight - NAV_HEIGHT) / calcRowHeight());
     }
 
     useEffect(() => {

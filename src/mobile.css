@@ -230,6 +230,10 @@
         margin-left: 0;
     }
 
+    .hero-words {
+        margin-top: 20px;
+    }
+
     /* .tags {
         gap: 0.15rem;
     }
