@@ -548,7 +548,7 @@ section#imgs h3 > a:hover {
     padding: clamp(1vw 10rem 20rem);
 }
 
-.about h2, #imgs h2, #interactions h2 {
+.about h2, #imgs > h2, #interactions h2 {
     text-align: center;
     font-size: 3.3rem;
     margin-bottom: 1.5rem;
@@ -560,7 +560,6 @@ section#imgs h3 > a:hover {
     width: 98%;
     margin: 0 auto;
     padding: 50px;
-
     
     background: rgba(255, 255, 255, 0.15);
     border-radius: 8px;

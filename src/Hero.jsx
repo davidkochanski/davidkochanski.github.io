@@ -6,7 +6,7 @@ export default function Hero() {
 
     const [rows, setRows] = useState([]);
 
-    const ROW_HEIGHT_PX = window.matchMedia("(max-width: 768px)").matches ? 25 : 94;
+    const ROW_HEIGHT_PX = window.matchMedia("(max-width: 768px)").matches ? 47 : 94;
 
     let NUM_ROWS;
 
@@ -54,6 +54,7 @@ export default function Hero() {
 
 
 const TOKENS = [
+    // Languages
     { text: "Python", colour: "#ffde57", link: null },
     { text: "JavaScript", colour: "#f0db4f", link: null },
     { text: "TypeScript", colour: "#3178c6", link: null },
@@ -64,8 +65,6 @@ const TOKENS = [
     { text: "Firebase", colour: "#f57c00", link: null },
     { text: "Discord.py", colour: "#5865F2", link: null },
     { text: "JQuery", colour: "#7ACEF4", link: null },
-    { text: "Github", colour: "#4078c0", link: "https://github.com/davidkochanski" },
-    { text: "LinkedIn", colour: "#0077B5", link: "https://www.linkedin.com/in/davidkochanski" },
     { text: "Gitlab", colour: "#FC6D26", link: null },
     { text: "LATEX", colour: "gray", link: null },
     { text: "VSCode", colour: "#0078d7", link: null },
@@ -74,6 +73,15 @@ const TOKENS = [
     { text: "MacOS", colour: null, link: null },
     { text: "IntelliJ", colour: null, link: null },
     { text: "Microsoft Office", colour: null, link: null },
+
+    // Links
+    { text: "Github", colour: "#4078c0", link: "https://github.com/davidkochanski" },
+    { text: "LinkedIn", colour: "#0077B5", link: "https://www.linkedin.com/in/davidkochanski" },
+    { text: "placefox.xyz", colour: "#FF964F", link: "https://placefox.xyz"},
+    { text: "Pokéguesser", colour: "#AFEEEE", link: "https://pokeguesser-d2651.web.app/"},
+    { text: "Twitter", colour: "#1DA1F2", link: "https://x.com/kochanskidavid"},
+
+    // Adjectives
     { text: "Student", colour: null, link: null },
     { text: "Developer", colour: null, link: null },
     { text: "Programmer", colour: null, link: null },
@@ -82,25 +90,19 @@ const TOKENS = [
     { text: "Problem Solver", colour: null, link: null },
     { text: "Designer", colour: null, link: null },
     { text: "Creative", colour: null, link: null },
+    { text: "Curious", colour: null, link: null },
     { text: "Coding", colour: null, link: null },
     { text: "Detail-Oriented", colour: null, link: null },
-    { text: "Gamer", colour: null, link: null },
     { text: "Polish", colour: "red", link: null},
     { text: "Canadian", colour: "red", link: null},
-    { text: "Dynamic", colour: null, link: null },
-    { text: "Curious", colour: null, link: null },
 
+    // Interests
     { text: "UofT", colour: "#007FA3", link: null },
     { text: "University of Toronto", colour: "#007FA3", link: null },
-
-    { text: "placefox.xyz", colour: "#FF964F", link: "https://placefox.xyz"},
-    { text: "Pokéguesser", colour: "#AFEEEE", link: "https://pokeguesser-d2651.web.app/"},
-    { text: "David Kochanski", colour: null, link: null},
     { text: ":3", colour: "pink", link: null},
     { text: "Computer Science", colour: null, link: null},
     { text: "CS", colour: null, link: null},
     { text: "Football", colour: null, link: null},
-    { text: "Twitter", colour: "#1DA1F2", link: "https://x.com/kochanskidavid"},
     { text: "Aesthetic", colour: null, link: null},
     { text: "Mathematics", colour: null, link: null},
     { text: "Statistics", colour: null, link: null},
@@ -110,4 +112,11 @@ const TOKENS = [
     { text: "Projects", colour: null, link: null},
     { text: "Algorithms", colour: null, link: null},
     { text: "Logic", colour: null, link: null},
+    { text: "Responsiveness", colour: null, link: null},
+    { text: "Flexbox", colour: null, link: null},
+    { text: "UI/UX", colour: null, link: null},
+    { text: "NoSQL Database", colour: null, link: null},
+    { text: "Frontend", colour: null, link: null},
+
+
 ];

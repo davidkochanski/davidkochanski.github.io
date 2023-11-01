@@ -61,7 +61,7 @@
 
     .about-me {
         background-position: 80% top;
-        height: 90vh;
+        height: 100vh;
 
         mask-position: center 50%;
     }
@@ -201,12 +201,12 @@
 
 
     .hero {
-        height: 95vh;
+        height: 100vh;
         position: relative;
     }
 
     .hero-wrapper {
-        height: 95vh;
+        height: 100vh;
     }
 
     .hero-content {
