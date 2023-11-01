@@ -45,7 +45,6 @@ button.onclick = () => {
 
         button.style.transition = "";
         button.style.backgroundColor = "#ffffff33";
-        button.style.transition = "background-color 0.25s ease, border-color 0.25s ease";
         
         aboutMeContainer.style.opacity = 1;
         aboutMeBackground.style.zIndex = 100000;
@@ -61,16 +60,24 @@ button.onclick = () => {
 
         bar.classList.add("bar-anim-show");
 
-        button.style.border = "5px dashed yellow";
-        button.style.backgroundColor = "#ffffff33";
+        if(!window.matchMedia("(max-width:768px)").matches) {
+            button.style.border = "5px dashed yellow";
+            button.style.backgroundColor = "#ffffff33";
+        } else {
+            button.style.border = "5px dashed #ffffff66";
+
+        }
 
         aboutMeBackground.style.maskSize = "500vw 500vw";
         aboutMeBackground.style.zIndex = "621";
 
+        button.style.transition = "background-color 0.25s ease, border-color 0.25s ease";
+
+
     } else {
         fadeOut();
 
-        button.style.border = "none";
+        button.style.border = "5px dashed transparent";
         button.style.backgroundColor = "transparent";
 
         aboutMeBackground.style.maskSize = "60vh 60vh";
