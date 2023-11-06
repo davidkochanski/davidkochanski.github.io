@@ -71,7 +71,7 @@ export default function Hero() {
 
 
 const TOKENS = [
-    // Languages
+    // Languages & Technologies
     { text: "Python", colour: "#ffde57", link: null },
     { text: "JavaScript", colour: "#f0db4f", link: null },
     { text: "TypeScript", colour: "#3178c6", link: null },
@@ -90,6 +90,7 @@ const TOKENS = [
     { text: "MacOS", colour: null, link: null },
     { text: "IntelliJ", colour: null, link: null },
     { text: "Microsoft Office", colour: null, link: null },
+    { text: "Node.js", colour: "#6cc24a", link: null },
 
     // Links
     { text: "Github", colour: "#4078c0", link: "https://github.com/davidkochanski" },
@@ -133,6 +134,7 @@ const TOKENS = [
     { text: "UI/UX", colour: null, link: null},
     { text: "NoSQL Database", colour: null, link: null},
     { text: "Frontend", colour: null, link: null},
+    { text: "Agile", colour: null, link: null},
 
 
 ];
