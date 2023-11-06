@@ -116,7 +116,6 @@ const TOKENS = [
     // Interests
     { text: "UofT", colour: "#007FA3", link: null },
     { text: "University of Toronto", colour: "#007FA3", link: null },
-    { text: ":3", colour: "pink", link: null},
     { text: "Computer Science", colour: null, link: null},
     { text: "CS", colour: null, link: null},
     { text: "Football", colour: null, link: null},
