@@ -187,7 +187,7 @@ a {
     opacity: 0.5;
     position: absolute;
     z-index: 2;
-    top: 0;
+    top: -600px;
     left: 0;
     border-radius: 50%;
     scale: 1 1;
