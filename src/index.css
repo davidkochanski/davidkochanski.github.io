@@ -242,9 +242,13 @@ a {
 
 
 .about-me {
-    background: url(../img/david3.jpg) no-repeat;
     height: 100vh;
     width: 100%;
+
+    background-color: #8995b4; /* Fallback */
+
+    background-image: url(../img/david3.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
     background-position-x: 80%;
     background-position-y: 30%;
