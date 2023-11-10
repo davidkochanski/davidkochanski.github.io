@@ -429,6 +429,33 @@ a {
     margin-right: 5px;
 }
 
+.hero-button {
+    width: 96px;
+    height: 96px;
+    border-radius: 50px;
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    translate: -50% -50%;
+    box-shadow: 0 0 0 3px #ffffff33;
+    z-index: 621;
+    display: grid;
+    place-content: center;
+
+    transition: border-radius 1s ease, box-shadow 0.25s ease;
+}
+
+.hero-button > i {
+    font-size: 32px;
+}
+
+.hero-button:hover {
+    box-shadow: 0 0 0 3px #ffffff;
+    border-radius: 36px;
+    background: #ffffff33;
+}
+
 @keyframes bounce {
     from {
         translate: 0 5px;   
