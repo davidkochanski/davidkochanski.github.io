@@ -1,34 +1,30 @@
 const aboutMe = document.getElementById("about-me");
 const heroWords = document.getElementById("home");
 
+const fixedWrapper = document.getElementById("fixed");
+
+updateMask();
+parallaxify(fixedWrapper);
 
 
 // Change mask size on scroll
 document.addEventListener("scroll", () => {
-    let MIN = 0.6 * window.innerHeight;
-    let MAX = 6000;
-
-    let scrollPercentage = window.scrollY / (3 * window.innerHeight);
-    let maskSize = scrollPercentage * (MAX - MIN) + MIN;
-    maskSize = Math.min(Math.max(maskSize, MIN), MAX);
-
-    aboutMe.style.maskSize = `${maskSize}px`;
-    aboutMe.style.webkitMaskSize = `${maskSize}px`;
+    updateMask();
 })
 
 
 document.addEventListener("scroll", () => {
-    parallaxify(aboutMe);
-    parallaxify(heroWords);
-    // parallaxify(heroButton);
+    // parallaxify(aboutMe);
+    // parallaxify(heroWords);
+    parallaxify(fixedWrapper);
+
+    // console.log(aboutMe.offsetHeight);
 })
 
 function parallaxify(element) {
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
 
-    // When the user scrolls down and reaches the end of one page height,
-    // fix the position of the element to that scroll position
     if (scrollPosition >= windowHeight) {
       element.style.position = 'absolute';
       element.style.top = 2 * windowHeight + 'px';
@@ -39,4 +35,16 @@ function parallaxify(element) {
       element.style.position = 'fixed';
       element.style.top = '0px';
     }
+}
+
+function updateMask() {
+    let MIN = 0.6 * window.innerHeight;
+    let MAX = 6000;
+
+    let scrollPercentage = window.scrollY / (3 * window.innerHeight);
+    let maskSize = scrollPercentage * (MAX - MIN) + MIN;
+    maskSize = Math.min(Math.max(maskSize, MIN), MAX);
+
+    aboutMe.style.maskSize = `${maskSize}px`;
+    aboutMe.style.webkitMaskSize = `${maskSize}px`;
 }

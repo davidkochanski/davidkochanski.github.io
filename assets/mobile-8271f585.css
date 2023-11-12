@@ -1,7 +1,7 @@
 @media only screen and (max-width: 768px) {
     html, body {
         overflow-x: hidden !important;
-        /* position: relative; */
+        position: relative;
     }
     
         
@@ -66,12 +66,12 @@
         mask-position: center 50%;
     }
 
-    .to-about-me {
+    /* .to-about-me {
         background-color: transparent !important;
         top: 20%;
         right: 50%;
         translate: 50% -110%;
-    }
+    } */
 
 
     .hero-row:nth-of-type(2n) {
@@ -230,7 +230,6 @@
 
     .hero {
         height: 100vh;
-        position: relative;
     }
 
     .hero-wrapper {
