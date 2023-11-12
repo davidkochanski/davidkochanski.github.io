@@ -13,15 +13,13 @@
 
 .hero-words-row {
     text-wrap: nowrap;
-    text-overflow: clip;
-
     display: flex;
     position: relative;
     gap: 64px;
 
     animation: slide linear infinite forwards;
     animation-duration: 200s;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
 a.token:hover {
@@ -36,6 +34,7 @@ a.token:hover {
     display: block;
     white-space: nowrap;
     cursor: default;
+    user-select: none;
 
     transition: color 0.15s ease-out, scale 0.15s ease-out;
 }
@@ -46,9 +45,9 @@ a.token:hover {
 
 @keyframes slide {
     from {
-        translate: -25% 0;
+        translate: -50% 0;
     } to {
-        translate: 0 0;
+        translate: -25% 0;
     }
 }
 

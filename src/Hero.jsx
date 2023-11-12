@@ -135,6 +135,7 @@ const TOKENS = [
     { text: "NoSQL Database", colour: null, link: null},
     { text: "Frontend", colour: null, link: null},
     { text: "Agile", colour: null, link: null},
+    { text: "Web Design", colour: null, link: null},
 
 
 ];

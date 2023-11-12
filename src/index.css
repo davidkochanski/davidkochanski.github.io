@@ -230,6 +230,7 @@ a {
 
 .hero {
     height: 100vh;
+    position: fixed;
     /* background: url(../img/david3.jpg) no-repeat; */
     /* background-size: cover;
     background-position: right top; */
@@ -244,6 +245,7 @@ a {
 .about-me {
     height: 100vh;
     width: 100%;
+    position: fixed;
 
     background-color: #8995b4; /* Fallback */
 
@@ -253,7 +255,6 @@ a {
     background-position-x: 80%;
     background-position-y: 30%;
 
-    position: absolute;
     pointer-events: none;
     
     mask-image: url(../img/mask.svg);
@@ -261,8 +262,16 @@ a {
     mask-size: 60vh 60vh;
     mask-position: 80% center;
 
+    /* Imagine not working on Chrome... smh my head */
+    /* "🚨️ Property is nonstandard. Avoid using it."  */
+    /* But it works tho... lol */
+    -webkit-mask-image: url(../img/mask.svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 60vh 60vh;
+    -webkit-mask-position: 80% center;
+
     transform-origin: 50% 50%;
-    transition: mask-size 0.5s ease, background-size 1s ease;
+    transition: background-size 1s ease;
     /* animation: circle-out 1s ease 1s forwards; */
 }
 
@@ -302,6 +311,10 @@ a {
     } to {
         rotate: 360deg;
     }
+}
+
+.hero-padding {
+    height: 100vh;
 }
 
 .hero-wrapper {
@@ -430,16 +443,17 @@ a {
 }
 
 .hero-button {
+    position: fixed;
     width: 96px;
     height: 96px;
     border-radius: 50px;
     display: block;
-    position: absolute;
+
     bottom: 20px;
     left: 50%;
     translate: -50% -50%;
     box-shadow: 0 0 0 3px #ffffff33;
-    z-index: 621;
+    z-index: 621000;
     display: grid;
     place-content: center;
 
@@ -501,7 +515,7 @@ a {
 }
 
 section#imgs {
-    margin: 0px auto;
+    margin: 0 auto 0;
 }
 
 section#imgs h3, section#imgs h3 > a {
@@ -584,6 +598,10 @@ section#imgs h3 > a:hover {
     text-align: center;
     font-size: 3.3rem;
     margin-bottom: 1.5rem;
+}
+
+#imgs > h2 {
+    margin-top: 1.5rem;
 }
 
 .about-content {

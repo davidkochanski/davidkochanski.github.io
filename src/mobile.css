@@ -99,6 +99,19 @@
         border-radius: 24px;
     }
 
+    .hero-words-row {
+        animation: slide linear infinite forwards;
+        animation-duration: 200s;
+    }
+
+    @keyframes slide {
+        from {
+            translate: -25% 0;
+        } to {
+            translate: 0 0;
+        }
+    }
+
     .about-me h2 {
         font-size: 38px !important;
         line-height: 40px;
