@@ -57,7 +57,7 @@ export default function Hero() {
     }, [numRows]);
 
     return (
-        <div className="hero-words">
+        <div className="hero-words" style={{overflow: "hidden"}}>
             {rows.map((selected, rowIndex) => (
                 <div className="hero-words-row" key={rowIndex} style={{ height: `${rowHeight}px` }}>
                     {selected.map((token, tokenIndex) => (

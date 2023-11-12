@@ -228,24 +228,11 @@ a {
     }
   }
 
-.hero {
-    height: 100vh;
-    position: fixed;
-    /* background: url(../img/david3.jpg) no-repeat; */
-    /* background-size: cover;
-    background-position: right top; */
-
-    font-size: 48px;
-    font-family: Consolas, monospace;
-    color: #222;
-    text-align: justify;
-}
 
 
 .about-me {
     height: 100vh;
     width: 100%;
-    position: fixed;
 
     background-color: #8995b4; /* Fallback */
 
@@ -255,6 +242,7 @@ a {
     background-position-x: 80%;
     background-position-y: 30%;
 
+    z-index: 60000;
     pointer-events: none;
     
     mask-image: url(../img/mask.svg);
@@ -272,11 +260,34 @@ a {
 
     transform-origin: 50% 50%;
     transition: background-size 1s ease;
-    /* animation: circle-out 1s ease 1s forwards; */
+}
+
+.hero-fixed {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 100;
 }
 
 
-.to-about-me {
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    /* background: url(../img/david3.jpg) no-repeat; */
+    /* background-size: cover;
+    background-position: right top; */
+
+    font-size: 48px;
+    font-family: Consolas, monospace;
+    color: #222;
+    text-align: justify;
+}
+
+
+/* .to-about-me {
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -297,13 +308,13 @@ a {
     position: absolute;
 
     border-color: yellow;
-    /* border-color: #ffffff33; */
+    /* border-color: #ffffff33;
     transition: background-color 0.25s ease, border-color 0.25s ease;
-}
+} */
 
-.to-about-me:hover {
+/* .to-about-me:hover {
     animation: rotate 60s linear infinite forwards;
-}
+} */
 
 @keyframes rotate {
     from {

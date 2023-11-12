@@ -17,8 +17,13 @@ let isShowingAboutMe = false;
 let nextShowingAboutMe = false;
 aboutMeBackground.style.zIndex = 100000;
 
+updateAboutMe();
 
 document.addEventListener("scroll", () => {
+    updateAboutMe();
+})
+
+function updateAboutMe() {
     if(window.scrollY >= 0.6 * window.innerHeight) {
         nextShowingAboutMe = true;
     } else {
@@ -59,11 +64,11 @@ document.addEventListener("scroll", () => {
         isShowingAboutMe = false;
 
     }
-})
+}
     
 
 
-const typeHeader = () => {
+function typeHeader() {
     const text = headerText;
 
     header.style.borderRight = "5px solid white"
@@ -84,8 +89,7 @@ const typeHeader = () => {
     typeNextCharacter();
 }
 
-
-const fadeOut = () => {
+function fadeOut() {
     animation = aboutMeContainer.animate(
         [{ opacity: 1 }, { opacity: 0 }],
         {
