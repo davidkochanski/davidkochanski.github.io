@@ -23,15 +23,15 @@ document.addEventListener("scroll", () => {
 
 function parallaxify(element) {
     const scrollPosition = window.scrollY;
-    const windowHeight = window.innerHeight;
+    const windowHeight = heroWords.offsetHeight; // Important!!!
 
     if (scrollPosition >= windowHeight) {
       element.style.position = 'absolute';
-      element.style.top = 2 * windowHeight + 'px';
+      element.style.top = 1.25 * windowHeight + 'px';
     }
     
     // When the user scrolls back up, make the element fixed again
-    if (scrollPosition < 2 * windowHeight) {
+    if (scrollPosition < 1.25 * windowHeight) {
       element.style.position = 'fixed';
       element.style.top = '0px';
     }

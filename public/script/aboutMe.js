@@ -2,6 +2,7 @@ const aboutMeContainer = document.getElementById("about-me-container");
 const heroButton = document.getElementById("hero-button");
 const aboutMeBackground = document.getElementById("about-me");
 let animation;
+let buttonAnimation;
 
 const header = document.querySelector("#about-me h2");
 const headerText = header.innerText;
@@ -24,20 +25,27 @@ document.addEventListener("scroll", () => {
 })
 
 function updateAboutMe() {
-    if(window.scrollY >= 0.6 * window.innerHeight) {
-        nextShowingAboutMe = true;
-    } else {
-        nextShowingAboutMe = false;
-    }
-
+    nextShowingAboutMe = window.scrollY >= 0.6 * window.innerHeight;
+    
     if(nextShowingAboutMe === isShowingAboutMe) return;
 
     if(nextShowingAboutMe) {
         if (animation) animation.cancel();
 
-        heroButton.style.display = "none";
         aboutMeContainer.style.opacity = 1;
-        aboutMeBackground.style.zIndex = 100000;
+
+        buttonAnimation = heroButton.animate(
+            [{ opacity: 1 }, { opacity: 0 }],
+            {
+                duration: 400,
+            }
+        );
+
+        buttonAnimation.onfinish = () => {
+            heroButton.style.display = "none";
+        }
+
+        // aboutMeBackground.style.zIndex = 100000;
 
         typeHeader();
 
@@ -60,6 +68,14 @@ function updateAboutMe() {
         fadeOut();
 
         heroButton.style.display = "grid";
+
+        buttonAnimation = heroButton.animate(
+            [{ opacity: 0 }, { opacity: 1 }],
+            {
+                duration: 400,
+            }
+        );
+
         aboutMeBackground.style.maskSize = "60vh 60vh";
         isShowingAboutMe = false;
 
