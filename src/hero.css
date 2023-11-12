@@ -19,7 +19,7 @@
 
     animation: slide linear infinite forwards;
     animation-duration: 200s;
-    /* overflow: hidden; */
+    overflow: hidden;
   }
 
 a.token:hover {
