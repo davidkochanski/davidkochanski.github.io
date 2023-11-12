@@ -1,7 +1,7 @@
 @media only screen and (max-width: 768px) {
     html, body {
         overflow-x: hidden !important;
-        position: relative;
+        /* position: relative; */
     }
     
         
@@ -82,6 +82,34 @@
     .hero-row:nth-of-type(2n + 1) {
         padding: 6px 0;
         margin: 0 auto;
+    }
+
+    .hero-button {
+        width: 64px;
+        height: 64px;
+        border-radius: 50px;
+    }
+    
+    .hero-button > i {
+        font-size: 24px;
+    }
+    
+    .hero-button:hover {
+        box-shadow: 0 0 0 2px #ffffff;
+        border-radius: 24px;
+    }
+
+    .hero-words-row {
+        animation: slide linear infinite forwards;
+        animation-duration: 200s;
+    }
+
+    @keyframes slide {
+        from {
+            translate: -25% 0;
+        } to {
+            translate: 0 0;
+        }
     }
 
     .about-me h2 {

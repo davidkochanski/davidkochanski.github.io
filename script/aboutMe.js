@@ -1,7 +1,5 @@
-const button = document.getElementById("to-about-me");
-
 const aboutMeContainer = document.getElementById("about-me-container");
-
+const heroButton = document.getElementById("hero-button");
 const aboutMeBackground = document.getElementById("about-me");
 let animation;
 
@@ -16,36 +14,23 @@ const bar = document.querySelector("#about-me .bar");
 const rows = Array.from(document.querySelectorAll("#about-me .hero-content .hero-row"));
 
 let isShowingAboutMe = false;
+let nextShowingAboutMe = false;
 aboutMeBackground.style.zIndex = 100000;
 
-button.onmouseover = () => {
-    if(isShowingAboutMe) {
-        button.style.border = "5px dashed yellow";
-        button.style.backgroundColor = "#ffffff33"
+
+document.addEventListener("scroll", () => {
+    if(window.scrollY >= 0.6 * window.innerHeight) {
+        nextShowingAboutMe = true;
     } else {
-        aboutMeBackground.style.maskSize = "70vh 70vh";
+        nextShowingAboutMe = false;
     }
-}
 
-button.onmouseleave = () => {
-    if(isShowingAboutMe) {
+    if(nextShowingAboutMe === isShowingAboutMe) return;
 
-        button.style.border = "5px dashed #ffffff33";
-        button.style.backgroundColor = "transparent";
-    } else {
-        aboutMeBackground.style.maskSize = "60vh 60vh";
-    }
-}
-
-button.onclick = () => {
-    isShowingAboutMe = !isShowingAboutMe;
-
-    if(isShowingAboutMe) {
+    if(nextShowingAboutMe) {
         if (animation) animation.cancel();
 
-        button.style.transition = "";
-        button.style.backgroundColor = "#ffffff33";
-        
+        heroButton.style.display = "none";
         aboutMeContainer.style.opacity = 1;
         aboutMeBackground.style.zIndex = 100000;
 
@@ -57,33 +42,25 @@ button.onclick = () => {
         })
 
         subHeader.classList.add("show");
-
         bar.classList.add("bar-anim-show");
-
-        if(!window.matchMedia("(max-width:768px)").matches) {
-            button.style.border = "5px dashed yellow";
-            button.style.backgroundColor = "#ffffff33";
-        } else {
-            button.style.border = "5px dashed #ffffff66";
-
-        }
 
         aboutMeBackground.style.maskSize = "500vw 500vw";
         aboutMeBackground.style.zIndex = "621";
 
-        button.style.transition = "background-color 0.25s ease, border-color 0.25s ease";
+
+        isShowingAboutMe = true;
 
 
     } else {
         fadeOut();
 
-        button.style.border = "5px dashed transparent";
-        button.style.backgroundColor = "transparent";
-
+        heroButton.style.display = "grid";
         aboutMeBackground.style.maskSize = "60vh 60vh";
+        isShowingAboutMe = false;
 
     }
-}
+})
+    
 
 
 const typeHeader = () => {
