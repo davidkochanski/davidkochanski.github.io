@@ -81,3 +81,7 @@
 .c {
     background: linear-gradient(135deg, #5C6BC0 50%, #283593 50%);
 }
+
+.sql {
+    background: #db7533;
+}
