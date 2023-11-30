@@ -324,8 +324,12 @@ a {
     }
 }
 
-.hero-bottom-padding {
-    height: 250vh;
+.hero-padding-top {
+    height: 150vh;
+}
+
+.hero-padding-bottom {
+    height: 100vh;
 }
 
 .hero-wrapper {
