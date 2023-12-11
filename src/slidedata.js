@@ -43,7 +43,7 @@ export const slides = [
         ],
     },
     {
-        title: "Pok&eacute;guesser",
+        title: "Pokéguesser",
         date: "February - April 2023",
         imageURL: "img/slide-images/pokeguesser.jpg",
         imagePos: "50% 50%",
