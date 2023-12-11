@@ -165,23 +165,31 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 16px;
 }
 
-#page-nav .page-tab {
+#page-nav .page-tab, #page-nav .page-tab-buffer {
     font-family: "Lato", sans-serif;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-    width: 24px;
-    height: 24px;
-    line-height: 22px;
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
     background-color: #333;
     color: white;
     border-radius: 16px;
     text-decoration: none;
     user-select: none;
+    font-size: 17px;
+}
+
+#page-nav .page-tab-buffer {
+    background-color: transparent;
+    color: black;
+    cursor:auto;
+    font-size: 20px;
 }
 
 #page-nav .page-tab.selected-tab {
@@ -262,16 +270,25 @@
         font-size: 16px;
     }
 
-    #carousel .page-nav {
-        padding-bottom: 14px;
+    #carousel #page-nav {
+        padding-bottom:7.5px;
+    }
+
+    #page-nav {
+        gap: 12px;
     }
 
     #page-nav .page-tab {
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
-        font-size: 14px;
-        gap: 8px;
+        width: 28px;
+        height: 28px;
+        line-height: 26px;
+        font-size: 16px;
+    }
+
+    #page-nav .page-tab-buffer {
+        font-size: 16px;
+        width: 6px;
+        text-align: center;
     }
 
     #carousel .fa-arrow-up-right-from-square, #carousel .fa-github, #carousel .page-tab:not(.page-tab.selected-tab) {

@@ -39,17 +39,45 @@ function Carousel() {
 
         navRef.current.replaceChildren();  // Just in case; removes duplicate navs
 
-        for (let idx = 0; idx < slideRefs.current.length; idx++) {
+        const renderTab = (idx) => {
             const tab = document.createElement("a");
-
             tab.classList.add("page-tab");
-            tab.innerText = `${idx + 1}`
-            tab.addEventListener("mousedown", () => { setCurrentSlide(idx) })
-            tab.addEventListener("touchstart", () => { setCurrentSlide(idx) })
-
+            tab.innerText = `${idx + 1}`;
+            tab.addEventListener("mousedown", () => { setCurrentSlide(idx) });
+            tab.addEventListener("touchstart", () => { setCurrentSlide(idx) });
+    
             if (idx === currentSlide) tab.classList.add("selected-tab");
-
+    
             navRef.current.appendChild(tab);
+        };
+        
+        // Only want to show a range of tab instead of all them
+        const renderTabsInRange = (start, end) => {
+            renderTab(0);
+            const buffer = document.createElement("a");
+            buffer.classList.add("page-tab-buffer")
+            buffer.innerText = "...";
+            navRef.current.appendChild(buffer);
+
+            for (let idx = start; idx <= end; idx++) {
+                renderTab(idx);
+            }
+
+            const buffer2 = document.createElement("a");
+            buffer2.classList.add("page-tab-buffer")
+            buffer2.innerText = "...";
+            navRef.current.appendChild(buffer2);
+
+            renderTab(slideRefs.current.length - 1);
+        };
+    
+        // Render tabs based on currentSlide and the desired range
+        if (currentSlide <= 1) {
+            renderTabsInRange(1, 3);
+        } else if (currentSlide >= slideRefs.current.length - 2) {
+            renderTabsInRange(slideRefs.current.length - 4, slideRefs.current.length - 2);
+        } else {
+            renderTabsInRange(currentSlide - 1, currentSlide + 1);
         }
 
         const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -83,12 +111,21 @@ function Carousel() {
 
         // Selected nav tab
         Array.from(navRef.current.children).forEach((tab, idx) => {
-            if (idx === currentSlide) {
-                tab.classList.add("selected-tab");
-            } else {
-                tab.classList.remove("selected-tab");
-            }
+            tab.classList.remove("selected-tab");
         })
+        
+        if(currentSlide === 0) {
+            navRef.current.children[0].classList.add("selected-tab");
+        } else if (currentSlide === 1) {
+            navRef.current.children[2].classList.add("selected-tab");
+        } else if (currentSlide === slideRefs.current.length - 2) {
+            navRef.current.children[4].classList.add("selected-tab");
+        } else if (currentSlide === slideRefs.current.length - 1) {
+            navRef.current.children[6].classList.add("selected-tab");
+        } else {
+            navRef.current.children[3].classList.add("selected-tab");
+        }
+
     }, [dragX, currentSlide]);
 
     const handleDragStart = (event) => {
