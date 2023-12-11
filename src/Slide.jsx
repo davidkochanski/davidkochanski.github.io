@@ -165,8 +165,8 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
                 <div ref={imageRef} className="slide-image-wrapper">
                     <div className="slide-image" style={{ backgroundImage: `url(${imageURL})`, backgroundPosition: `${imagePos || "center center"}` }}></div>
                 </div>
-                <div ref={titleWrapperRef} className="slide-title">
-                    {interactionURL ? <a target="_blank" onTouchEnd={() => { window.open(interactionURL, "_blank") }} href={interactionURL}><h2 ref={titleRef}>{titleAnim}</h2></a> : <h2 ref={titleRef}>{titleAnim}</h2>}
+                <div ref={titleWrapperRef} draggable="false" className="slide-title">
+                    {interactionURL ? <a target="_blank" draggable="false" onTouchEnd={() => { window.open(interactionURL, "_blank") }} href={interactionURL}><h2 ref={titleRef}>{titleAnim}</h2></a> : <h2 ref={titleRef}>{titleAnim}</h2>}
                     
 
                     <div className="slide-links">

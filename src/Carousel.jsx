@@ -205,6 +205,26 @@ function Carousel() {
             <Slide
                 ref={(ref) => (slideRefs.current[0] = ref)}
 
+                title="RealmQuest"
+                date="November - December 2023"
+                imageURL="img/slide-images/realmquest.jpg"
+                imagePos="top center"
+                tagList={["Java"]}
+                background="#00A36C"
+                interactionURL="https://youtu.be/7-TN459rvp0"
+            >
+                <ul>
+                    <li>Final group project for CSC207 - Software Design at UofT. An adventure game where the player explores their realm, travels between rooms, and discovers treasure.</li>
+                    <li>Applied the Agile Development Process into a group of three with user stories, sprints, code reviews, as well as maintaining a clean Git workspace.</li>
+                    <li>Integrated relevant Object Oriented Design patterns such as the Factory, Strategy, and Observer patterns.</li>
+                </ul>
+            </Slide>
+
+            <div style={{ backgroundImage: "url(img/slide-trans/0.svg)" }} ref={(ref) => (slideTransitions.current[0] = ref)}></div>
+
+            <Slide
+                ref={(ref) => (slideRefs.current[1] = ref)}
+
                 title="placefox.xyz"
                 date="March - May 2023"
                 imageURL="img/slide-images/fox-full.jpg"
@@ -221,10 +241,10 @@ function Carousel() {
                 </ul>
             </Slide>
 
-            <div style={{ backgroundImage: "url(img/slide-trans/0.svg)" }} ref={(ref) => (slideTransitions.current[0] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/1.svg)" }} ref={(ref) => (slideTransitions.current[1] = ref)}></div>
 
             <Slide
-                ref={(ref) => (slideRefs.current[1] = ref)}
+                ref={(ref) => (slideRefs.current[2] = ref)}
 
                 title="Pok&eacute;guesser"
                 date="February - April 2023"
@@ -243,10 +263,10 @@ function Carousel() {
             </Slide>
 
 
-            <div style={{ backgroundImage: "url(img/slide-trans/1.svg)" }} ref={(ref) => (slideTransitions.current[1] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/2.svg)" }} ref={(ref) => (slideTransitions.current[2] = ref)}></div>
 
             <Slide
-                ref={(ref) => (slideRefs.current[2] = ref)}
+                ref={(ref) => (slideRefs.current[3] = ref)}
 
                 title="davidkochanski.dev"
                 date="February - July 2023"
@@ -256,13 +276,17 @@ function Carousel() {
                 tagList={["CSS", "HTML", "JavaScript", "React.js"]}
                 background="#B7C9E2"
             >
-                <p>The website you're on right now! Fully responsive, using CSS technologies like flexbox and keyframes, and a carousel first built in vanilla JavaScript, and then upgraded to React.JS.</p>
+                <p>
+                    <li>The website you're on right now!</li>
+                    <li>Fully responsive, using CSS technologies like flexbox and keyframes, and a carousel first built in vanilla JavaScript, and then upgraded to React.JS.</li>
+                    <li>Custom-made carousel React component where each slide is it's own component, for ease of future expansion.</li>
+                </p>
             </Slide>
 
-            <div style={{ backgroundImage: "url(img/slide-trans/2.svg)" }} ref={(ref) => (slideTransitions.current[2] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/3.svg)" }} ref={(ref) => (slideTransitions.current[3] = ref)}></div>
 
             <Slide
-                ref={(ref) => (slideRefs.current[3] = ref)}
+                ref={(ref) => (slideRefs.current[4] = ref)}
 
                 title="DaveedBot"
                 date="October - January 2023"
@@ -279,11 +303,11 @@ function Carousel() {
                 </ul>
                 </Slide>
 
-            <div style={{ backgroundImage: "url(img/slide-trans/3.svg)" }} ref={(ref) => (slideTransitions.current[3] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/4.svg)" }} ref={(ref) => (slideTransitions.current[4] = ref)}></div>
 
 
             <Slide
-                ref={(ref) => (slideRefs.current[4] = ref)}
+                ref={(ref) => (slideRefs.current[5] = ref)}
 
                 title="Mathify Tutor"
                 date="November - December 2022"
@@ -296,11 +320,11 @@ function Carousel() {
                 <p>Offline website, designed to advertize a fictional math tutor company. Used CSS and HTML with a hint of JavaScript to make some onscroll effects. Fully responsive.</p>
             </Slide>
 
-            <div style={{ backgroundImage: "url(img/slide-trans/4.svg)" }} ref={(ref) => (slideTransitions.current[4] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/5.svg)" }} ref={(ref) => (slideTransitions.current[5] = ref)}></div>
 
 
             <Slide
-                ref={(ref) => (slideRefs.current[5] = ref)}
+                ref={(ref) => (slideRefs.current[6] = ref)}
 
                 title="Midnight Fox"
                 date="November - December 2022"
@@ -314,11 +338,11 @@ function Carousel() {
                 <p>A deep, vibrant theme for the leading code editor VSCode. Includes UI colour design and proper token and syntax highlighting. 200+ downloads on the VSCode Marketplace.</p>
             </Slide>
 
-            <div style={{ backgroundImage: "url(img/slide-trans/5.svg)" }} ref={(ref) => (slideTransitions.current[5] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/6.svg)" }} ref={(ref) => (slideTransitions.current[6] = ref)}></div>
 
 
             <Slide
-                ref={(ref) => (slideRefs.current[6] = ref)}
+                ref={(ref) => (slideRefs.current[7] = ref)}
 
                 title="Adopt-a-lotl"
                 date="March - April 2022"
@@ -332,11 +356,11 @@ function Carousel() {
             </Slide>
 
 
-            <div style={{ backgroundImage: "url(img/slide-trans/6.svg)" }} ref={(ref) => (slideTransitions.current[6] = ref)}></div>
+            <div style={{ backgroundImage: "url(img/slide-trans/7.svg)" }} ref={(ref) => (slideTransitions.current[7] = ref)}></div>
 
 
             <Slide
-                ref={(ref) => (slideRefs.current[7] = ref)}
+                ref={(ref) => (slideRefs.current[8] = ref)}
 
                 title="Gallery of Poland"
                 date="November 2021"

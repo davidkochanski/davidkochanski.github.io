@@ -10,7 +10,9 @@ let numShown = 3;
 let active = false;
 
 // Calculate shown elements when page is initially loaded..
-document.body.onload = e => checkForAndApplyShown();
+document.addEventListener('DOMContentLoaded', () => {
+    checkForAndApplyShown();
+});
 
 // And also whenever the window size is changed,
 // that could cause a potential change in num of elements shown
@@ -31,6 +33,8 @@ const checkForAndApplyShown = () => {
 }
 
 btn.onmousedown = e => {
+    checkForAndApplyShown();
+
     active = !active;
     icon.classList.toggle("fa-chevron-right");
     icon.classList.toggle("fa-chevron-down");
