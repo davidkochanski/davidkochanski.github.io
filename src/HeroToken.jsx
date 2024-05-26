@@ -13,22 +13,17 @@ export default function Token({ children, text, colour, link }) {
         ref.current.style.color = DEFAULT;
     }
 
-
-    function putElement() {
-        if (link) {
-            return <a ref={ref} href={link} target="_blank" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="token">
-                {text}
-            </a>
-        } else {
-            return <div ref={ref} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="token">
-                {text}
-            </div>
-        }
-    }
-
     return (
         <>
-            {putElement()}
+            {link ?
+                <a ref={ref} href={link} target="_blank" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="token">
+                    {text}
+                </a>
+                :
+                <div ref={ref} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="token">
+                    {text}
+                </div>
+            }
         </>
     );
 }

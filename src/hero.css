@@ -16,12 +16,16 @@
     display: flex;
     position: relative;
     gap: 64px;
-
-    animation: slide linear infinite forwards;
-    animation-duration: 200s;
     overflow: hidden;
     transform-origin: left center;
-  }
+
+    animation: slide-left linear infinite forwards;
+    animation-duration: 200s;
+}
+
+.hero-words-row:nth-child(even) {
+    animation-name: slide-right;
+}
 
 a.token:hover {
     text-decoration: underline;
@@ -31,12 +35,10 @@ a.token:hover {
 
 .token {
     color: #ffffff0e;
-
     display: block;
     white-space: nowrap;
     cursor: default;
     user-select: none;
-
     transition: color 0.15s ease-out, scale 0.15s ease-out;
 }
 
@@ -44,11 +46,21 @@ a.token:hover {
     scale: 1.05;
 }
 
-@keyframes slide {
+@keyframes slide-left {
     from {
         translate: 0% 0;
-    } to {
+    }
+    to {
         translate: -25% 0;
+    }
+}
+
+@keyframes slide-right {
+    from {
+        translate: 0% 0;
+    }
+    to {
+        translate: 25% 0;
     }
 }
 
