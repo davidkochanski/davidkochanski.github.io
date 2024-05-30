@@ -603,21 +603,28 @@ section#imgs h3 > a:hover {
     
     color: white;
     /* mix-blend-mode: lighten; */
-    padding: 16px 100px 24px;
+    padding: 8px 100px 16px;
     border-radius: 8px;
-    font-size: 100px;
+    font-size: 64px;
     line-height: 120px;
-    text-align: center;
+    text-align: left;
 }
 
 .title::before {
     content: "";
+    --size: 10px;
+    /* --border-movement: 0%; */
+
     width: calc(100%);
-    height: calc(100% - 32px);
+    height: calc(100% - 2 * var(--size));
     position: absolute;
     inset: 0;
-    padding: 16px 0;
-    background-image: linear-gradient(45deg, #00b8b1, #a100a1);
+    padding: var(--size) 0;
+    /* background-image: linear-gradient(45deg, #00b8b1, #a100a1); */
+    background-image: linear-gradient(105deg,
+    #00b8b1 0%, #00b8b1 35%, #a100a1 65%, #a100a1 100%);
+
+
     background-size: 200% 200%;
     -webkit-mask: 
        linear-gradient(#fff 0 0) content-box, 
@@ -627,7 +634,9 @@ section#imgs h3 > a:hover {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    animation: moveGradient 7s linear infinite;
+
+    background-position: var(--border-movement) 50%;
+    /* animation: moveGradient 7s linear infinite; */
 }
 
 

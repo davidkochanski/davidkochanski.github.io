@@ -61,12 +61,12 @@ const allBalls = structuredClone(possibleBalls);
 
 function BallSim() {
     // let MARGIN_X = window.innerWidth < 768 ? 30 : 75;
-    let MARGIN_X = 20;
+    let MARGIN_X = 16;
     const MARGIN_Y = 0;
 
-    const MAX_SCENE_WIDTH = 140000;
+    const MAX_SCENE_WIDTH = 4000;
     const MAX_SCENE_HEIGHT = 700;
-    const MAX_BALLS = 20;
+    const MAX_BALLS = 20000;
 
     const [objects, setObjects] = useState([]);
     const [preloadedTextures, setPreloadedTextures] = useState({});
@@ -108,7 +108,7 @@ function BallSim() {
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true});
         renderer.setSize(width, height);
         renderer.shadowMap.enabled = true;
-        renderer.setClearColor( 0x000000, 0 ); // make transparent
+        // renderer.setClearColor( 0x000000, 0 ); // make transparent
 
         mountRef.current.appendChild(renderer.domElement);
 
@@ -131,9 +131,9 @@ function BallSim() {
         window.addEventListener("resize", resizeCamera);
 
         const groundGeometry = new THREE.PlaneGeometry(MAX_SCENE_WIDTH, MAX_SCENE_HEIGHT, 100, 100);
-        const groundTexture = loader.load(felt)
-        const groundMaterial = new THREE.ShadowMaterial();
-
+        const groundTexture = loader.load(felt);
+        groundTexture.repeat = 10;
+        const groundMaterial = new THREE.MeshStandardMaterial({ map:groundTexture, color: 0x318242 });
         // { map:groundTexture, transparent: true, opacity: 0.001, color: 0x318242 }
 
         groundMaterial.aoMap = loader.load(feltAO);
