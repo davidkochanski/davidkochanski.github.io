@@ -39,7 +39,7 @@ function parallaxify(element) {
 
 function updateMask() {
     let MIN = 0.6 * window.innerHeight;
-    let MAX = 6000;
+    let MAX = 10000;
 
     let scrollPercentage = window.scrollY / (3 * window.innerHeight);
     let maskSize = scrollPercentage * (MAX - MIN) + MIN;

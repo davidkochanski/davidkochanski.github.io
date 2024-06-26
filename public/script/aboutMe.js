@@ -5,9 +5,10 @@ let animation;
 let buttonAnimation;
 
 const header = document.querySelector("#about-me h2");
-const headerText = header.innerText;
+// const headerText = header.innerText;
+const headerText = "Temp";
 
-header.innerText = "";
+// header.innerText = "";
 
 const subHeader = document.querySelector("#about-me h4");
 const bar = document.querySelector("#about-me .bar");
@@ -45,17 +46,15 @@ function updateAboutMe() {
             heroButton.style.display = "none";
         }
 
-        // aboutMeBackground.style.zIndex = 100000;
+        // typeHeader();
 
-        typeHeader();
+        // rows.forEach((row, idx) => {
+        //     row.classList.add("show-row");
+        //     row.style.animationDelay = `${1500 + idx * 250}ms`;
+        // })
 
-        rows.forEach((row, idx) => {
-            row.classList.add("show-row");
-            row.style.animationDelay = `${1500 + idx * 250}ms`;
-        })
-
-        subHeader.classList.add("show");
-        bar.classList.add("bar-anim-show");
+        // subHeader.classList.add("show");
+        // bar.classList.add("bar-anim-show");
 
         aboutMeBackground.style.maskSize = "500vw 500vw";
         aboutMeBackground.style.zIndex = "621";
@@ -115,14 +114,14 @@ function fadeOut() {
     );
 
     animation.onfinish = () => {
-        header.innerText = "";
+        // header.innerText = "";
 
         rows.forEach((row, idx) => {
             row.classList.remove("show-row");
             row.style.animationDelay = `${1000 + idx * 200}ms`;
         })
 
-        subHeader.classList.remove("show");
+        // subHeader.classList.remove("show");
 
         bar.classList.remove("bar-anim-show");
     }

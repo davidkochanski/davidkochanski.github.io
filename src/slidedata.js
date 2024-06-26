@@ -34,7 +34,6 @@ export const slides = [
         imagePos: "50% 60%",
         tagList: ["AI", "API", "Python", "JavaScript", "CSS"],
         background: "#FF964F",
-        interactionURL: "https://placefox.xyz",
         githubURL: "https://github.com/davidkochanski/placeholder-fox",
         content: [
             "An API providing high-quality fox images as placeholder images accessible via URL.",
