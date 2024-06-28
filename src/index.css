@@ -324,10 +324,6 @@ a {
     }
 }
 
-.hero-padding-top {
-    height: 150vh;
-}
-
 .hero-padding-bottom {
     height: 100vh;
 }
@@ -421,15 +417,19 @@ a {
     width: 100%;
     text-align: left;
     padding: 10px;
+    transform-origin: 39% 25%;
 
 }
 
 .name > h1 {
-    font-size: 128px;
+    font-size: 180px;
     font-family: "Consolas", monospace;
     font-weight: 900;
     line-height: 75%;
     letter-spacing: 4px;
+    text-shadow: 4px 4px 0 black;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 /*
