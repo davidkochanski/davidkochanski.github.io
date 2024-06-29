@@ -367,7 +367,8 @@ a {
 
     /* width: 100px; */
     line-height: 10px;
-    vertical-align: bottom;
+    vertical-align: 70px;
+    margin-left: 4px;
 }
 
 .after-first-name > h4 {
@@ -377,7 +378,6 @@ a {
     letter-spacing: normal;
     font-size: 30px;
     line-height: 10px;
-    margin-left: -12px
 }
 
 .hero-row {

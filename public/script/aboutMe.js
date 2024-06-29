@@ -24,13 +24,15 @@ updateAboutMe();
 document.addEventListener("scroll", () => {
     updateAboutMe();
     animateName();
-    nextEffect();
+    animateAfterFirstName();
+    darkenEffect();
+    parallaxTitle();
 })
 
 
 function animateName() {
     const START_PERCENT_SCROLL = 0.3;
-    const END_PERCENT_SCROLL = 1.3;
+    const END_PERCENT_SCROLL = 2.0;
 
     // linear transition, rise over run slope depending on scroll points
     // transitions from 0 at start to 1 at end linearly, also shifted horizontally
@@ -39,7 +41,7 @@ function animateName() {
 
     percentRevealed = Math.max(0, Math.min(percentRevealed, 1)) 
 
-    percentRevealed = 1 - (1 - percentRevealed)**6; // ease
+    percentRevealed = 1 - (1 - percentRevealed)**2; // ease
 
     percentRevealed *= 100;
 
@@ -74,9 +76,9 @@ function animateName() {
 // }
 
 
-function nextEffect() {
-    const START_PERCENT_SCROLL = 1.5;
-    const END_PERCENT_SCROLL = 2.2;
+function darkenEffect() {
+    const START_PERCENT_SCROLL = 2.8;
+    const END_PERCENT_SCROLL = 3.5;
 
     let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
     * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
@@ -95,6 +97,56 @@ function nextEffect() {
     box.style.translate = `0 ${-(100 - percentRevealed)}px`;
 
     darken.style.opacity = `${((percentRevealed / 1.3) / 100)}`
+}
+
+function animateAfterFirstName() {
+    const START_PERCENT_SCROLL = 1.7;
+    const END_PERCENT_SCROLL = 2.2;
+
+    let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
+    * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
+
+    percentRevealed = Math.max(0, Math.min(percentRevealed, 1));
+
+    percentRevealed = 1 - (1 - percentRevealed)**2; // ease
+
+    percentRevealed *= 100;
+
+    const THRESHOLD = window.innerHeight / 100;
+
+    const titles = document.querySelector(".after-first-name");
+
+
+    titles.style.translate = `0 ${THRESHOLD * -(100 - percentRevealed)}px`;
+    titles.style.scale = (percentRevealed / 100);
+    titles.style.rotate = `${Math.PI * (1 - (percentRevealed / 100))}rad`;
+
+}
+
+function parallaxTitle() {
+    const START_PERCENT_SCROLL = 5.0;
+    const END_PERCENT_SCROLL = 6.0;
+
+    let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
+    * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
+
+    percentRevealed = Math.max(0, Math.min(percentRevealed, 1));
+
+    // percentRevealed = 1 - (1 - percentRevealed)**2; // ease
+
+    percentRevealed *= 100;
+
+    const THRESHOLD = window.innerHeight / 100;
+
+    const firstName = document.querySelector("h1.first-name");
+    const lastName = document.querySelector("h1.last-name");
+    const box = document.querySelector(".hero-box");
+
+    if(window.scrollY > 5 * window.innerHeight) {
+        firstName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+        lastName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+        box.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+    }
 }
 
 function updateAboutMe() {
