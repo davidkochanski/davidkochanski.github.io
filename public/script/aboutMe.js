@@ -24,13 +24,13 @@ updateAboutMe();
 document.addEventListener("scroll", () => {
     updateAboutMe();
     animateName();
-    zoomName();
+    nextEffect();
 })
 
 
 function animateName() {
     const START_PERCENT_SCROLL = 0.3;
-    const END_PERCENT_SCROLL = 1.5;
+    const END_PERCENT_SCROLL = 1.3;
 
     // linear transition, rise over run slope depending on scroll points
     // transitions from 0 at start to 1 at end linearly, also shifted horizontally
@@ -51,23 +51,50 @@ function animateName() {
     firstName.style.translate = `${THRESHOLD * (100 - percentRevealed)}px 0`;
     lastName.style.translate = `${THRESHOLD * -(100 - percentRevealed)}px 0`;
 }
+// function zoomName() {
+//     const START_PERCENT_SCROLL = 1.5;
+//     const END_PERCENT_SCROLL = 1.7;
 
-function zoomName() {
+//     let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
+//     * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
+
+//     percentRevealed = Math.max(0, Math.min(percentRevealed, 1));
+
+//     percentRevealed = 1 - (1 - percentRevealed)**6; // ease
+
+//     percentRevealed *= 100;
+
+//     const SCALE_FACTOR = 0.9;
+
+//     const firstName = document.querySelector("h1.first-name");
+//     const lastName = document.querySelector("h1.last-name");
+
+//     firstName.style.fontSize = `${80 + SCALE_FACTOR * (100 - percentRevealed)}px`;
+//     lastName.style.fontSize = `${80 + SCALE_FACTOR * (100 - percentRevealed)}px`;
+// }
+
+
+function nextEffect() {
     const START_PERCENT_SCROLL = 1.5;
-    const END_PERCENT_SCROLL = 3.0;
+    const END_PERCENT_SCROLL = 2.2;
 
     let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
     * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
 
-    percentRevealed = Math.max(0, Math.min(percentRevealed, 1)) 
+    percentRevealed = Math.max(0, Math.min(percentRevealed, 1));
 
-    // percentRevealed = 1 - (1 - percentRevealed)**6; // ease
+    percentRevealed = 1 - (1 - percentRevealed)**6; // ease
 
-    const name = document.querySelector(".name");
+    percentRevealed *= 100;
 
-    const THRESHOLD = window.innerWidth / 50;
+    const box = document.querySelector(".hero-box");
+    const darken = document.querySelector(".about-me-darken");
 
-    name.style.scale = `${1 + THRESHOLD * percentRevealed}`;
+
+    box.style.scale = `${percentRevealed / 100}`;
+    box.style.translate = `0 ${-(100 - percentRevealed)}px`;
+
+    darken.style.opacity = `${((percentRevealed / 1.3) / 100)}`
 }
 
 function updateAboutMe() {

@@ -29,7 +29,6 @@
 
 .slide-image-wrapper {
     background-color: #111;
-    box-shadow: 0 0 50px #fff;
     border-radius: 16px;
     padding: 3px;
     margin-bottom: 16px;
@@ -56,6 +55,13 @@
     border-radius: 12px;
     z-index: 1000;
     transform-style: preserve-3d;
+    cursor: pointer;
+
+}
+
+.slide-image-wrapper:hover {
+    box-shadow: 0 0 50px #fff;
+    background-color: white;
 
 }
 

@@ -92,7 +92,6 @@ const TOKENS = [
     { text: "Linux", },
     { text: "Unix", },
     // { text: "IntelliJ",  },
-    { text: "Microsoft Office", },
     { text: "Node.js", colour: "#6cc24a", },
 
     // Links

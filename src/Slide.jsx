@@ -1,7 +1,7 @@
 import "./slide.css";
 import { forwardRef, useRef, useEffect, useState } from "react";
 
-const Slide = forwardRef(({ children, title, date, imageURL, imagePos, background, interactionURL, githubURL, tagList }, ref) => {
+const Slide = forwardRef(({ children, title, date, imageURL, imagePos, background, interactionURL, githubURL, tagList, isDragging, dragX }, ref) => {
 
     const imageRef = useRef();
     const titleWrapperRef = useRef();
@@ -17,7 +17,6 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
         updateSqueeze();
         window.addEventListener("resize", updateSqueeze);
 
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -30,21 +29,19 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
 
         setTimeout(() => {
             observer.observe(slideRef.current);
-        }, 500)
-
+        }, 500);
 
         titleRef.current.style.borderBottom = "5px solid black";
 
         setInterval(() => {
             const title = titleRef.current;
-            if(title.style.borderBottom === "") {
+            if (title.style.borderBottom === "") {
                 title.style.borderBottom = "5px solid black";
             } else {
                 title.style.borderBottom = "";
             }
-        }, 530)
+        }, 530);
 
-        // Clean-up
         return () => {
             window.removeEventListener("resize", updateSqueeze);
         };
@@ -67,7 +64,6 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
         const image = imageRef.current;
 
         image.style.animation = "scale-in 0.33s ease-out forwards";
-        // image.style.animationDelay = "0.12s";
     }
 
     function animateTabs() {
@@ -78,12 +74,10 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
         tabs.forEach((tab, idx) => {
             tab.style.animation = "tag-animation 1s forwards";
             tab.style.animationDelay = `${DELAY_BETWEEN * idx + DELAY_INITIAL}ms`;
-        })
+        });
     }
 
-
     function updateImageTilt(e) {
-
         const img = imageRef.current;
         const RESISTANCE = 200;
 
@@ -99,9 +93,7 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
         img.style.transform = `perspective(500px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
     }
 
-
     function updateSqueeze() {
-
         let container = titleWrapperRef.current;
         let title = titleRef.current;
 
@@ -120,8 +112,8 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
     function putInteraction() {
         if (interactionURL) {
             return <a onTouchEnd={() => { window.open(interactionURL, "_blank") }} href={interactionURL} target="_blank" rel="noreferrer">
-            <i className="fas fa-arrow-up-right-from-square"></i>
-        </a>
+                <i className="fas fa-arrow-up-right-from-square"></i>
+            </a>;
         }
     }
 
@@ -129,23 +121,22 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
         if (githubURL) {
             return <a onTouchEnd={() => { window.open(githubURL, "_blank") }} href={githubURL} target="_blank" rel="noreferrer">
                 <i className="fab fa-github"></i>
-            </a>
+            </a>;
         }
     }
 
     function handleTagOver(e, tagName) {
-        let target = (e.target) ? e.target: e.srcElement;
+        let target = e.target ? e.target : e.srcElement;
 
         target.classList.add(`${tagName.toLowerCase()}-glow`);
         target.classList.add("tag-glow");
     }
 
     function handleTagOut(e, tagName) {
-        let target = (e.target) ? e.target: e.srcElement;
+        let target = e.target ? e.target : e.srcElement;
         target.classList.remove(`${tagName.toLowerCase()}-glow`);
 
         target.classList.remove("tag-glow");
-
     }
 
     function putTags() {
@@ -153,21 +144,32 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
 
         tagList.forEach((tag, idx) => {
             out.push(<div key={idx} onMouseOver={(e) => handleTagOver(e, tag)} onMouseOut={(e) => handleTagOut(e, tag)} className={`tag ${tag.toLowerCase().replace(/\./g, "-")}`}>{tag}</div>);
-        })
+        });
 
         return out;
     }
 
+    function goToProject() {
+        if(Math.abs(dragX) > 15) return;
+
+        if(interactionURL) {
+            window.open(interactionURL, "_blank");
+        } else if(githubURL) {
+            window.open(githubURL, "_blank");
+        }
+    }
+
     return (
-        <div ref={ref} className="slide" draggable="false" onMouseMove={updateImageTilt} style={{ background: `${background}` }}>
+        <div ref={ref} onMouseMove={updateImageTilt} className="slide" draggable="false" style={{ background: `${background}` }}>
             <div ref={slideRef} className="slide-content">
                 <h4 className="slide-date">{date}</h4>
                 <div ref={imageRef} className="slide-image-wrapper">
-                    <div className="slide-image" style={{ backgroundImage: `url(${imageURL})`, backgroundPosition: `${imagePos || "center center"}` }}></div>
+                    <div onMouseUp={goToProject}  onTouchEnd={goToProject} className="slide-image" style={{ backgroundImage: `url(${imageURL})`, backgroundPosition: `${imagePos || "center center"}` }}></div>
                 </div>
                 <div ref={titleWrapperRef} draggable="false" className="slide-title">
-                    {interactionURL ? <a target="_blank" draggable="false" onTouchEnd={() => { window.open(interactionURL, "_blank") }} href={interactionURL}><h2 ref={titleRef}>{titleAnim}</h2></a> : <h2 ref={titleRef}>{titleAnim}</h2>}
-                    
+                    {/* {interactionURL ? <a target="_blank" draggable="false" onTouchEnd={() => { window.open(interactionURL, "_blank") }} href={interactionURL}><h2 ref={titleRef}>{titleAnim}</h2></a> : <h2 ref={titleRef}>{titleAnim}</h2>} */}
+
+                    <h2 ref={titleRef}>{titleAnim}</h2>
 
                     <div className="slide-links">
                         {putGithub()}
@@ -185,8 +187,7 @@ const Slide = forwardRef(({ children, title, date, imageURL, imagePos, backgroun
                 </div>
             </div>
         </div>
-    )
-})
-
+    );
+});
 
 export default Slide;

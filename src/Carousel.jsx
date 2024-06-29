@@ -254,6 +254,9 @@ function Carousel() {
                 background={slide.background}
                 interactionURL={slide.interactionURL}
                 githubURL={slide.githubURL}
+
+                isDragging={isDragging}
+                dragX={dragX}
             >
                 <ul>
                     {slide.content.map((line, i) => (
