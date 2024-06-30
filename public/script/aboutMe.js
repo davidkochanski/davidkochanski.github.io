@@ -1,4 +1,5 @@
 const aboutMeContainer = document.getElementById("about-me-container");
+aboutMeContainer.style.opacity = 0;
 const heroButton = document.getElementById("hero-button");
 const aboutMeBackground = document.getElementById("about-me");
 let animation;
@@ -78,7 +79,7 @@ function animateName() {
 
 function darkenEffect() {
     const START_PERCENT_SCROLL = 2.8;
-    const END_PERCENT_SCROLL = 3.5;
+    const END_PERCENT_SCROLL = 4.0;
 
     let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
     * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
