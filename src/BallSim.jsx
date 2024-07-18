@@ -6,7 +6,7 @@ import feltNormal from './assets/felt_normal.png'
 import feltAO from './assets/felt_ao.jpg'
 
 const toMass = (size) => {
-    return 4 / 3 * Math.PI * (size / 2)**2;
+    return 4 / 3 * Math.PI * (size / 2)**3;
 }
 
 const possibleBalls = [
@@ -67,6 +67,7 @@ function BallSim() {
     const MAX_SCENE_WIDTH = 4000;
     const MAX_SCENE_HEIGHT = 700;
     const MAX_BALLS = possibleBalls.length;
+    // const MAX_BALLS = 20000;
 
     const [objects, setObjects] = useState([]);
     const [preloadedTextures, setPreloadedTextures] = useState({});
@@ -426,7 +427,7 @@ function BallSim() {
         return ball;
     };
 
-    const [prevMousePos, setPrevMousePos] = useState([-1, -1]);
+    const [prevMousePos, setPrevMousePos] = useState([-1000, -1000]);
     const [windowSize, setWindowSize] = useState([window.innerWidth, window.innerHeight]);
 
 
@@ -589,7 +590,84 @@ function BallSim() {
         scaleByConstant(c) {
             return new Vector(this.x * c, this.y * c)
         }
+
+        normalize() {
+            const mag = this.getMagnitude();
+            return new Vector(this.x / mag, this.y / mag);
+        }
     }
+    
+    const checkForAndApplyCollisionForce = () => {
+        setObjects(prevObjects => {
+            return prevObjects.map(obj => {
+                let nextObj = { ...obj };
+    
+                prevObjects.forEach(other => {
+                    if (obj.id === other.id) return;
+
+                    // This code is based on this formula of 2D elastic collisions between discs:
+                    // https://en.wikipedia.org/wiki/Elastic_collision#Two-dimensional_collision_with_two_moving_objects
+    
+                    const distanceBetween = Math.sqrt(
+                        ((obj.posX + (obj.size / 2)) - (other.posX + (other.size / 2))) ** 2 +
+                        ((obj.posY + (obj.size / 2)) - (other.posY + (other.size / 2))) ** 2
+                    );
+    
+                    // if not colliding, return
+                    if (!distanceBetween || distanceBetween > (obj.size + other.size) / 2 + 1) return; // +1 for a little tolerance
+                    
+                    // convert to vectors so i can use vector functions
+                    const thisX = new Vector(obj.posX + (obj.size / 2), obj.posY + (obj.size / 2));
+                    const thisV = new Vector(obj.veloX, obj.veloY); 
+    
+                    const otherX = new Vector(other.posX + (other.size / 2), other.posY + (other.size / 2));
+                    const otherV = new Vector(other.veloX, other.veloY);
+
+                    const displacement = thisX.subtract(otherX);
+                    
+                    // the final calculation is the difference vector scaled by a certain (complecated) constant
+                    // I broke it into 3 parts
+                    const dotProd = Vector.dot(thisV.subtract(otherV), thisX.subtract(otherX));
+                    const massFactor = (2 * other.mass) / (obj.mass + other.mass);
+                    const magnitude = (thisX.subtract(otherX).getMagnitude()) ** 2;
+    
+                    if (dotProd > 0 || magnitude === 0 ) return; // if they're going in same direction stop (or if about to divide by zero)
+    
+                    const thisNextVelo = displacement.scaleByConstant(massFactor * dotProd / magnitude);
+    
+                    // Update velocities
+                    nextObj = {
+                        ...nextObj,
+                        veloX: obj.veloX - thisNextVelo.x,
+                        veloY: obj.veloY - thisNextVelo.y,
+                        posX: obj.posX,
+                        posY: obj.posY
+                    };
+                    
+                    // if theres an overlap, move the discs slightly to stop them from overlapping
+                    const overlap = ((obj.size + other.size) / 2) - distanceBetween;
+
+                    if (overlap > 0) {
+                        const correction = displacement.normalize().scaleByConstant(overlap);
+
+                        nextObj.posX += correction.x;
+                        nextObj.posY += correction.y;
+
+                        const otherIndex = prevObjects.findIndex(item => item.id === other.id);
+                        
+                        prevObjects[otherIndex] = {
+                            ...prevObjects[otherIndex],
+                            posX: prevObjects[otherIndex].posX - correction.x,
+                            posY: prevObjects[otherIndex].posY - correction.y,
+                        };
+                    }
+                });
+                return nextObj;
+            });
+        });
+    };
+    
+    
 
     // const checkForAndApplyCollisionForce = () => {
     //     setObjects(prevObjects => {
@@ -605,42 +683,51 @@ function BallSim() {
     //                 );
 
     //                 // if not colliding, return
-    //                 if (!distanceBetween || distanceBetween > (obj.size + other.size) / 2 + 1) return; // +1 for a little tolerance
+    //                 if (distanceBetween > (obj.size + other.size) / 2 + 1) return; // +1 for a little tolerance
 
-    //                 const thisX = new Vector(obj.posX, obj.posY);
-    //                 const thisV = new Vector(obj.veloX, obj.veloY); 
+    //                 // Distance components
+    //                 const dx = other.posX - obj.posX;
+    //                 const dy = other.posY - obj.posY;
 
-    //                 const otherX = new Vector(other.posX, other.posY);
-    //                 const otherV = new Vector(other.veloX, other.veloY);
+    //                 // Velo components  
+    //                 const dveloX = obj.veloX - other.veloX;
+    //                 const dveloY = obj.veloY - other.veloY;
 
-    //                 const thisDot = Vector.dot(thisV.subtract(otherV), thisX.subtract(otherX));
-    //                 const otherDot = Vector.dot(otherV.subtract(thisV), otherX.subtract(thisX));
+    //                 // Velocity along the normal component wise
+    //                 // this will always be a number -1 < x < 1. When it equals 1 or -1,
+    //                 // then it's the case of a "perfectly alligned" collision (very rare)
+    //                 //
+    //                 const normalVeloX = dx / distanceBetween;
+    //                 const normalVeloY = dy / distanceBetween;
 
-    //                 const magnitude = new Vector(thisX.subtract(otherX)).getMagnitude();
+    //                 // magnitude of velocity vector
+    //                 const relativeVelocity = Math.sqrt(dveloX ** 2 + dveloY ** 2);
 
-    //                 const thisMass = (2 * other.mass) / (obj.mass + other.mass);
-    //                 const otherMass = (2 * obj.mass) / (obj.mass + other.mass);
+    //                 // Key momentum formula
+    //                 const massRatio = obj.mass / other.mass;
+    //                 const collisionForce = (2 * relativeVelocity) / (1 + massRatio);
 
-    //                 const thisNextVelo = new Vector(thisX.subtract(otherX)).scaleByConstant(thisMass * thisDot / magnitude);
-    //                 const otherNextVelo = new Vector(otherX.subtract(thisX)).scaleByConstant(otherMass * otherDot / magnitude);
+    //                 // Each component
+    //                 const deltaVeloX = COLLISION_FRICTION_COEFF * collisionForce * normalVeloX;
+    //                 const deltaVeloY = COLLISION_FRICTION_COEFF * collisionForce * normalVeloY;
+
+    //                 // const overlap = ((obj.size + other.size) / 2) - distanceBetween;
 
     //                 // Update velocities
     //                 nextObj = {
     //                     ...nextObj,
-    //                     veloX: obj.veloX - thisNextVelo.x,
-    //                     veloY: obj.veloY - thisNextVelo.y,
+    //                     veloX: obj.veloX - deltaVeloX,
+    //                     veloY: obj.veloY - deltaVeloY,
     //                     posX: obj.posX,
     //                     posY: obj.posY
     //                 };
-
-    //                 // console.log(obj.veloX - thisNextVelo.x, obj.veloY - thisNextVelo.y)
 
     //                 // Update velocities of the other ball too
     //                 const otherIndex = prevObjects.findIndex(item => item.id === other.id);
     //                 const nextOther = {
     //                     ...prevObjects[otherIndex],
-    //                     veloX: other.veloX - otherNextVelo.x,
-    //                     veloY: other.veloY - otherNextVelo.y,
+    //                     veloX: other.veloX + deltaVeloX,
+    //                     veloY: other.veloY + deltaVeloY,
     //                     posX: other.posX,
     //                     posY: other.posY
     //                 };
@@ -650,76 +737,6 @@ function BallSim() {
     //         });
     //     });
     // };
-    
-
-    const checkForAndApplyCollisionForce = () => {
-        setObjects(prevObjects => {
-            return prevObjects.map(obj => {
-                let nextObj = { ...obj };
-
-                prevObjects.forEach(other => {
-                    if (obj.id === other.id) return;
-
-                    const distanceBetween = Math.sqrt(
-                        ((obj.posX + (obj.size / 2)) - (other.posX + (other.size / 2))) ** 2 +
-                        ((obj.posY + (obj.size / 2)) - (other.posY + (other.size / 2))) ** 2
-                    );
-
-                    // if not colliding, return
-                    if (distanceBetween > (obj.size + other.size) / 2 + 1) return; // +1 for a little tolerance
-
-                    // Distance components
-                    const dx = other.posX - obj.posX;
-                    const dy = other.posY - obj.posY;
-
-                    // Velo components  
-                    const dveloX = obj.veloX - other.veloX;
-                    const dveloY = obj.veloY - other.veloY;
-
-                    // Velocity along the normal component wise
-                    // this will always be a number -1 < x < 1. When it equals 1 or -1,
-                    // then it's the case of a "perfectly alligned" collision (very rare)
-                    //
-                    const normalVeloX = dx / distanceBetween;
-                    const normalVeloY = dy / distanceBetween;
-
-                    // magnitude of velocity vector
-                    const relativeVelocity = Math.sqrt(dveloX ** 2 + dveloY ** 2);
-
-                    // Key momentum formula
-                    const massRatio = obj.mass / other.mass;
-                    const collisionForce = (2 * relativeVelocity) / (1 + massRatio);
-
-                    // Each component
-                    const deltaVeloX = COLLISION_FRICTION_COEFF * collisionForce * normalVeloX;
-                    const deltaVeloY = COLLISION_FRICTION_COEFF * collisionForce * normalVeloY;
-
-                    // const overlap = ((obj.size + other.size) / 2) - distanceBetween;
-
-                    // Update velocities
-                    nextObj = {
-                        ...nextObj,
-                        veloX: obj.veloX - deltaVeloX,
-                        veloY: obj.veloY - deltaVeloY,
-                        posX: obj.posX,
-                        posY: obj.posY
-                    };
-
-                    // Update velocities of the other ball too
-                    const otherIndex = prevObjects.findIndex(item => item.id === other.id);
-                    const nextOther = {
-                        ...prevObjects[otherIndex],
-                        veloX: other.veloX + deltaVeloX,
-                        veloY: other.veloY + deltaVeloY,
-                        posX: other.posX,
-                        posY: other.posY
-                    };
-                    prevObjects[otherIndex] = nextOther;
-                });
-                return nextObj;
-            });
-        });
-    };
 
 
 
@@ -747,7 +764,7 @@ function BallSim() {
                     );
                 })}
             </div> */}
-            <div onMouseMove={(e) => {applyMouseForce(e)}} onTouchMove={(e) => {applyMouseForce(e)}} onMouseOut={() => { setPrevMousePos([-1, -1]) }} onTouchEnd={() => { setPrevMousePos([-1, -1]) }} id="ball-wrapper" ref={mountRef}>
+            <div onMouseMove={(e) => {applyMouseForce(e)}} onTouchMove={(e) => {applyMouseForce(e)}} onMouseOut={() => { setPrevMousePos([-1000, -1000]) }} onTouchEnd={() => { setPrevMousePos([-1000, -1000]) }} id="ball-wrapper" ref={mountRef}>
             <h4 id="ball-help">( Click to summon a new skill )</h4>
             </div>
         </>
