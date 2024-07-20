@@ -32,8 +32,8 @@ document.addEventListener("scroll", () => {
 
 
 function animateName() {
-    const START_PERCENT_SCROLL = 0.3;
-    const END_PERCENT_SCROLL = 2.0;
+    const START_PERCENT_SCROLL = 0;
+    const END_PERCENT_SCROLL = 1.2;
 
     // linear transition, rise over run slope depending on scroll points
     // transitions from 0 at start to 1 at end linearly, also shifted horizontally
@@ -78,8 +78,8 @@ function animateName() {
 
 
 function darkenEffect() {
-    const START_PERCENT_SCROLL = 2.8;
-    const END_PERCENT_SCROLL = 4.0;
+    const START_PERCENT_SCROLL = 1.7;
+    const END_PERCENT_SCROLL = 3.5;
 
     let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
     * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
@@ -101,8 +101,8 @@ function darkenEffect() {
 }
 
 function animateAfterFirstName() {
-    const START_PERCENT_SCROLL = 1.7;
-    const END_PERCENT_SCROLL = 2.2;
+    const START_PERCENT_SCROLL = 0.7;
+    const END_PERCENT_SCROLL = 1.7;
 
     let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
     * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
@@ -125,8 +125,8 @@ function animateAfterFirstName() {
 }
 
 function parallaxTitle() {
-    const START_PERCENT_SCROLL = 5.0;
-    const END_PERCENT_SCROLL = 6.0;
+    const START_PERCENT_SCROLL = 3.0;
+    const END_PERCENT_SCROLL = 4.2;
 
     let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
     * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
@@ -143,7 +143,7 @@ function parallaxTitle() {
     const lastName = document.querySelector("h1.last-name");
     const box = document.querySelector(".hero-box");
 
-    if(window.scrollY > 5 * window.innerHeight) {
+    if(window.scrollY > 3 * window.innerHeight) {
         firstName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
         lastName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
         box.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;

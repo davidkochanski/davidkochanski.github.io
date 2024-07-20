@@ -95,18 +95,26 @@
 
 .slide-title .slide-links {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    /* flex-direction: column; */
     position: absolute;
     bottom: 8px;
     font-size: 28px;
-    gap: 12px;
-    width: 100%;
+    gap: 8px;
     align-items: center;
+    justify-content: center;
 }
 
-.slide-title .slide-links i {
+.slide-title .slide-links a {
+    aspect-ratio: 1/1;
+}
+
+.slide-title .slide-links a i {
     cursor: pointer;
     color: #333;
+    padding: 6px;
+    border-radius: 50%;
+    border: 3px solid #333;
 }
 
 .slide-info {
@@ -205,12 +213,19 @@
 }
 
 #carousel .fa-arrow-up-right-from-square, #carousel .fa-github, #carousel .page-tab:not(.page-tab.selected-tab) {
-    transition: color 0.25s ease, scale 0.25s ease, opacity 0.25s ease;
+    transition: color 0.25s ease, scale 0.25s ease, opacity 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 #carousel .fa-arrow-up-right-from-square:hover, #carousel .fa-github:hover {
-    color: black;
-    scale: 1.1;
+    /* color: black;
+    scale: 1.1; */
+    background-color: #333;
+    border-color: white;
+    color: white;
+}
+
+#carousel .fa-arrow-up-right-from-square {
+    border-radius: 25%;
 }
 
 #carousel .page-tab:hover:not(.page-tab.selected-tab) {

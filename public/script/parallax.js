@@ -1,7 +1,7 @@
 const aboutMe = document.getElementById("about-me");
 const heroWords = document.getElementById("home");
 
-const NUM_SCROLL_PAGES = 5.0;
+const NUM_SCROLL_PAGES = 3.0;
 
 
 const fixedWrapper = document.getElementById("fixed");

@@ -58,6 +58,10 @@ const possibleBalls = [
 
 const allBalls = structuredClone(possibleBalls);
 
+const clamp = (low, x, high) => {
+    return Math.max(low, Math.min(x, high))
+}
+
 
 function BallSim() {
     // let MARGIN_X = window.innerWidth < 768 ? 30 : 75;
@@ -66,6 +70,9 @@ function BallSim() {
 
     const MAX_SCENE_WIDTH = 4000;
     const MAX_SCENE_HEIGHT = 700;
+
+    const MIN_SCENE_WIDTH = 300;
+    const MIN_SCENE_HEIGHT = 300;
     const MAX_BALLS = possibleBalls.length;
     // const MAX_BALLS = 20000;
 
@@ -93,8 +100,8 @@ function BallSim() {
         }
         // const root = document.getElementById("physics-root");
 
-        const width = Math.min(window.innerWidth - MARGIN_X, MAX_SCENE_WIDTH);
-        const height = Math.min(window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
+        const width = clamp(MIN_SCENE_WIDTH, window.innerWidth - MARGIN_X, MAX_SCENE_WIDTH);
+        const height = clamp(MIN_SCENE_HEIGHT, window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
 
         setWindowSize([width, height]);
 
@@ -116,8 +123,8 @@ function BallSim() {
         const resizeCamera = () => {
             // MARGIN_X = window.innerWidth < 768 ? 30 : 75;
 
-            const newWidth = Math.min(window.innerWidth - MARGIN_X, MAX_SCENE_WIDTH);
-            const newHeight = Math.min(window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
+            const newWidth = clamp(MIN_SCENE_WIDTH, window.innerWidth - MARGIN_X, MAX_SCENE_WIDTH);
+            const newHeight = clamp(MIN_SCENE_HEIGHT, window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
 
             setWindowSize([newWidth, newHeight]);
 

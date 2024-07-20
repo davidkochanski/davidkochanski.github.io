@@ -86,3 +86,7 @@
     align-items: center;
     justify-content: center;
 }
+
+#ball-help {
+    pointer-events: none;
+}

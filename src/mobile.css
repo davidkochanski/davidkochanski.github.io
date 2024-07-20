@@ -59,6 +59,18 @@
         text-decoration-thickness: 3px;
     }
 
+    .slide-title .slide-links {
+        flex-direction: column;
+        font-size: 22px;
+        gap: 16px;
+        padding-bottom: 10px;
+    }
+
+    .slide-title .slide-links a i {
+        padding: 5px;
+        border-width: 2px;
+    }
+
     .about-me {
         background-position: 80% top;
         height: 100vh;
