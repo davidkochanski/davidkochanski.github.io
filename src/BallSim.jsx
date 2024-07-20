@@ -411,7 +411,7 @@ function BallSim() {
         const METALNESS = 0.4;
         const ROUGHNESS = 0.6;
 
-        const geometry = new THREE.SphereGeometry(obj.size / 2, 64, 64);
+        const geometry = new THREE.SphereGeometry(obj.size / 2, 256, 256);
         const tempMaterial = new THREE.MeshToonMaterial({ color: 0x000000 });
     
         const ball = new THREE.Mesh(geometry, tempMaterial);
@@ -540,7 +540,7 @@ function BallSim() {
 
         setObjects(prevObjects => {
             const updatedObjects = prevObjects.map(item => {
-                const { veloX, veloY, posX, posY, size } = item;
+                const { veloX, veloY, posX, posY, size, mass } = item;
                 let nextObj = { ...item };
 
                 const [x, y] = [centerize(mouseX, posX, size), centerize(mouseY, posY, size)]
@@ -557,10 +557,11 @@ function BallSim() {
 
                     // the force on each axis is some component of that
                     // yay trig!
+                    const TOLERANCE = 100;
                     nextObj = {
                         ...nextObj,
-                        veloX: veloX - Math.cos(angle) * 0.00005 * Math.pow((size - distance), 2),
-                        veloY: veloY - Math.sin(angle) * 0.00005 * Math.pow((size - distance), 2)
+                        veloX: veloX - Math.cos(angle) * TOLERANCE * Math.pow((size - distance), 2) / mass,
+                        veloY: veloY - Math.sin(angle) * TOLERANCE * Math.pow((size - distance), 2) / mass
                     }
 
                 }
@@ -673,81 +674,6 @@ function BallSim() {
             });
         });
     };
-    
-    
-
-    // const checkForAndApplyCollisionForce = () => {
-    //     setObjects(prevObjects => {
-    //         return prevObjects.map(obj => {
-    //             let nextObj = { ...obj };
-
-    //             prevObjects.forEach(other => {
-    //                 if (obj.id === other.id) return;
-
-    //                 const distanceBetween = Math.sqrt(
-    //                     ((obj.posX + (obj.size / 2)) - (other.posX + (other.size / 2))) ** 2 +
-    //                     ((obj.posY + (obj.size / 2)) - (other.posY + (other.size / 2))) ** 2
-    //                 );
-
-    //                 // if not colliding, return
-    //                 if (distanceBetween > (obj.size + other.size) / 2 + 1) return; // +1 for a little tolerance
-
-    //                 // Distance components
-    //                 const dx = other.posX - obj.posX;
-    //                 const dy = other.posY - obj.posY;
-
-    //                 // Velo components  
-    //                 const dveloX = obj.veloX - other.veloX;
-    //                 const dveloY = obj.veloY - other.veloY;
-
-    //                 // Velocity along the normal component wise
-    //                 // this will always be a number -1 < x < 1. When it equals 1 or -1,
-    //                 // then it's the case of a "perfectly alligned" collision (very rare)
-    //                 //
-    //                 const normalVeloX = dx / distanceBetween;
-    //                 const normalVeloY = dy / distanceBetween;
-
-    //                 // magnitude of velocity vector
-    //                 const relativeVelocity = Math.sqrt(dveloX ** 2 + dveloY ** 2);
-
-    //                 // Key momentum formula
-    //                 const massRatio = obj.mass / other.mass;
-    //                 const collisionForce = (2 * relativeVelocity) / (1 + massRatio);
-
-    //                 // Each component
-    //                 const deltaVeloX = COLLISION_FRICTION_COEFF * collisionForce * normalVeloX;
-    //                 const deltaVeloY = COLLISION_FRICTION_COEFF * collisionForce * normalVeloY;
-
-    //                 // const overlap = ((obj.size + other.size) / 2) - distanceBetween;
-
-    //                 // Update velocities
-    //                 nextObj = {
-    //                     ...nextObj,
-    //                     veloX: obj.veloX - deltaVeloX,
-    //                     veloY: obj.veloY - deltaVeloY,
-    //                     posX: obj.posX,
-    //                     posY: obj.posY
-    //                 };
-
-    //                 // Update velocities of the other ball too
-    //                 const otherIndex = prevObjects.findIndex(item => item.id === other.id);
-    //                 const nextOther = {
-    //                     ...prevObjects[otherIndex],
-    //                     veloX: other.veloX + deltaVeloX,
-    //                     veloY: other.veloY + deltaVeloY,
-    //                     posX: other.posX,
-    //                     posY: other.posY
-    //                 };
-    //                 prevObjects[otherIndex] = nextOther;
-    //             });
-    //             return nextObj;
-    //         });
-    //     });
-    // };
-
-
-
-
 
     const centerize = (mouse, pos, size) => {
         return mouse - pos - (size / 2);
