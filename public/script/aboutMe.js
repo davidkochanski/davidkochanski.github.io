@@ -54,28 +54,6 @@ function animateName() {
     firstName.style.translate = `${THRESHOLD * (100 - percentRevealed)}px 0`;
     lastName.style.translate = `${THRESHOLD * -(100 - percentRevealed)}px 0`;
 }
-// function zoomName() {
-//     const START_PERCENT_SCROLL = 1.5;
-//     const END_PERCENT_SCROLL = 1.7;
-
-//     let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
-//     * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
-
-//     percentRevealed = Math.max(0, Math.min(percentRevealed, 1));
-
-//     percentRevealed = 1 - (1 - percentRevealed)**6; // ease
-
-//     percentRevealed *= 100;
-
-//     const SCALE_FACTOR = 0.9;
-
-//     const firstName = document.querySelector("h1.first-name");
-//     const lastName = document.querySelector("h1.last-name");
-
-//     firstName.style.fontSize = `${80 + SCALE_FACTOR * (100 - percentRevealed)}px`;
-//     lastName.style.fontSize = `${80 + SCALE_FACTOR * (100 - percentRevealed)}px`;
-// }
-
 
 function darkenEffect() {
     const START_PERCENT_SCROLL = 1.7;
@@ -139,14 +117,21 @@ function parallaxTitle() {
 
     const THRESHOLD = window.innerHeight / 100;
 
+    const name = document.querySelector(".name");
     const firstName = document.querySelector("h1.first-name");
     const lastName = document.querySelector("h1.last-name");
-    const box = document.querySelector(".hero-box");
+    const box = document.querySelector("#about-me-container");
 
     if(window.scrollY > 3 * window.innerHeight) {
-        firstName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
-        lastName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+        // name.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+        // firstName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+        // lastName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
         box.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+    } else {
+        // name.style.translate = `0 0`;
+        // firstName.style.translate = `0 0`;
+        // lastName.style.translate = `0 0`;
+        box.style.translate = `0 0`;
     }
 }
 
