@@ -187,7 +187,7 @@ a {
 #hero-blob {
     width: 95vh;
     height: 95vh;
-    background: radial-gradient(var(--primary), var(--secondary));
+    background: radial-gradient(rgba(242, 127, 12, 1) 14%, rgba(247, 173, 25, 1) 31%, rgba(167, 248, 193, 1) 58%, rgba(33, 223, 255, 1) 81%);
     /* background: radial-gradient(#AD2E24, #ca5310); */
     opacity: 0.2;
     position: absolute;
@@ -462,13 +462,13 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    width: 100vw;
 
     text-align: left;
     padding: 10px;
     transform-origin: 39% 25%;
-    background: linear-gradient(180deg, var(--primary), var(--secondary));
-    background-clip: text;
+    /* background: linear-gradient(180deg, var(--primary), var(--secondary)); */
+
+    
 }
 
 .name > h1 {
@@ -477,7 +477,6 @@ a {
     font-weight: 900;
     line-height: 75%;
     letter-spacing: 4px;
-    /* text-shadow: 4px 4px 0 black; */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: white;
     z-index: 100000;
@@ -485,6 +484,16 @@ a {
 
     background-blend-mode: screen;
     color: transparent;
+
+    background: linear-gradient(90deg, rgba(242, 127, 12, 1) 16%, rgba(247, 173, 25, 1) 30%, rgba(245, 231, 190, 1) 42%, rgba(167, 248, 225, 1) 53%, rgba(33, 223, 255, 1) 81%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    width: fit-content;
+}
+
+.after-first-name {
+    color: white;
+    text-shadow: 4px 4px 0 black;
 }
 
 /*
@@ -1518,7 +1527,7 @@ textarea {
         transition: all 0s;
     }
 
-    #Hero-blob {
+    #hero-blob {
         display: none;
     }
 }
