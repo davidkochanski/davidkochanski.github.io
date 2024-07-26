@@ -22,6 +22,18 @@ aboutMeBackground.style.zIndex = 100000;
 
 updateAboutMe();
 
+const firstName = document.querySelector("h1.first-name");
+const lastName = document.querySelector("h1.last-name");
+
+const box = document.querySelector(".hero-box");
+const darken = document.querySelector(".about-me-darken");
+
+const titles = document.querySelector(".after-first-name");
+
+const about = document.querySelector("#about-me-container");
+
+
+
 document.addEventListener("scroll", () => {
     updateAboutMe();
     animateName();
@@ -31,23 +43,33 @@ document.addEventListener("scroll", () => {
 })
 
 
-function animateName() {
-    const START_PERCENT_SCROLL = 0;
-    const END_PERCENT_SCROLL = 1.2;
-
+/**
+ * Calculates the percentage completion of an element's animation depending on the scroll distance.
+ * 
+ * The function takes in the page interval that the animation takes place on,
+ * with an option to add polynomial easing out.
+ * 
+ * @param {number} startScroll Number of pages scrolled to begin animation (0%)
+ * @param {number} endScroll Number of pages scrolled when animation ends (100%)
+ * @param {number} easingExponent Exponent of polynomial easing function (default 1; no ease)
+ * @returns a percent value in [0, 100]
+ */
+function getAnimationPercent(startScroll, endScroll, easingExponent=1) {
     // linear transition, rise over run slope depending on scroll points
-    // transitions from 0 at start to 1 at end linearly, also shifted horizontally
-    let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
-                          * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
+    // transitions from 0 at start to 1 at end linearly, also shifted horizontally.
+    let percentRevealed = (((1 - 0) / ((endScroll - startScroll) * window.innerHeight)) 
+                          * (window.scrollY - startScroll * window.innerHeight));
 
-    percentRevealed = Math.max(0, Math.min(percentRevealed, 1)) 
+    percentRevealed = Math.max(0, Math.min(percentRevealed, 1)) // Clamp to [0,1]
+    percentRevealed = 1 - (1 - percentRevealed)**easingExponent; // ease
+    percentRevealed *= 100; // convert to %
 
-    percentRevealed = 1 - (1 - percentRevealed)**2; // ease
+    return percentRevealed;
+}
 
-    percentRevealed *= 100;
 
-    const firstName = document.querySelector("h1.first-name");
-    const lastName = document.querySelector("h1.last-name");
+function animateName() {
+    percentRevealed = getAnimationPercent(0, 1.2, 2)
 
     const THRESHOLD = window.innerWidth / 100;
 
@@ -56,21 +78,7 @@ function animateName() {
 }
 
 function darkenEffect() {
-    const START_PERCENT_SCROLL = 1.7;
-    const END_PERCENT_SCROLL = 3.5;
-
-    let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
-    * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
-
-    percentRevealed = Math.max(0, Math.min(percentRevealed, 1));
-
-    percentRevealed = 1 - (1 - percentRevealed)**6; // ease
-
-    percentRevealed *= 100;
-
-    const box = document.querySelector(".hero-box");
-    const darken = document.querySelector(".about-me-darken");
-
+    percentRevealed = getAnimationPercent(1.7, 3.5, 6);
 
     box.style.scale = `${percentRevealed / 100}`;
     box.style.translate = `0 ${-(100 - percentRevealed)}px`;
@@ -79,22 +87,9 @@ function darkenEffect() {
 }
 
 function animateAfterFirstName() {
-    const START_PERCENT_SCROLL = 0.7;
-    const END_PERCENT_SCROLL = 1.7;
-
-    let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
-    * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
-
-    percentRevealed = Math.max(0, Math.min(percentRevealed, 1));
-
-    percentRevealed = 1 - (1 - percentRevealed)**2; // ease
-
-    percentRevealed *= 100;
+    percentRevealed = getAnimationPercent(0.7, 1.7, 2);
 
     const THRESHOLD = window.innerHeight / 100;
-
-    const titles = document.querySelector(".after-first-name");
-
 
     titles.style.translate = `0 ${THRESHOLD * -(100 - percentRevealed)}px`;
     titles.style.scale = (percentRevealed / 100);
@@ -103,35 +98,22 @@ function animateAfterFirstName() {
 }
 
 function parallaxTitle() {
-    const START_PERCENT_SCROLL = 3.0;
-    const END_PERCENT_SCROLL = 4.2;
+    percentRevealed = getAnimationPercent(3.0, 4.2);
 
-    let percentRevealed = (((1 - 0) / ((END_PERCENT_SCROLL - START_PERCENT_SCROLL) * window.innerHeight)) 
-    * (window.scrollY - START_PERCENT_SCROLL * window.innerHeight));
-
-    percentRevealed = Math.max(0, Math.min(percentRevealed, 1));
-
-    // percentRevealed = 1 - (1 - percentRevealed)**2; // ease
-
-    percentRevealed *= 100;
-
-    const THRESHOLD = window.innerHeight / 100;
-
-    const name = document.querySelector(".name");
-    const firstName = document.querySelector("h1.first-name");
-    const lastName = document.querySelector("h1.last-name");
-    const box = document.querySelector("#about-me-container");
+    // const name = document.querySelector(".name");
+    // const firstName = document.querySelector("h1.first-name");
+    // const lastName = document.querySelector("h1.last-name");
 
     if(window.scrollY > 3 * window.innerHeight) {
         // name.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
         // firstName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
         // lastName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
-        box.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+        about.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
     } else {
         // name.style.translate = `0 0`;
         // firstName.style.translate = `0 0`;
         // lastName.style.translate = `0 0`;
-        box.style.translate = `0 0`;
+        about.style.translate = `0 0`;
     }
 }
 
