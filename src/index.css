@@ -481,8 +481,8 @@ a {
     font-weight: 900;
     line-height: 75%;
     letter-spacing: 4px;
-    /* -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white; */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
     z-index: 100000;
 
     /* background-blend-mode: screen; */

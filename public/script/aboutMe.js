@@ -28,7 +28,8 @@ const lastName = document.querySelector(".bottom-name");
 const box = document.querySelector(".hero-box");
 const darken = document.querySelector(".about-me-darken");
 
-const titles = document.querySelector(".after-first-name");
+const titles = document.querySelector(".after-first-name-desktop");
+const titlesMobile = document.querySelector(".after-first-name-mobile");
 
 const about = document.querySelector("#about-me-container");
 
@@ -102,6 +103,10 @@ function animateAfterFirstName() {
     titles.style.translate = `0 ${THRESHOLD * -(100 - percentRevealed)}px`;
     titles.style.scale = (percentRevealed / 100);
     titles.style.rotate = `${Math.PI * (1 - (percentRevealed / 100))}rad`;
+
+    titlesMobile.style.translate = `0 ${THRESHOLD * -(100 - percentRevealed)}px`;
+    titlesMobile.style.scale = (percentRevealed / 100);
+    titlesMobile.style.rotate = `${Math.PI * (1 - (percentRevealed / 100))}rad`;
 
 }
 

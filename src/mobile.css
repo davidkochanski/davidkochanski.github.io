@@ -371,14 +371,14 @@
         padding: 10px 30px;
     }
 
-    .name h1 {
-        font-size: 15vw !important;
+    .name span {
+        font-size: 16vw !important;
         -webkit-text-stroke-width: 0px;
-        letter-spacing: 0;
+        /* letter-spacing: 0; */
 
         -webkit-text-fill-color: transparent;
-        -webkit-filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px 1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px -1px 0 white);;
-                filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px 1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px -1px 0 white);;
+        -webkit-filter: drop-shadow(0.5px 0.5px 0 white) drop-shadow(-0.5px 0.5px 0 white) drop-shadow(0.5px -0.5px 0 white) drop-shadow(-0.5px -0.5px 0 white);;
+                filter: drop-shadow(1x 0.5px 0 white) drop-shadow(-0.5px 0.5px 0 white) drop-shadow(0.5px -0.5px 0 white) drop-shadow(-0.5px -0.5px 0 white);;
     }
 
     /* .first-name {
@@ -398,7 +398,7 @@
         font-size: 16px;
         line-height: 16px;
         padding: 5px;
-        text-align: center
+        text-align: left;
     }
 
     .after-first-name > h4:nth-of-type(2) {
