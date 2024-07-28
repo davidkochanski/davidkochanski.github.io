@@ -22,8 +22,8 @@ aboutMeBackground.style.zIndex = 100000;
 
 updateAboutMe();
 
-const firstName = document.querySelector("h1.first-name");
-const lastName = document.querySelector("h1.last-name");
+const firstName = document.querySelector(".top-name");
+const lastName = document.querySelector(".bottom-name");
 
 const box = document.querySelector(".hero-box");
 const darken = document.querySelector(".about-me-darken");
@@ -32,14 +32,22 @@ const titles = document.querySelector(".after-first-name");
 
 const about = document.querySelector("#about-me-container");
 
-
-
-document.addEventListener("scroll", () => {
-    updateAboutMe();
+const animateHero = () => {
     animateName();
     animateAfterFirstName();
     darkenEffect();
     parallaxTitle();
+}
+
+const animate = () => {
+    animateHero();
+    requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+
+
+document.addEventListener("scroll", () => {
+    updateAboutMe();
 })
 
 
@@ -103,6 +111,8 @@ function parallaxTitle() {
     // const name = document.querySelector(".name");
     // const firstName = document.querySelector("h1.first-name");
     // const lastName = document.querySelector("h1.last-name");
+
+    const THRESHOLD = window.innerHeight / 100;
 
     if(window.scrollY > 3 * window.innerHeight) {
         // name.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;

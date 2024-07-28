@@ -113,7 +113,8 @@ function BallSim() {
         );
         camera.position.set(0, 800, 0);
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true});
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, precision: "lowp",
+            powerPreference: "low-power" });
         renderer.setSize(width, height);
         renderer.shadowMap.enabled = true;
         // renderer.setClearColor( 0x000000, 0 ); // make transparent
@@ -408,10 +409,12 @@ function BallSim() {
     };
 
     const createBallMesh = (obj) => {
-        const METALNESS = 0.4;
-        const ROUGHNESS = 0.6;
+        // const METALNESS = 0.4;
+        // const ROUGHNESS = 0.6;
 
-        const geometry = new THREE.SphereGeometry(obj.size / 2, 256, 256);
+        const ballMeshResolution = window.innerWidth < 768 ? 64 : 256;
+
+        const geometry = new THREE.SphereGeometry(obj.size / 2, ballMeshResolution, ballMeshResolution);
         const tempMaterial = new THREE.MeshToonMaterial({ color: 0x000000 });
     
         const ball = new THREE.Mesh(geometry, tempMaterial);

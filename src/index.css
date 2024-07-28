@@ -181,7 +181,7 @@ main {
 }
 
 h1 {
-    color: white;
+    /* color: white; */
     font-family: "Source Code Pro", monospace;
     margin-right: auto;
     margin-left: 0.1rem;
@@ -295,7 +295,7 @@ a {
     background-position: right top; */
 
     font-size: 48px;
-    font-family: Consolas, monospace;
+    font-family: "Consolas", "Source Code Pro", monospace;
     color: #222;
     text-align: justify;
 }
@@ -342,7 +342,11 @@ a {
     text-shadow: 1px 1px 0 black;
     font-weight: 900;
 
-    font-family: "Consolas", sans-serif;
+    font-family: "Consolas", "Source Code Pro", sans-serif;
+}
+
+.first-name {
+    width: 100vw;
 }
 
 .after-first-name {
@@ -438,40 +442,67 @@ a {
 }
 
 .name {
-    display: grid;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
 
     text-align: left;
     padding: 10px;
-    transform-origin: 39% 25%;
-    /* background: linear-gradient(180deg, var(--primary), var(--secondary)); */
+
+    /* background: linear-gradient(90deg, var(--gradient)); */
+    color: transparent !important;
 }
 
-.name > h1 {
+.top-name {
+    display: inline-flex;
+    width: fit-content;
+}
+
+.first-name {
+    /* 9 / 5 since DAVID has 5 letters and KOCHANSKI has 9 letters, monospace font btw */
+    background: linear-gradient(90deg, rgba(242, 127, 12, 1) calc(16% * 9 / 5), rgba(247, 173, 25, 1) calc(30% * 9 / 5), rgba(245, 231, 190, 1) calc(42% * 9 / 5), rgba(167, 248, 225, 1) calc(53% * 9 / 5));
+    background-clip: text;
+    -webkit-background-clip: text;
+    
+}
+
+.last-name {
+    background: linear-gradient(90deg, rgba(242, 127, 12, 1) 16%, rgba(247, 173, 25, 1) 30%, rgba(245, 231, 190, 1) 42%, rgba(167, 248, 225, 1) 53%, rgba(33, 223, 255, 1));
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.name span {
+    background-clip: text;
+    -webkit-background-clip: text;
     font-size: 160px;
-    font-family: "Consolas", monospace;
+    font-family: "Consolas", "Source Code Pro", monospace;
     font-weight: 900;
     line-height: 75%;
     letter-spacing: 4px;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white; */
     z-index: 100000;
-    position: relative;
 
-    background-blend-mode: screen;
-    color: transparent;
-
-    background: linear-gradient(90deg, var(--gradient));
-    background-clip: text;
-    -webkit-background-clip: text;
+    /* background-blend-mode: screen; */
+    /* color: transparent; */
     width: fit-content;
 }
 
 .after-first-name {
     color: white;
     text-shadow: 4px 4px 0 black;
+    align-self: center;
+}
+
+
+.after-first-name-mobile {
+    display: none !important;
+}
+
+.after-first-name-desktop {
+    display: flex !important;
 }
 
 
@@ -639,7 +670,7 @@ section#imgs h3 > a:hover {
 }
 
 .title {
-    font-family: "Consolas", monospace;
+    font-family: "Consolas", "Source Code Pro", monospace;
     margin: 0 auto;
     width: 100%;
     position: relative;
