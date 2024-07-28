@@ -5,7 +5,7 @@
     position: relative;
     display: grid;
     place-content: center;
-    /* background-color: #318242; */
+    background-color: #00300b;
 }
 
 /* #physics-wrapper::after {

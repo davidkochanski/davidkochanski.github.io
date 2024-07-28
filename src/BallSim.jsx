@@ -64,8 +64,8 @@ const clamp = (low, x, high) => {
 
 
 function BallSim() {
-    // let MARGIN_X = window.innerWidth < 768 ? 30 : 75;
-    let MARGIN_X = 16;
+    let MARGIN_X = window.innerWidth < 768 ? 32 : 16;
+    // let MARGIN_X = 16;
     const MARGIN_Y = 0;
 
     const MAX_SCENE_WIDTH = 4000;

@@ -49,6 +49,7 @@ requestAnimationFrame(animate);
 
 document.addEventListener("scroll", () => {
     updateAboutMe();
+    animateHero();
 })
 
 
