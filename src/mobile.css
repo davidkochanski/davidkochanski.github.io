@@ -373,6 +373,7 @@
 
     .name span {
         font-size: 16vw !important;
+        line-height: 14vw;
         -webkit-text-stroke-width: 0px;
         letter-spacing: 0;
 
@@ -381,12 +382,14 @@
                 filter: drop-shadow(1x 0.5px 0 white) drop-shadow(-0.5px 0.5px 0 white) drop-shadow(0.5px -0.5px 0 white) drop-shadow(-0.5px -0.5px 0 white);;
     }
 
-    /* .first-name {
-        align-self: flex-end;
-    } */
+    .first-name {
+        align-self: center;
+    }
 
     .after-first-name {
         padding: 0;
+        padding-bottom: 4px;
+        
     }
     
     .after-first-name > h4 {
@@ -394,9 +397,10 @@
         -webkit-text-stroke-color: unset !important;
         text-shadow: 1px 1px black;
         letter-spacing: normal;
+
         
         font-size: 3.2vw;
-        line-height: 16px;
+        line-height: 10px;
         padding: 5px;
         text-align: left;
     }
@@ -407,14 +411,15 @@
 
     .hero-box {
         font-size: 16px;
+        margin-top: -20px;
     }
 
 
-    .after-first-name-mobile {
+    /* .after-first-name-mobile {
         display: block !important;
-    }
+    } */
 
-    .after-first-name-desktop {
+    /* .after-first-name-desktop {
         display: none !important;
-    }
+    } */
 }

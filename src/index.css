@@ -355,8 +355,8 @@ a {
 
     /* width: 100px; */
     line-height: 10px;
-    vertical-align: 70px;
     margin-left: 4px;
+    padding-bottom: 20px;
 }
 
 .after-first-name > h4 {
@@ -479,10 +479,11 @@ a {
     font-size: 160px;
     font-family: "Consolas", "Source Code Pro", monospace;
     font-weight: 900;
-    line-height: 75%;
     letter-spacing: 4px;
+    line-height: 130px;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: white;
+    /* outline: 2px solid white; */
     z-index: 100000;
 
     /* background-blend-mode: screen; */
