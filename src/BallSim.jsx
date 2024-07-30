@@ -117,6 +117,14 @@ function BallSim() {
             powerPreference: "low-power" });
         renderer.setSize(width, height);
         renderer.shadowMap.enabled = true;
+
+        THREE.ColorManagement.legacyMode = false
+
+        renderer.outputEncoding = THREE.sRGBEncoding
+        renderer.toneMapping = THREE.LinearToneMapping
+
+
+
         // renderer.setClearColor( 0x000000, 0 ); // make transparent
 
         mountRef.current.appendChild(renderer.domElement);
@@ -415,7 +423,8 @@ function BallSim() {
         const ballMeshResolution = window.innerWidth < 768 ? 64 : 256;
 
         const geometry = new THREE.SphereGeometry(obj.size / 2, ballMeshResolution, ballMeshResolution);
-        const tempMaterial = new THREE.MeshToonMaterial({ color: 0x000000 });
+        const tempMaterial = new THREE.MeshStandardMaterial({ color: 0x000000, toneMapped: false});
+        
     
         const ball = new THREE.Mesh(geometry, tempMaterial);
         ball.position.set(obj.posX + obj.size / 2, obj.size / 2, obj.posY + obj.size / 2);
@@ -425,11 +434,12 @@ function BallSim() {
 
         
         if(preloadedTextures[obj.type]) {
-            const material = new THREE.MeshToonMaterial({ map: preloadedTextures[obj.type] });
+            const material = new THREE.MeshStandardMaterial({ map: preloadedTextures[obj.type], toneMapped: false });
             ball.material = material;
         } else {
             loader.load(`src/assets/${obj.type}`, (texture) => {
-                const material = new THREE.MeshToonMaterial({ map: texture });
+                texture.colorSpace = THREE.SRGBColorSpace
+                const material = new THREE.MeshStandardMaterial({ map: texture });
                 ball.material = material;
             });
         }

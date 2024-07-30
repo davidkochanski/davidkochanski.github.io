@@ -17,9 +17,9 @@ ReactDOM.createRoot(document.getElementById('home')).render(
     <Hero />
 )
 
-// ReactDOM.createRoot(document.getElementById('timeline-react')).render(
-//     <Timeline/>
-// )
+ReactDOM.createRoot(document.getElementById('timeline-react')).render(
+    <Timeline/>
+)
 
 ReactDOM.createRoot(document.getElementById('physics-root')).render(
     <div id="physics-wrapper">
