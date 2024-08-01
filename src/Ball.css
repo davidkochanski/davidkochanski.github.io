@@ -90,3 +90,30 @@
 #ball-help {
     pointer-events: none;
 }
+
+.click-to-face-ball {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    border: none;
+    background-color: #333;
+
+    transition: background-color 0.25s ease, color 0.25s ease
+}
+
+.click-to-face-ball > i {
+    color: white;
+    font-size: 32px;
+}
+
+.click-to-face-ball:hover {
+    background-color: white;
+}
+
+.click-to-face-ball:hover > i {
+    color: #333;
+}

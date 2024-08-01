@@ -700,18 +700,15 @@ function BallSim() {
 
     return (
         <>
-            {/* <div id="" >
-                {objects.map((item, i) => {
-                    return (
-                        <div key={i} className="ball" style={{ width: `${item.size}px`, height: `${item.size}px`, translate: `${item.posX}px ${item.posY}px`, backgroundColor: `${item.color}` }}>
-                            <p>Size: {item.size}px</p>
-                            <p>Mass: {item.mass}kg</p>
-                        </div>
-                    );
-                })}
-            </div> */}
             <div onMouseMove={(e) => {applyMouseForce(e)}} onTouchMove={(e) => {applyMouseForce(e)}} onMouseOut={() => { setPrevMousePos([-1000, -1000]) }} onTouchEnd={() => { setPrevMousePos([-1000, -1000]) }} id="ball-wrapper" ref={mountRef}>
             <h4 id="ball-help">( Click to summon a new skill )</h4>
+
+            <button type="button" className="click-to-face-ball" onClick={() => {setObjects(prevObjects => {
+                return prevObjects.map((obj) => {
+                    obj.mesh.rotation.set(Math.PI / 2, 0, 0);
+                    return obj;
+                })
+            }) }}><i className="fa-regular fa-eye"></i></button>
             </div>
         </>
     );
