@@ -705,7 +705,7 @@ function BallSim() {
 
             <button type="button" className="click-to-face-ball" onClick={() => {setObjects(prevObjects => {
                 return prevObjects.map((obj) => {
-                    obj.mesh.rotation.set(Math.PI / 2, 0, 0);
+                    obj.mesh.rotation.set(-Math.PI / 2, 0, 0);
                     return obj;
                 })
             }) }}><i className="fa-regular fa-eye"></i></button>
