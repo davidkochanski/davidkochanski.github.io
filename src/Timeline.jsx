@@ -9,18 +9,8 @@ const tempData = [
     {title: "thing4", description: "Ok okdoawkdokaoakdw okawdokd okakodaw"},
     {title: "thing5", description: "I did things"},
     {title: "thing6", description: "he heheheheh eheehe ehehehehehh"}
-
-
 ]
 export default function Timeline () {
-
-
-
-
-
-
-
-
     return (
         <div className="timeline">
             <div className="nodes">
