@@ -621,11 +621,11 @@ a {
     animation: bar-grow 1s ease-out 1s forwards;
 }
 
-section#imgs {
+section#projects {
     margin: 0 auto 0;
 }
 
-section#imgs h3, section#imgs h3 > a {
+section#projects h3, section#projects h3 > a {
     font-size: 16px;
     width: 100%;
     text-align: center;
@@ -633,7 +633,7 @@ section#imgs h3, section#imgs h3 > a {
     color: #bbb;
 }
 
-section#imgs h3 > a:hover {
+section#projects h3 > a:hover {
     text-decoration: underline;
     color: #fff;
 }

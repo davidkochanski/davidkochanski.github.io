@@ -89,7 +89,7 @@
 }
 
 #ball-help {
-    margin-top: 100px;
+    translate: 0 100px;
     pointer-events: none;
     width: 100%;
     text-align: center;

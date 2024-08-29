@@ -5,16 +5,16 @@ const aboutMeBackground = document.getElementById("about-me");
 let animation;
 let buttonAnimation;
 
-const header = document.querySelector("#about-me h2");
+const header = document.querySelector("#about-me-content h2");
 // const headerText = header.innerText;
 const headerText = "Temp";
 
 // header.innerText = "";
 
-const subHeader = document.querySelector("#about-me h4");
-const bar = document.querySelector("#about-me .bar");
+const subHeader = document.querySelector("#about-me-content h4");
+const bar = document.querySelector("#about-me-content .bar");
 
-const rows = Array.from(document.querySelectorAll("#about-me .hero-content .hero-row"));
+const rows = Array.from(document.querySelectorAll("#about-me-content .hero-content .hero-row"));
 
 let isShowingAboutMe = false;
 let nextShowingAboutMe = false;

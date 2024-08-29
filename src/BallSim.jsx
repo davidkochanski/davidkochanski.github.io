@@ -134,25 +134,10 @@ function BallSim() {
 
         mountRef.current.appendChild(renderer.domElement);
 
-        const resizeCamera = () => {
-            // MARGIN_X = window.innerWidth < 768 ? 30 : 75;
 
-            const newWidth = clamp(MIN_SCENE_WIDTH, window.innerWidth - MARGIN_X, MAX_SCENE_WIDTH);
-            const newHeight = clamp(MIN_SCENE_HEIGHT, window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
 
-            setWindowSize([newWidth, newHeight]);
 
-            camera.right = newWidth;
-            camera.bottom = -newHeight;
-            camera.updateProjectionMatrix();
-
-            renderer.setSize(newWidth, newHeight);
-
-        };
-
-        window.addEventListener("resize", resizeCamera);
-
-        const groundGeometry = new THREE.PlaneGeometry(MAX_SCENE_WIDTH, MAX_SCENE_HEIGHT, 100, 100);
+        const groundGeometry = new THREE.PlaneGeometry(MAX_SCENE_WIDTH, MAX_SCENE_HEIGHT, 1, 1);
         const groundTexture = loader.load(felt);
         groundTexture.repeat = 10;
         const groundMaterial = new THREE.MeshStandardMaterial({ map:groundTexture, color: 0x318242 });
@@ -166,6 +151,25 @@ function BallSim() {
         plane.receiveShadow = true;
         plane.position.set(MAX_SCENE_WIDTH / 2, 0, MAX_SCENE_HEIGHT / 2);
         scene.add(plane);
+
+
+        const resizeCamera = () => {
+            // MARGIN_X = window.innerWidth < 768 ? 30 : 75;
+
+            const newWidth = clamp(MIN_SCENE_WIDTH, window.innerWidth - MARGIN_X, MAX_SCENE_WIDTH);
+            const newHeight = clamp(MIN_SCENE_HEIGHT, window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
+
+            setWindowSize([newWidth, newHeight]);
+
+            camera.right = newWidth;
+            camera.bottom = -newHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(newWidth, newHeight);
+        };
+
+        window.addEventListener("resize", resizeCamera);
+
 
         setObjects(prevObjects => {
             return prevObjects.map((obj, i) => {
