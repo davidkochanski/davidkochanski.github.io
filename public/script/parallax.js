@@ -39,15 +39,23 @@ function parallaxify(element) {
     const windowHeight = heroWords.offsetHeight; // Important!!!
     // const windowHeight = window.innerHeight;
 
-    if (scrollPosition >= windowHeight) {
-      element.style.position = 'absolute';
-      element.style.top = NUM_SCROLL_PAGES * windowHeight + 'px';
+
+    if (scrollPosition <= windowHeight) {
+        element.style.position = 'absolute';
+
+        element.style.marginTop = `${windowHeight - scrollPosition}px`;
     }
-    
+
+    if (scrollPosition >= windowHeight) {
+        element.style.position = 'absolute';
+        element.style.top = (NUM_SCROLL_PAGES + 1) * windowHeight + 'px';
+        element.style.marginTop = `${0}vh`;
+    }
+
     // When the user scrolls back up, make the element fixed again
-    if (scrollPosition < NUM_SCROLL_PAGES * windowHeight) {
-      element.style.position = 'fixed';
-      element.style.top = '0px';
+    if (scrollPosition < (NUM_SCROLL_PAGES + 1) * windowHeight) {
+        element.style.position = 'fixed';
+        element.style.top = '0px';
     }
 }
 
@@ -55,7 +63,7 @@ function updateMask() {
     let MIN = 0.6 * window.innerHeight;
     let MAX = 10000;
 
-    let scrollPercentage = window.scrollY / (3 * window.innerHeight);
+    let scrollPercentage = (window.scrollY - window.innerHeight) / (3 * window.innerHeight);
     let maskSize = scrollPercentage * (MAX - MIN) + MIN;
     maskSize = Math.min(Math.max(maskSize, MIN), MAX);
 

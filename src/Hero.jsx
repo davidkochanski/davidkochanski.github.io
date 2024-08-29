@@ -9,7 +9,7 @@ export default function Hero() {
 
     const WORDS_PER_ROW = 10;
     const NUM_DUPES = 4;
-    const NAV_HEIGHT = 75;
+    const NAV_HEIGHT = 0;
     const BIG_TEXT_HEIGHT = 94;
     const SMALL_TEXT_HEIGHT = 50;
 

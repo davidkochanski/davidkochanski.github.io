@@ -1,9 +1,8 @@
-const titles = Array.from(document.getElementsByClassName("title"));
+const glitchTitles = Array.from(document.getElementsByClassName("title"));
 
 let text = null;
 
-
-titles.forEach((title) => {
+glitchTitles.forEach((title) => {
 
 
     title.addEventListener("mouseover", (event) => {

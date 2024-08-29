@@ -67,6 +67,9 @@ document.addEventListener("scroll", () => {
 function getAnimationPercent(startScroll, endScroll, easingExponent=1) {
     // linear transition, rise over run slope depending on scroll points
     // transitions from 0 at start to 1 at end linearly, also shifted horizontally.
+
+    startScroll += 1
+    endScroll += 1
     let percentRevealed = (((1 - 0) / ((endScroll - startScroll) * window.innerHeight)) 
                           * (window.scrollY - startScroll * window.innerHeight));
 

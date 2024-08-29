@@ -31,7 +31,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: calc(var(--nav-height) + 4px);
+    scroll-padding-top: calc(var(--nav-height));
 }
 
 html, body {
@@ -106,6 +106,7 @@ header nav {
     align-items: center;
     justify-content: flex-end;
     margin: 0 auto;
+    pointer-events: fill;
 }
 
 header nav a {
@@ -276,19 +277,22 @@ a {
     position: relative;
 }
 
+#fixed {
+    margin-top: 100vh;
+}
+
 .hero-fixed {
     width: 100%;
     height: 100vh;
-    position: relative;
+    position: absolute;
+    top: 100vh;
     z-index: 100;
 }
-
 
 .hero {
     height: 100vh;
     width: 100%;
     position: absolute;
-    top: 0;
     z-index: 0;
     /* background: url(../img/david3.jpg) no-repeat; */
     /* background-size: cover;
@@ -684,6 +688,10 @@ section#imgs h3 > a:hover {
     text-align: left;
 }
 
+.title-thin {
+    padding: 5px;
+}
+
 .title::before {
     content: "";
     --size: 10px;
@@ -709,6 +717,9 @@ section#imgs h3 > a:hover {
     /* animation: moveGradient 7s linear infinite; */
 }
 
+.title-thin::before {
+    --size: 5px;
+}
 
 #about {
     margin-top: 0;

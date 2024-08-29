@@ -6,8 +6,13 @@ import feltNormal from './assets/felt_normal.png'
 import feltAO from './assets/felt_ao.jpg'
 
 const toMass = (size) => {
-    return 4 / 3 * Math.PI * (size / 2)**3;
+    return 4 / 3 * Math.PI * (size / 2)**3; // this is slightly not realistic
+}                                           // but it "feels" better when I change it a bit
+
+const uniformRandom = (min, max) => {
+    return Math.random() * (max - min) + min;
 }
+
 
 const possibleBalls = [
     {
@@ -69,7 +74,7 @@ function BallSim() {
     const MARGIN_Y = 0;
 
     const MAX_SCENE_WIDTH = 4000;
-    const MAX_SCENE_HEIGHT = 700;
+    const MAX_SCENE_HEIGHT = 4000; // hard limit
 
     const MIN_SCENE_WIDTH = 300;
     const MIN_SCENE_HEIGHT = 300;
@@ -113,8 +118,8 @@ function BallSim() {
         );
         camera.position.set(0, 800, 0);
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, precision: "lowp",
-            powerPreference: "low-power" });
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, precision: "lowp", powerPreference: "low-power" });
+
         renderer.setSize(width, height);
         renderer.shadowMap.enabled = true;
 
@@ -173,35 +178,17 @@ function BallSim() {
 
         });
 
-
-
-
-        // TEMP TEMP TEMP TEMP!!!!!!!
-        // const sphereGeometry = new THREE.SphereGeometry(100, 32, 32);
-        // const sphereMaterial = new THREE.MeshToonMaterial({ color: 0x0077ff, metalness: 0.3 });
-        // const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        // sphere.position.set(0, 100, 0);
-        // sphere.castShadow = true;
-        // scene.add(sphere);
-
-        // const g = new THREE.SphereGeometry(0.1, 32, 32);
-        // const m = new THREE.MeshToonMaterial({ color: 0x0077ff, metalness: 0.3 });
-        // const b = new THREE.Mesh(g, m);
-
-        // b.add(new THREE.AxesHelper(1000).setColors(0xff0000, 0x00ff00, 0x0000ff));
-        // scene.add(b);
-
         const ambientLight = new THREE.AmbientLight(0x888888);
         scene.add(ambientLight);
 
-        const shadowDistance = 3000;
+        const shadowDistance = 2000;
         const shadowFactor = 0.25;
 
         const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
         directionalLight.position.set(width * shadowFactor, 1000, -height * shadowFactor);
         directionalLight.castShadow = true;
-        directionalLight.shadow.mapSize.width = 4096 * 2;
-        directionalLight.shadow.mapSize.height = 4096 * 2;
+        directionalLight.shadow.mapSize.width = 3000;
+        directionalLight.shadow.mapSize.height = 3000;
         directionalLight.shadow.camera.near = 0.5;
         directionalLight.shadow.camera.far = shadowDistance;
         directionalLight.shadow.camera.left = -shadowDistance;
@@ -245,13 +232,21 @@ function BallSim() {
         setObjects((prevObjects) => {
             if (prevObjects.length > 0) return prevObjects; // only do it once
 
+            // the balls will be centered vertically and about 500 px away from each other horizontally
+            // then they'll have an initial velocity that will make them slam into eachother
+            // to catch the user's attention >:)
+            // also they won't be perfectly alligned vertically to show a more complex collision
+
             const seed1 = Math.floor(Math.random() * possibleBalls.length);
             const prototype1 = possibleBalls[seed1];
             prototype1.mass = toMass(prototype1.size);
 
+            const BIAS = Math.floor(uniformRandom(-25, 25));
+            const INITIAL_DISTANCE = Math.floor(uniformRandom(200, 300))
+
             const obj1 = {
-                posX: prototype1.size + 300,
-                posY: 120,
+                posX: ((width - prototype1.size) / 2) - INITIAL_DISTANCE,
+                posY: ((height - prototype1.size) / 2) - BIAS,
                 veloX: 0,
                 veloY: 0,
                 id: 0,
@@ -267,8 +262,8 @@ function BallSim() {
             prototype2.mass = toMass(prototype2.size);
 
             const obj2 = {
-                posX: width - prototype2.size - 300,
-                posY: 110,
+                posX: ((width - prototype2.size) / 2) + INITIAL_DISTANCE,
+                posY: ((height - prototype2.size) / 2) + BIAS,
                 veloX: 0,
                 veloY: 0,
                 id: 1,
@@ -423,7 +418,7 @@ function BallSim() {
         const ballMeshResolution = window.innerWidth < 768 ? 64 : 256;
 
         const geometry = new THREE.SphereGeometry(obj.size / 2, ballMeshResolution, ballMeshResolution);
-        const tempMaterial = new THREE.MeshStandardMaterial({ color: 0x000000, toneMapped: false});
+        const tempMaterial = new THREE.MeshToonMaterial({ color: 0x000000, toneMapped: false});
         
     
         const ball = new THREE.Mesh(geometry, tempMaterial);
