@@ -96,6 +96,8 @@ header {
     backdrop-filter: blur(5px);
     height: var(--nav-height);
     z-index: 621621621;
+    pointer-events: none;
+
 }
 
 header nav {
@@ -106,7 +108,6 @@ header nav {
     align-items: center;
     justify-content: flex-end;
     margin: 0 auto;
-    pointer-events: fill;
 }
 
 header nav a {
@@ -114,6 +115,7 @@ header nav a {
     display: flex;
     align-items: center;
     margin-right: auto;
+    pointer-events: all;
 }
 
 header nav img {
