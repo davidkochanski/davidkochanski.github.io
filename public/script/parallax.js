@@ -2,35 +2,25 @@ const aboutMe = document.getElementById("about-me-content");
 const heroWords = document.getElementById("home");
 
 const NUM_SCROLL_PAGES = 3.0;
+const TITLE_PADDING_PX = 10; // this is for the title-thin thing in index.html
 
 const above = document.getElementById("physics-wrapper");
-
-
 const fixedWrapper = document.getElementById("fixed");
-
 const heroPadding = document.querySelector(".hero-padding-top");
-heroPadding.style.paddingTop = `${(NUM_SCROLL_PAGES) * 100}vh`
 
 
-updateMask();
-parallaxify(fixedWrapper);
-
-
-
-
-document.addEventListener("scroll", () => {
+const update = () => {
+    heroPadding.style.paddingTop = `calc(${(NUM_SCROLL_PAGES) * 100}vh - ${TITLE_PADDING_PX}px)`
     updateMask();
     parallaxify(fixedWrapper);
+}
 
-    heroPadding.style.paddingTop = `${(NUM_SCROLL_PAGES) * 100}vh`
-})
+document.addEventListener("scroll", update);
+document.addEventListener("resize", update);
 
-document.addEventListener("resize", () => {
-    updateMask();
-    parallaxify(fixedWrapper);
+update();
 
-    heroPadding.style.paddingTop = `${(NUM_SCROLL_PAGES) * 100}vh`
-})
+
 
 function parallaxify(element) {
     const scrollPosition = window.scrollY;
