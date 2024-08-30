@@ -30,10 +30,12 @@ export default function Hero() {
 
         handleResize();
         window.addEventListener("resize", handleResize);
+        window.addEventListener("scroll", handleResize);
 
         // Clean up
         return () => {
             window.removeEventListener("resize", handleResize);
+            window.removeEventListener("scroll", handleResize);
         };
     }, []);
 

@@ -139,7 +139,7 @@ function BallSim() {
 
         const groundGeometry = new THREE.PlaneGeometry(MAX_SCENE_WIDTH, MAX_SCENE_HEIGHT, 1, 1);
         const groundTexture = loader.load(felt);
-        groundTexture.repeat = 10;
+        // groundTexture.repeat = 10;
         const groundMaterial = new THREE.MeshStandardMaterial({ map:groundTexture, color: 0x318242 });
         // { map:groundTexture, transparent: true, opacity: 0.001, color: 0x318242 }
 
@@ -169,6 +169,7 @@ function BallSim() {
         };
 
         window.addEventListener("resize", resizeCamera);
+        resizeCamera();
 
 
         setObjects(prevObjects => {
@@ -217,16 +218,15 @@ function BallSim() {
 
         const animate = (currentTime) => {
             requestAnimationFrame(animate);
-            const deltaTime = currentTime - lastTime;
-            lastTime = currentTime;
-            accumulatedTime += deltaTime;
+            // const deltaTime = currentTime - lastTime;
+            // lastTime = currentTime;
+            // accumulatedTime += deltaTime;
 
             // while (accumulatedTime >= fixedTimeStep) {
                 // updatePosition();
             //     accumulatedTime -= fixedTimeStep;
             // }
             renderer.render(scene, camera);
-            
         };
 
         animate(lastTime);

@@ -3,11 +3,13 @@ const heroWords = document.getElementById("home");
 
 const NUM_SCROLL_PAGES = 3.0;
 
+const above = document.getElementById("physics-wrapper");
+
 
 const fixedWrapper = document.getElementById("fixed");
 
 const heroPadding = document.querySelector(".hero-padding-top");
-heroPadding.style.paddingTop = `${NUM_SCROLL_PAGES * 100}vh`
+heroPadding.style.paddingTop = `${(NUM_SCROLL_PAGES) * 100}vh`
 
 
 updateMask();
@@ -15,29 +17,25 @@ parallaxify(fixedWrapper);
 
 
 
+
 document.addEventListener("scroll", () => {
     updateMask();
+    parallaxify(fixedWrapper);
 
-    heroPadding.style.paddingTop = `${NUM_SCROLL_PAGES - 1 * 100}vh`
+    heroPadding.style.paddingTop = `${(NUM_SCROLL_PAGES) * 100}vh`
 })
 
 document.addEventListener("resize", () => {
-    heroPadding.style.paddingTop = `${NUM_SCROLL_PAGES - 1 * 100}vh`
-})
-
-
-document.addEventListener("scroll", () => {
-    // parallaxify(aboutMe);
-    // parallaxify(heroWords);
+    updateMask();
     parallaxify(fixedWrapper);
 
-    // console.log(aboutMe.offsetHeight);
+    heroPadding.style.paddingTop = `${(NUM_SCROLL_PAGES) * 100}vh`
 })
 
 function parallaxify(element) {
     const scrollPosition = window.scrollY;
-    const windowHeight = heroWords.offsetHeight; // Important!!!
-    // const windowHeight = window.innerHeight;
+    // const windowHeight = heroWords.offsetHeight; // Important!!!
+    const windowHeight = window.innerHeight;
 
 
     if (scrollPosition <= windowHeight) {
@@ -49,13 +47,13 @@ function parallaxify(element) {
     if (scrollPosition >= windowHeight) {
         element.style.position = 'absolute';
         element.style.top = (NUM_SCROLL_PAGES + 1) * windowHeight + 'px';
-        element.style.marginTop = `${0}vh`;
+        element.style.marginTop = 0;
     }
 
     // When the user scrolls back up, make the element fixed again
     if (scrollPosition < (NUM_SCROLL_PAGES + 1) * windowHeight) {
         element.style.position = 'fixed';
-        element.style.top = '0px';
+        element.style.top = '0';
     }
 }
 
