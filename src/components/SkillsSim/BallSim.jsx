@@ -5,6 +5,8 @@ import felt from './assets/felt.jpg';
 import feltNormal from './assets/felt_normal.png'
 import feltAO from './assets/felt_ao.jpg'
 
+const ASSETS_PATH = 'src/components/SkillsSim/assets/'
+
 const toMass = (size) => {
     return 4 / 3 * Math.PI * (size / 2)**3; // this is slightly not realistic
 }                                           // but it "feels" better when I change it a bit
@@ -94,7 +96,7 @@ function BallSim() {
         const loadedTextures = {};
 
         texturesToLoad.forEach(type => {
-            loadedTextures[type] = loader.load(`src/assets/${type}`);
+            loadedTextures[type] = loader.load(`${ASSETS_PATH}${type}`);
         });
 
         setPreloadedTextures(loadedTextures);
@@ -436,7 +438,7 @@ function BallSim() {
             const material = new THREE.MeshStandardMaterial({ map: preloadedTextures[obj.type], toneMapped: false });
             ball.material = material;
         } else {
-            loader.load(`src/assets/${obj.type}`, (texture) => {
+            loader.load(`${ASSETS_PATH}${obj.type}`, (texture) => {
                 texture.colorSpace = THREE.SRGBColorSpace
                 const material = new THREE.MeshStandardMaterial({ map: texture });
                 ball.material = material;

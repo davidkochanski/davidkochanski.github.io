@@ -1,4 +1,4 @@
-import "./hero.css"
+import "./intro.css"
 import { useRef } from "react";
 
 export default function Token({ children, text, colour, link }) {

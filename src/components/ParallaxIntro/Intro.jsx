@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./hero.css";
-import Token from "./HeroToken";
+import "./intro.css";
+import Token from "./IntroToken";
 
 export default function Hero() {
     const [rows, setRows] = useState([]);
