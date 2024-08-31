@@ -4,7 +4,7 @@
     position: relative;
     display: grid;
     place-content: center;
-    background-color: #00300b;
+    user-select: none;
 }
 
 
@@ -19,18 +19,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.751);
+    background-color: #00300b;
+
     /* border-radius: 32px; */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.3px);
     -webkit-backdrop-filter: blur(7.3px);
     /* border: 2px solid rgba(255, 255, 255, 0.3); */
-}
-
-#physics-root canvas {
-    /* border-radius: 12px; */
-    /* border: 2px solid rgba(255, 255, 255, 0.3); */
-    height: 100%;
 }
 
 #ball-wrapper > h4 {

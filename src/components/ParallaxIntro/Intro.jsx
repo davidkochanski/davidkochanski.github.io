@@ -14,7 +14,7 @@ export default function Hero() {
     const SMALL_TEXT_HEIGHT = 50;
 
     function calcRowHeight() {
-        return window.innerWidth >= 768 ? BIG_TEXT_HEIGHT : SMALL_TEXT_HEIGHT;
+        return document.documentElement.clientWidth  >= 768 ? BIG_TEXT_HEIGHT : SMALL_TEXT_HEIGHT;
     }
 
     function calcNumRows() {

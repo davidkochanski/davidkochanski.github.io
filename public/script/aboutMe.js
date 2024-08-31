@@ -84,7 +84,7 @@ function getAnimationPercent(startScroll, endScroll, easingExponent=1) {
 function animateName() {
     percentRevealed = getAnimationPercent(0, 1.2, 2)
 
-    const THRESHOLD = window.innerWidth / 100;
+    const THRESHOLD = document.documentElement.clientWidth  / 100;
 
     firstName.style.translate = `${THRESHOLD * (100 - percentRevealed)}px 0`;
     lastName.style.translate = `${THRESHOLD * -(100 - percentRevealed)}px 0`;

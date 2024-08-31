@@ -71,7 +71,7 @@ const clamp = (low, x, high) => {
 
 
 function BallSim() {
-    let MARGIN_X = window.innerWidth < 768 ? 32 : 16;
+    let MARGIN_X = document.documentElement.clientWidth < 768 ? 32 : 16;
     // let MARGIN_X = 16;
     const MARGIN_Y = 0;
 
@@ -102,13 +102,13 @@ function BallSim() {
         setPreloadedTextures(loadedTextures);
         
         // Resize balls
-        if(window.innerWidth < 768) {
+        if(document.documentElement.clientWidth  < 768) {
             possibleBalls.map((ball) => ball.size *= 0.75)
         }
         // const root = document.getElementById("physics-root");
 
-        const width = clamp(MIN_SCENE_WIDTH, window.innerWidth - MARGIN_X, MAX_SCENE_WIDTH);
-        const height = clamp(MIN_SCENE_HEIGHT, window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
+        const width = clamp(MIN_SCENE_WIDTH, document.documentElement.clientWidth - MARGIN_X, MAX_SCENE_WIDTH);
+        const height = clamp(MIN_SCENE_HEIGHT, document.documentElement.clientHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
 
         setWindowSize([width, height]);
 
@@ -158,8 +158,8 @@ function BallSim() {
         const resizeCamera = () => {
             // MARGIN_X = window.innerWidth < 768 ? 30 : 75;
 
-            const newWidth = clamp(MIN_SCENE_WIDTH, window.innerWidth - MARGIN_X, MAX_SCENE_WIDTH);
-            const newHeight = clamp(MIN_SCENE_HEIGHT, window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
+            const newWidth = clamp(MIN_SCENE_WIDTH, document.documentElement.clientWidth  - MARGIN_X, MAX_SCENE_WIDTH);
+            const newHeight = clamp(MIN_SCENE_HEIGHT, document.documentElement.clientHeight  - MARGIN_Y, MAX_SCENE_HEIGHT);
 
             setWindowSize([newWidth, newHeight]);
 
@@ -421,7 +421,7 @@ function BallSim() {
         // const METALNESS = 0.4;
         // const ROUGHNESS = 0.6;
 
-        const ballMeshResolution = window.innerWidth < 768 ? 64 : 256;
+        const ballMeshResolution = document.documentElement.clientWidth  < 768 ? 64 : 256;
 
         const geometry = new THREE.SphereGeometry(obj.size / 2, ballMeshResolution, ballMeshResolution);
         const tempMaterial = new THREE.MeshToonMaterial({ color: 0x000000, toneMapped: false});
@@ -449,7 +449,7 @@ function BallSim() {
     };
 
     const [prevMousePos, setPrevMousePos] = useState([-1000, -1000]);
-    const [windowSize, setWindowSize] = useState([window.innerWidth, window.innerHeight]);
+    const [windowSize, setWindowSize] = useState([document.documentElement.clientWidth , document.documentElement.clientHeight]);
 
 
     const WALL_ABSORPTION_COEFF = 0.5;
