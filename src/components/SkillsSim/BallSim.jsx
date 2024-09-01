@@ -103,7 +103,7 @@ function BallSim() {
         
         // Resize balls
         if(document.documentElement.clientWidth  < 768) {
-            possibleBalls.map((ball) => ball.size *= 0.75)
+            possibleBalls.map((ball) => ball.size *= 0.66)
         }
         // const root = document.getElementById("physics-root");
 
