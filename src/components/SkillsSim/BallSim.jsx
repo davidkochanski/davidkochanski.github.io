@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import * as THREE from 'three';
-import felt from './assets/felt.jpg';
-import feltNormal from './assets/felt_normal.png'
-import feltAO from './assets/felt_ao.jpg'
-const ASSETS_PATH = 'src/components/SkillsSim/assets/'
+
+const ASSETS_PATH = './assets/'
 
 import { clamp, toMass, uniformRandom }  from './skillsUtil';
 
@@ -102,13 +100,13 @@ function BallSim() {
         mountRef.current.appendChild(renderer.domElement);
 
         const groundGeometry = new THREE.PlaneGeometry(MAX_SCENE_WIDTH, MAX_SCENE_HEIGHT, 1, 1);
-        const groundTexture = loader.load(felt);
+        const groundTexture = loader.load(`${ASSETS_PATH}/felt.jpg`);
         // groundTexture.repeat = 10;
         const groundMaterial = new THREE.MeshStandardMaterial({ map:groundTexture, color: 0x318242 });
         // { map:groundTexture, transparent: true, opacity: 0.001, color: 0x318242 }
 
-        groundMaterial.aoMap = loader.load(feltAO);
-        groundMaterial.normalMap = loader.load(feltNormal);
+        groundMaterial.aoMap = loader.load(`${ASSETS_PATH}/felt_ao.jpg`);
+        groundMaterial.normalMap = loader.load(`${ASSETS_PATH}/felt_normal.png`);
 
         const plane = new THREE.Mesh(groundGeometry, groundMaterial);
         plane.rotation.x = -Math.PI / 2;
