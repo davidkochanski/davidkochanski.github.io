@@ -1,7 +1,7 @@
 const aboutMeContainer = document.getElementById("about-me-container");
 aboutMeContainer.style.opacity = 0;
 const heroButton = document.getElementById("hero-button");
-const aboutMeBackground = document.getElementById("about-me");
+const aboutMeBackground = document.getElementById("about-me-background");
 let animation;
 let buttonAnimation;
 
