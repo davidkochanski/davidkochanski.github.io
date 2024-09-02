@@ -240,17 +240,18 @@
     }
 
 
-    .hero {
-        height: 100vh;
+    /* .hero {
+        height: 100%;
     }
 
     .hero-wrapper {
-        height: 100vh;
-    }
+        height: 100%;
+    } */
+
 
     .hero-content {
         margin: 0 auto;
-        padding: 0 0.5rem;
+        /* padding: 0 0.5rem; */
     }
 
     .hero h2 {
@@ -273,6 +274,12 @@
         margin-top: 20px;
     }
 
+    .title {
+        /* outline: 1px solid green; */
+        margin: 0;
+        padding: 0;
+    }
+    
     /* .tags {
         gap: 0.15rem;
     }

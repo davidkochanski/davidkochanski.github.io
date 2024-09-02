@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import felt from './assets/felt.jpg';
 import feltNormal from './assets/felt_normal.png'
 import feltAO from './assets/felt_ao.jpg'
+import Vector from './Vector';
 
 const ASSETS_PATH = 'src/components/SkillsSim/assets/'
 
@@ -108,7 +109,7 @@ function BallSim() {
         // const root = document.getElementById("physics-root");
 
         const width = clamp(MIN_SCENE_WIDTH, document.documentElement.clientWidth - MARGIN_X, MAX_SCENE_WIDTH);
-        const height = clamp(MIN_SCENE_HEIGHT, document.documentElement.clientHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
+        const height = clamp(MIN_SCENE_HEIGHT, window.innerHeight - MARGIN_Y, MAX_SCENE_HEIGHT);
 
         setWindowSize([width, height]);
 
@@ -586,38 +587,6 @@ function BallSim() {
             return updatedObjects;
         })
     };
-
-    class Vector {
-        constructor(x, y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        add(v) {
-            return new Vector(this.x + v.x, this.y + v.y);
-        }
-
-        subtract(v) {
-            return new Vector(this.x - v.x, this.y - v.y);
-        }
-
-        getMagnitude() {
-            return (this.x ** 2 + this.y ** 2) ** 0.5;
-        }
-
-        static dot(v, u) {
-            return (v.x * u.x + v.y * u.y);
-        }
-
-        scaleByConstant(c) {
-            return new Vector(this.x * c, this.y * c)
-        }
-
-        normalize() {
-            const mag = this.getMagnitude();
-            return new Vector(this.x / mag, this.y / mag);
-        }
-    }
     
     const checkForAndApplyCollisionForce = () => {
         setObjects(prevObjects => {
