@@ -2,6 +2,8 @@ const blob = document.getElementById("hero-blob");
 
 // updateScrollBlob();
 
+
+
 document.documentElement.addEventListener("mousemove", updateBlob);
 
 // document.addEventListener("scroll", updateScrollBlob)

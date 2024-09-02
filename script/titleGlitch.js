@@ -1,15 +1,14 @@
-const titles = Array.from(document.getElementsByClassName("title"));
+const glitchTitles = Array.from(document.getElementsByClassName("title"));
 
 let text = null;
 
-
-titles.forEach((title) => {
+glitchTitles.forEach((title) => {
 
 
     title.addEventListener("mouseover", (event) => {
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const letters = "abcdefghijklmnopqrstuvwxyz";
         let interval = null;
-        let iteration = 0;
+        let iteration = 2; // start at 2nd letter because it starts with "> "
 
         // Dont start a new animation if one is already running
         if (text === null) {
