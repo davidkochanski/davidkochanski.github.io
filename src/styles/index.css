@@ -311,9 +311,9 @@ a {
     }
 }
 
-/* .hero-padding-bottom {
-    height: 100vh;
-} */
+.hero-padding-bottom {
+    height: 100dvh;
+}
 
 .hero-wrapper {
     height: 100vh;
