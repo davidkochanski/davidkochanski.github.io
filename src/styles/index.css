@@ -118,6 +118,10 @@ header nav a {
     pointer-events: all;
 }
 
+header nav i, header nav input {
+    pointer-events: all;
+}
+
 header nav img {
     width: 3.5rem;
     display: inline-block;
