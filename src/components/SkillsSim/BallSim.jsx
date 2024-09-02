@@ -4,72 +4,14 @@ import * as THREE from 'three';
 import felt from './assets/felt.jpg';
 import feltNormal from './assets/felt_normal.png'
 import feltAO from './assets/felt_ao.jpg'
-import Vector from './Vector';
-
 const ASSETS_PATH = 'src/components/SkillsSim/assets/'
 
-const toMass = (size) => {
-    return 4 / 3 * Math.PI * (size / 2)**3; // this is slightly not realistic
-}                                           // but it "feels" better when I change it a bit
+import { clamp, toMass, uniformRandom }  from './skillsUtil';
 
-const uniformRandom = (min, max) => {
-    return Math.random() * (max - min) + min;
-}
+import Vector from './Vector';
 
-
-const possibleBalls = [
-    {
-        type: "javascript.png",
-        size: 150,
-    },
-    {
-        type: "typescript.png",
-        size: 150,
-    },
-    {
-        type: "react.png",
-        size: 100,
-    },
-    {
-        type: "html.png",
-        size: 175,
-    },
-    {
-        type: "css.png",
-        size: 175,
-    },
-    {
-        type: "python.png",
-        size: 150,
-    },
-    {
-        type: "git.png",
-        size: 200,
-    },
-    {
-        type: "java.png",
-        size: 100,
-    },
-    {
-        type: "c.png",
-        size: 100,
-    },
-    {
-        type: "jquery.png",
-        size: 75,
-    },
-    {
-        type: "nodejs.png",
-        size: 75,
-    },
-]
-
-const allBalls = structuredClone(possibleBalls);
-
-const clamp = (low, x, high) => {
-    return Math.max(low, Math.min(x, high))
-}
-
+import possibleSkills from './possibleSkills';
+const allSkills = structuredClone(possibleSkills);
 
 function BallSim() {
     let MARGIN_X = document.documentElement.clientWidth < 768 ? 32 : 16;
@@ -81,7 +23,7 @@ function BallSim() {
 
     const MIN_SCENE_WIDTH = 300;
     const MIN_SCENE_HEIGHT = 300;
-    const MAX_BALLS = possibleBalls.length;
+    const MAX_BALLS = possibleSkills.length;
     // const MAX_BALLS = 20000;
 
     const [objects, setObjects] = useState([]);
@@ -91,9 +33,34 @@ function BallSim() {
     const mountRef = useRef(null);
     const loader = new THREE.TextureLoader();
 
+    const createBallMesh = (obj) => {
+        const ballMeshResolution = document.documentElement.clientWidth < 768 ? 64 : 256;
+    
+        const geometry = new THREE.SphereGeometry(obj.size / 2, ballMeshResolution, ballMeshResolution);
+        const tempMaterial = new THREE.MeshToonMaterial({ color: 0x000000, toneMapped: false});
+    
+        const ball = new THREE.Mesh(geometry, tempMaterial);
+        ball.position.set(obj.posX + obj.size / 2, obj.size / 2, obj.posY + obj.size / 2);
+        ball.castShadow = true;
+        ball.rotation.set(Math.PI / 2,0, Math.PI);
+    
+        if(preloadedTextures[obj.type]) {
+            const material = new THREE.MeshStandardMaterial({ map: preloadedTextures[obj.type], toneMapped: false });
+            ball.material = material;
+        } else {
+            loader.load(`${ASSETS_PATH}${obj.type}`, (texture) => {
+                texture.colorSpace = THREE.SRGBColorSpace
+                const material = new THREE.MeshStandardMaterial({ map: texture });
+                ball.material = material;
+            });
+        }
+    
+        return ball;
+    };
+
     useEffect(() => {
         // Preload textures
-        const texturesToLoad = possibleBalls.map(ball => ball.type);
+        const texturesToLoad = possibleSkills.map(ball => ball.type);
         const loadedTextures = {};
 
         texturesToLoad.forEach(type => {
@@ -104,7 +71,7 @@ function BallSim() {
         
         // Resize balls
         if(document.documentElement.clientWidth  < 768) {
-            possibleBalls.map((ball) => ball.size *= 0.66)
+            possibleSkills.map((ball) => ball.size *= 0.66)
         }
         // const root = document.getElementById("physics-root");
 
@@ -131,14 +98,8 @@ function BallSim() {
         renderer.outputEncoding = THREE.sRGBEncoding
         renderer.toneMapping = THREE.LinearToneMapping
 
-
-
         // renderer.setClearColor( 0x000000, 0 ); // make transparent
-
         mountRef.current.appendChild(renderer.domElement);
-
-
-
 
         const groundGeometry = new THREE.PlaneGeometry(MAX_SCENE_WIDTH, MAX_SCENE_HEIGHT, 1, 1);
         const groundTexture = loader.load(felt);
@@ -215,25 +176,11 @@ function BallSim() {
         wrapper.addEventListener("click", (e) => createBallAtClick(e, scene));
         wrapper.addEventListener("touchdown", (e) => createBallAtClick(e, scene));
 
-        let lastTime = performance.now();
-        const fixedTimeStep = 1000 / 60;
-        let accumulatedTime = 0;
-
-        const animate = (currentTime) => {
+        const animate = () => {
             requestAnimationFrame(animate);
-            // const deltaTime = currentTime - lastTime;
-            // lastTime = currentTime;
-            // accumulatedTime += deltaTime;
-
-            // while (accumulatedTime >= fixedTimeStep) {
-                // updatePosition();
-            //     accumulatedTime -= fixedTimeStep;
-            // }
             renderer.render(scene, camera);
         };
-
-        animate(lastTime);
-
+        animate();
 
         // Default balls
         setObjects((prevObjects) => {
@@ -244,8 +191,8 @@ function BallSim() {
             // to catch the user's attention >:)
             // also they won't be perfectly alligned vertically to show a more complex collision
 
-            const seed1 = Math.floor(Math.random() * possibleBalls.length);
-            const prototype1 = possibleBalls[seed1];
+            const seed1 = Math.floor(Math.random() * possibleSkills.length);
+            const prototype1 = possibleSkills[seed1];
             prototype1.mass = toMass(prototype1.size);
 
             const BIAS = Math.floor(uniformRandom(-25, 25));
@@ -262,10 +209,10 @@ function BallSim() {
                 type: prototype1.type
             };
 
-            possibleBalls.splice(seed1, 1);
+            possibleSkills.splice(seed1, 1);
 
-            const seed2 = Math.floor(Math.random() * possibleBalls.length);
-            const prototype2 = possibleBalls[seed2];
+            const seed2 = Math.floor(Math.random() * possibleSkills.length);
+            const prototype2 = possibleSkills[seed2];
             prototype2.mass = toMass(prototype2.size);
 
             const obj2 = {
@@ -279,7 +226,7 @@ function BallSim() {
                 type: prototype2.type
             };
 
-            possibleBalls.splice(seed2, 1);
+            possibleSkills.splice(seed2, 1);
 
             const ball1 = createBallMesh(prototype1);
             const ball2 = createBallMesh(prototype2);
@@ -314,16 +261,12 @@ function BallSim() {
                             return prevObjects;
                         })
                     }
-
                 });
             },
-            
             { threshold: 0.25 }
         );
 
-        if (mountRef.current) {
-            observer.observe(mountRef.current);
-        }
+        if (mountRef.current) { observer.observe(mountRef.current) }
 
         return () => {
             window.removeEventListener("resize", resizeCamera);
@@ -358,13 +301,13 @@ function BallSim() {
 
             if(prevObjects.length >= MAX_BALLS) return prevObjects;
 
-            if(possibleBalls.length === 0) {
-                seed = Math.floor(Math.random() * allBalls.length);
-                prototype = allBalls[seed];
+            if(possibleSkills.length === 0) {
+                seed = Math.floor(Math.random() * allSkills.length);
+                prototype = allSkills[seed];
                 prototype.mass = toMass(prototype.size);
             } else {
-                seed = Math.floor(Math.random() * possibleBalls.length);
-                prototype = possibleBalls[seed];
+                seed = Math.floor(Math.random() * possibleSkills.length);
+                prototype = possibleSkills[seed];
                 prototype.mass = toMass(prototype.size);
             }
 
@@ -410,43 +353,12 @@ function BallSim() {
             
             prevObjects.push(nextObj);
 
-            possibleBalls.splice(seed, 1);
+            possibleSkills.splice(seed, 1);
 
             return prevObjects;
         });
 
 
-    };
-
-    const createBallMesh = (obj) => {
-        // const METALNESS = 0.4;
-        // const ROUGHNESS = 0.6;
-
-        const ballMeshResolution = document.documentElement.clientWidth  < 768 ? 64 : 256;
-
-        const geometry = new THREE.SphereGeometry(obj.size / 2, ballMeshResolution, ballMeshResolution);
-        const tempMaterial = new THREE.MeshToonMaterial({ color: 0x000000, toneMapped: false});
-        
-    
-        const ball = new THREE.Mesh(geometry, tempMaterial);
-        ball.position.set(obj.posX + obj.size / 2, obj.size / 2, obj.posY + obj.size / 2);
-        ball.castShadow = true;
-        ball.rotation.set(Math.PI / 2,0, Math.PI);
-
-
-        
-        if(preloadedTextures[obj.type]) {
-            const material = new THREE.MeshStandardMaterial({ map: preloadedTextures[obj.type], toneMapped: false });
-            ball.material = material;
-        } else {
-            loader.load(`${ASSETS_PATH}${obj.type}`, (texture) => {
-                texture.colorSpace = THREE.SRGBColorSpace
-                const material = new THREE.MeshStandardMaterial({ map: texture });
-                ball.material = material;
-            });
-        }
-
-        return ball;
     };
 
     const [prevMousePos, setPrevMousePos] = useState([-1000, -1000]);
