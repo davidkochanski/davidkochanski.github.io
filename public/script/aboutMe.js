@@ -7,7 +7,7 @@ let buttonAnimation;
 
 const header = document.querySelector("#about-me-content h2");
 // const headerText = header.innerText;
-const headerText = "Temp";
+const headerText = "";
 
 // header.innerText = "";
 

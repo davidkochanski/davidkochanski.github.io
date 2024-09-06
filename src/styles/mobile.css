@@ -73,7 +73,7 @@
 
     .about-me {
         background-position: 80% top;
-        height: 100vh;
+        height: 100lvh;
 
         mask-position: center 50%;
     }
@@ -238,15 +238,6 @@
     h1 {
         font-size: 1.33rem;
     }
-
-
-    /* .hero {
-        height: 100%;
-    }
-
-    .hero-wrapper {
-        height: 100%;
-    } */
 
 
     .hero-content {

@@ -52,7 +52,7 @@ body {
     background: linear-gradient(to bottom, #000, #1e1d27);
     /* background-image: url(../img/testcode.png); */
     width: 100%;
-    height: 100vh;
+    height: 100lvh;
     position: fixed;
     top: 0;
     left: 0;
@@ -79,7 +79,7 @@ body {
         background: rgba(0 0 0 / 0);
         visibility: visible;
         width: 100%;
-        height: 100vh;
+        height: 100lvh;
     } 
     to {
         visibility: hidden;
@@ -251,7 +251,7 @@ a {
 
 
 .about-me {
-    height: 100vh;
+    height: 100lvh;
     width: 100%;
 
     background-color: #8995b4; /* Fallback */
@@ -285,14 +285,15 @@ a {
 
 .hero-fixed {
     width: 100%;
-    height: 100vh;
+    height: 100lvh;
+    top: 100lvh;
+
     position: absolute;
-    top: 100vh;
     z-index: 100;
 }
 
 .hero {
-    height: 100vh;
+    height: 100lvh;
     width: 100%;
     position: absolute;
     z-index: 0;
@@ -316,11 +317,11 @@ a {
 }
 
 .hero-padding-bottom {
-    height: 100dvh;
+    height: 100lvh;
 }
 
 .hero-wrapper {
-    height: 100vh;
+    height: 100lvh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -421,7 +422,7 @@ a {
 
 .about-me-darken {
     width: 100%;
-    height: 100vh;
+    height: 100lvh;
     background-color: #1e1d27;
     opacity: 0;
     position: absolute;
@@ -1464,7 +1465,7 @@ textarea {
         from {
             background: rgba(0 0 0 / 0);
             width: 100%;
-            height: 100vh;
+            height: 100lvh;
         } 
         0.01% {
             background: rgba(0 0 0 / 0);

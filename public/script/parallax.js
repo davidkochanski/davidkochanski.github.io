@@ -13,7 +13,7 @@ const heroPaddingBottom = document.querySelector(".hero-padding-bottom");
 const update = () => {
     updateMask();
     parallaxify(fixedWrapper);
-    heroPadding.style.marginTop = `calc(${window.innerHeight * NUM_SCROLL_PAGES}px - ${TITLE_PADDING_PX}px)`
+    heroPadding.style.marginTop = `calc(${heroWords.clientHeight * NUM_SCROLL_PAGES}px - ${TITLE_PADDING_PX}px)`
 }
 
 document.addEventListener("scroll", update);
@@ -24,7 +24,7 @@ update();
 
 function parallaxify(element) {
     const scrollPosition = window.scrollY;
-    const windowHeight = window.innerHeight;
+    const windowHeight = heroWords.clientHeight;
 
     const fixedStart = windowHeight; // start at 100vh
     const fixedEnd = fixedStart + NUM_SCROLL_PAGES * windowHeight;
