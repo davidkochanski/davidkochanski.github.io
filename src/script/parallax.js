@@ -1,4 +1,4 @@
-import { NUM_SCROLL_PAGES_PARALLAX } from "../../src/config";
+import { NUM_SCROLL_PAGES_PARALLAX } from "./config";
 
 const aboutMe = document.getElementById("about-me-content");
 const heroWords = document.getElementById("home");

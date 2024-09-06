@@ -1,4 +1,4 @@
-import { MOBILE_THRESHOLD_WIDTH as MOBILE_WIDTH_THRESHOLD } from "../../src/config";
+import { MOBILE_THRESHOLD_WIDTH as MOBILE_WIDTH_THRESHOLD } from "../config";
 
 const btn = document.getElementById("interaction-button");
 const icon = document.querySelector("#interaction-button > i");

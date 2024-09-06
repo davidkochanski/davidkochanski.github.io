@@ -1,4 +1,4 @@
-import { MOBILE_WIDTH_THRESHOLD, NUM_SCROLL_PAGES_PARALLAX, shouldReduceMotion } from "../../src/config";
+import { MOBILE_WIDTH_THRESHOLD, NUM_SCROLL_PAGES_PARALLAX, shouldReduceMotion } from "./config";
 
 const aboutMeContainer = document.getElementById("about-me-container");
 aboutMeContainer.style.opacity = 0;
