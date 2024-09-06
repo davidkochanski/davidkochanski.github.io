@@ -1,3 +1,5 @@
+import { MOBILE_WIDTH_THRESHOLD, NUM_SCROLL_PAGES_PARALLAX, shouldReduceMotion } from "../../src/config";
+
 const aboutMeContainer = document.getElementById("about-me-container");
 aboutMeContainer.style.opacity = 0;
 const heroButton = document.getElementById("hero-button");
@@ -7,7 +9,7 @@ let buttonAnimation;
 
 const header = document.querySelector("#about-me-content h2");
 // const headerText = header.innerText;
-const headerText = "Temp";
+const headerText = "";
 
 // header.innerText = "";
 
@@ -20,7 +22,6 @@ let isShowingAboutMe = false;
 let nextShowingAboutMe = false;
 aboutMeBackground.style.zIndex = 100000;
 
-updateAboutMe();
 
 const firstName = document.querySelector(".top-name");
 const lastName = document.querySelector(".bottom-name");
@@ -52,6 +53,9 @@ document.addEventListener("scroll", () => {
     animateHero();
 })
 
+updateAboutMe();
+
+
 
 /**
  * Calculates the percentage completion of an element's animation depending on the scroll distance.
@@ -82,7 +86,7 @@ function getAnimationPercent(startScroll, endScroll, easingExponent=1) {
 
 
 function animateName() {
-    percentRevealed = getAnimationPercent(0, 1.2, 2)
+    const percentRevealed = getAnimationPercent(0, 1.2, 2)
 
     const THRESHOLD = document.documentElement.clientWidth  / 100;
 
@@ -91,7 +95,7 @@ function animateName() {
 }
 
 function darkenEffect() {
-    percentRevealed = getAnimationPercent(1.7, 3.5, 6);
+    const percentRevealed = getAnimationPercent(1.7, 3.5, 6);
 
     box.style.scale = `${percentRevealed / 100}`;
     box.style.translate = `0 ${-(100 - percentRevealed)}px`;
@@ -100,7 +104,7 @@ function darkenEffect() {
 }
 
 function animateAfterFirstName() {
-    percentRevealed = getAnimationPercent(0.7, 1.7, 2);
+    const percentRevealed = getAnimationPercent(0.7, 1.7, 2);
 
     const THRESHOLD = window.innerHeight / 100;
 
@@ -115,23 +119,18 @@ function animateAfterFirstName() {
 }
 
 function parallaxTitle() {
-    percentRevealed = getAnimationPercent(3.0, 4.2);
-
-    // const name = document.querySelector(".name");
-    // const firstName = document.querySelector("h1.first-name");
-    // const lastName = document.querySelector("h1.last-name");
+    const percentRevealed = getAnimationPercent(3.0, 4.2);
 
     const THRESHOLD = window.innerHeight / 100;
 
-    if(window.scrollY > 3 * window.innerHeight) {
-        // name.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
-        // firstName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
-        // lastName.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
-        about.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+    if(window.scrollY > NUM_SCROLL_PAGES_PARALLAX * window.innerHeight) {
+
+        if(window.innerWidth <= MOBILE_WIDTH_THRESHOLD || shouldReduceMotion()) {
+            about.style.translate = `0 0`;
+        } else {
+            about.style.translate = `0 ${THRESHOLD * -(percentRevealed)}px`;
+        }
     } else {
-        // name.style.translate = `0 0`;
-        // firstName.style.translate = `0 0`;
-        // lastName.style.translate = `0 0`;
         about.style.translate = `0 0`;
     }
 }
@@ -157,16 +156,6 @@ function updateAboutMe() {
             heroButton.style.display = "none";
         }
 
-        // typeHeader();
-
-        // rows.forEach((row, idx) => {
-        //     row.classList.add("show-row");
-        //     row.style.animationDelay = `${1500 + idx * 250}ms`;
-        // })
-
-        // subHeader.classList.add("show");
-        // bar.classList.add("bar-anim-show");
-
         aboutMeBackground.style.maskSize = "500vw 500vw";
         aboutMeBackground.style.zIndex = "621";
 
@@ -191,29 +180,6 @@ function updateAboutMe() {
 
     }
 }
-    
-
-
-function typeHeader() {
-    const text = headerText;
-
-    header.style.borderRight = "5px solid white"
-    header.innerText = "";
-
-    let i = 0;
-
-    function typeNextCharacter() {
-        if (i < text.length) {
-            header.innerText = text.substring(0, i + 1);
-            i++;
-            setTimeout(typeNextCharacter, 75);
-        } else {
-            header.style.borderRight = "5px solid transparent";
-
-        }
-    }
-    typeNextCharacter();
-}
 
 function fadeOut() {
     animation = aboutMeContainer.animate(
@@ -225,17 +191,10 @@ function fadeOut() {
     );
 
     animation.onfinish = () => {
-        // header.innerText = "";
-
         rows.forEach((row, idx) => {
             row.classList.remove("show-row");
             row.style.animationDelay = `${1000 + idx * 200}ms`;
         })
-
-        // subHeader.classList.remove("show");
-
-        // bar.classList.remove("bar-anim-show");
     }
-
 }
 
