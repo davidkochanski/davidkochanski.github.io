@@ -1,3 +1,5 @@
+import { MOBILE_THRESHOLD_WIDTH as MOBILE_WIDTH_THRESHOLD } from "../../src/config";
+
 const btn = document.getElementById("interaction-button");
 const icon = document.querySelector("#interaction-button > i");
 const wrapper = document.querySelector(".interactions-wrapper");
@@ -5,7 +7,7 @@ const inters = document.querySelectorAll(".interaction");
 
 const SHOW_DELAY = 150;
 
-let media = window.matchMedia("(max-width: 768px)");
+let media = window.matchMedia(`(max-width: ${MOBILE_WIDTH_THRESHOLD}px)`);
 let numShown = 3;
 let active = false;
 

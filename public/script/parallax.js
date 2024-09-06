@@ -1,7 +1,8 @@
 const aboutMe = document.getElementById("about-me-content");
 const heroWords = document.getElementById("home");
 
-const NUM_SCROLL_PAGES = 3.0;
+import { NUM_SCROLL_PAGES_PARALLAX } from "../../src/config";
+
 const TITLE_PADDING_PX = 10; // this is for the title-thin thing in index.html
 
 const above = document.getElementById("physics-wrapper");
@@ -13,7 +14,7 @@ const heroPaddingBottom = document.querySelector(".hero-padding-bottom");
 const update = () => {
     updateMask();
     parallaxify(fixedWrapper);
-    heroPadding.style.marginTop = `calc(${heroWords.clientHeight * NUM_SCROLL_PAGES}px - ${TITLE_PADDING_PX}px)`
+    heroPadding.style.marginTop = `calc(${heroWords.clientHeight * NUM_SCROLL_PAGES_PARALLAX}px - ${TITLE_PADDING_PX}px)`
 }
 
 document.addEventListener("scroll", update);
@@ -27,7 +28,7 @@ function parallaxify(element) {
     const windowHeight = heroWords.clientHeight;
 
     const fixedStart = windowHeight; // start at 100vh
-    const fixedEnd = fixedStart + NUM_SCROLL_PAGES * windowHeight;
+    const fixedEnd = fixedStart + NUM_SCROLL_PAGES_PARALLAX * windowHeight;
 
     // before element is reached leave it alone
     if (scrollPosition < fixedStart) {
