@@ -1,7 +1,7 @@
+import { NUM_SCROLL_PAGES_PARALLAX } from "../../src/config";
+
 const aboutMe = document.getElementById("about-me-content");
 const heroWords = document.getElementById("home");
-
-import { NUM_SCROLL_PAGES_PARALLAX } from "../../src/config";
 
 const TITLE_PADDING_PX = 10; // this is for the title-thin thing in index.html
 
