@@ -1,16 +1,17 @@
 export const slides = [
     {
         title: "Crazy Chess",
-        date: "October 2023 - Current",
-        imageURL: "img/slide-images/crazychess.jpg",
+        date: "October 2023 - August 2024",
+        imageURL: "img/slide-images/crazychess2.png",
         imagePos: "top center",
-        tagList: ["React.js", "TypeScript", "CSS", "HTML"],
+        tagList: ["MongoDB", "Express.js", "React.js", "Node.js", "TypeScript", "CSS"],
         background: "#a297fd",
         githubURL: "https://github.com/davidkochanski/crazy-chess",
         content: [
-            "Currently in development!",
-            "An enhanced chess game with dozens of wacky new pieces, features, and mechanics.",
-            "Built with React and TypeScript. Plans for two-player real time multiplayer."
+            "A full-stack MERN webapp modeling a dynamic chess game that support custom user-made piece behaviours.",
+            "User authentication and authorization (there's a difference!) handled with a REST API using JWT (JSON Webtokens) for secure session validation.",
+            "Leverages inheritence and modular object design to make custom pieces as easy as possible to store and provide in MongoDB.",
+            "Interactive chess board with legal move calculation based on properties. React.js component-based UI for adding, deleting, and updating pieces."
         ],
     },
     {
