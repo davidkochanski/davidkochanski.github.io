@@ -196,6 +196,13 @@ header nav .nav-links-mobile {
     display: none;
 }
 
+header nav .nav-icon {
+    /* images are weird so I'm just going to calc it with pixels */
+    width: calc(var(--nav-height) * 0.8);
+    height: calc(var(--nav-height) * 0.8);
+    margin-right: 4px;
+}
+
 .drop-toggle, .drop {
     display: none;
 }
