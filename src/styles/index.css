@@ -114,7 +114,7 @@ header nav a {
     display: inline-block;
     display: flex;
     align-items: center;
-    margin-right: auto;
+    /* margin-right: auto; */
     pointer-events: all;
 }
 
@@ -157,9 +157,7 @@ header nav ul li a:hover {
     color:#fff;
 }
 
-.drop-toggle, .drop {
-    display: none;
-}
+
 
 header nav ul li:hover a {
     scale: 1.075;
@@ -183,6 +181,25 @@ header nav ul li:nth-of-type(4):hover a {
     color: rgb(255, 0, 251);
 }
 
+header nav .nav-links {
+    display: flex;
+    margin-right: auto;
+    gap: 25px;
+}
+
+header nav .nav-links a {
+    font-size: 32px;
+}
+
+
+header nav .nav-links-mobile {
+    display: none;
+}
+
+.drop-toggle, .drop {
+    display: none;
+}
+
 main {
     width: 100%;
 }
@@ -190,7 +207,7 @@ main {
 h1 {
     /* color: white; */
     font-family: "Source Code Pro", monospace;
-    margin-right: auto;
+    /* margin-right: auto; */
     margin-left: 0.1rem;
 }
 
