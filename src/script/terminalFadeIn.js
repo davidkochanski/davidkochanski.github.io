@@ -65,6 +65,11 @@ setTimeout(() => {
 
 
 const fadeOutAndShowSite = () => {
+    // This will tell the skills physics animation to make the balls move when
+    // the webpage has finished loading and the site is (about to be) being shown
+    const animationEvent = new CustomEvent('terminalAnimationIsFinishing');
+    window.dispatchEvent(animationEvent);
+
     fadeOut.animate(
         [
             { height: "100lvh" },

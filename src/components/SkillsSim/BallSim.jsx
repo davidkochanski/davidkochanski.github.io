@@ -181,11 +181,6 @@ function BallSim() {
         };
         animate();
 
-
-        // do some stuff once the site has loaded
-
-        window.addEventListener("load", () => {
-            // Default balls
         setObjects((prevObjects) => {
             if (prevObjects.length > 0) return prevObjects; // only do it once
 
@@ -202,8 +197,8 @@ function BallSim() {
             const INITIAL_DISTANCE = Math.floor(uniformRandom(200, 300))
 
             const obj1 = {
-                posX: ((width - prototype1.size) / 2) - INITIAL_DISTANCE,
-                posY: ((height - prototype1.size) / 2) - BIAS,
+                posX: clamp(0, ((width - prototype1.size) / 2) - INITIAL_DISTANCE, width),
+                posY: clamp(0, ((height - prototype1.size) / 2) - BIAS, height),
                 veloX: 0,
                 veloY: 0,
                 id: 0,
@@ -219,8 +214,8 @@ function BallSim() {
             prototype2.mass = toMass(prototype2.size);
 
             const obj2 = {
-                posX: ((width - prototype2.size) / 2) + INITIAL_DISTANCE,
-                posY: ((height - prototype2.size) / 2) + BIAS,
+                posX: clamp(0, ((width - prototype2.size) / 2) + INITIAL_DISTANCE, width),
+                posY: clamp(0, ((height - prototype2.size) / 2) + BIAS, height),
                 veloX: 0,
                 veloY: 0,
                 id: 1,
@@ -242,38 +237,23 @@ function BallSim() {
 
             return [obj1, obj2];
         });
-        
-        setTimeout(() => {  
-            // spawn moving balls when the scene is visible to show off the physics
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
-                            setObjects(prevObjects => {
-                                if(appliedForce || !prevObjects[0] || !prevObjects[1]) return prevObjects;
+
+        window.addEventListener("terminalAnimationIsFinishing", () => {
+            setTimeout(() => {
+                setObjects(prevObjects => {
+                    if(appliedForce || !prevObjects[0] || !prevObjects[1]) return prevObjects;
     
-                                setAppliedForce(true);
+                    setAppliedForce(true);
     
-                                prevObjects[0].veloX = 7;
-                                prevObjects[0].veloY = 0;
+                    prevObjects[0].veloX = 7;
+                    prevObjects[0].veloY = 0;
     
-                                prevObjects[1].veloX = -7;
-                                prevObjects[1].veloY = 0;
-    
-                                observer.unobserve(mountRef.current);
-    
-                                return prevObjects;
-                            })
-                        }
-                    });
-                },
-                { threshold: 0.25 }
-            );
-    
-            if (mountRef.current) { observer.observe(mountRef.current) }
-            
-        // This ultra-specific value calculated so that it will line up with the front-end fade-in terminal animation
-        }, ((TERMINAL_TEXT.length + TERMINAL_TYPING_BIAS) * TERMINAL_TYPING_SPEED) + 100)
+                    prevObjects[1].veloX = -7;
+                    prevObjects[1].veloY = 0;
+                    return prevObjects;
+                })
+            }, (TERMINAL_FADE_OUT_TIME / 2) - 100) // I want them to start rolling half way once the blinds have gone up
+                                           // (and a bit less) so the move just when they became visible
         })
 
         return () => {
