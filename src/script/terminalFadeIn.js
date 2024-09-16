@@ -4,6 +4,7 @@ const fadeOut = document.getElementById("fade-in");
 const terminal = document.getElementById("terminal-text");
 const cursor = document.getElementById("terminal-cursor");
 const loadingText = document.getElementById("loading-text");
+const terminalLoadingText = document.getElementById("terminal-loading-text");
 const spinner = document.getElementById("terminal-spinner");
 loadingText.style.display = "none";
 
@@ -17,10 +18,10 @@ window.onload = () => {
 }
 
 
-terminal.innerText = "";
+terminal.textContent = "";
 
 const textInterval = setInterval(() => {
-    terminal.innerText += TERMINAL_TEXT[index];
+    terminal.textContent += TERMINAL_TEXT[index];
     index++;
 
     if (index >= TERMINAL_TEXT.length) {
@@ -33,18 +34,19 @@ let showingCursor = true;
 const cursorInterval = setInterval(() => {
     showingCursor = !showingCursor;
     cursor.innerHTML = showingCursor ? CURSOR_CHAR : "";
-}, 500);
+}, 400);
 
 let spinnerInterval;
 let spinnerIndex = 0;
 
 setTimeout(() => {
-    cursor.innerHTML = "";
+    cursor.textContent = "";
     clearInterval(cursorInterval);
+    terminalLoadingText.textContent = "Loading... ";
     loadingText.style.display = "block";
-
+    
     spinnerInterval = setInterval(() => {
-        spinner.innerHTML = spinnerGlyphs[spinnerIndex % spinnerGlyphs.length];
+        spinner.innerText = spinnerGlyphs[spinnerIndex % spinnerGlyphs.length];
         spinnerIndex++;
     }, TERMINAL_TYPING_SPEED);
 
