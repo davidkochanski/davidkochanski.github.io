@@ -9,6 +9,7 @@ import { clamp, toMass, uniformRandom }  from './skillsUtil';
 import Vector from './Vector';
 
 import possibleSkills from './possibleSkills';
+import { TERMINAL_FADE_OUT_TIME, TERMINAL_TEXT, TERMINAL_TYPING_BIAS, TERMINAL_TYPING_SPEED } from '../../script/config';
 const allSkills = structuredClone(possibleSkills);
 
 function BallSim() {
@@ -180,7 +181,11 @@ function BallSim() {
         };
         animate();
 
-        // Default balls
+
+        // do some stuff once the site has loaded
+
+        window.addEventListener("load", () => {
+            // Default balls
         setObjects((prevObjects) => {
             if (prevObjects.length > 0) return prevObjects; // only do it once
 
@@ -237,34 +242,39 @@ function BallSim() {
 
             return [obj1, obj2];
         });
-
-        // spawn moving balls when the scene is visible to show off the physics
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
-                        setObjects(prevObjects => {
-                            if(appliedForce || !prevObjects[0] || !prevObjects[1]) return prevObjects;
-
-                            setAppliedForce(true);
-
-                            prevObjects[0].veloX = 7;
-                            prevObjects[0].veloY = 0;
-
-                            prevObjects[1].veloX = -7;
-                            prevObjects[1].veloY = 0;
-
-                            observer.unobserve(mountRef.current);
-
-                            return prevObjects;
-                        })
-                    }
-                });
-            },
-            { threshold: 0.25 }
-        );
-
-        if (mountRef.current) { observer.observe(mountRef.current) }
+        
+        setTimeout(() => {  
+            // spawn moving balls when the scene is visible to show off the physics
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+                            setObjects(prevObjects => {
+                                if(appliedForce || !prevObjects[0] || !prevObjects[1]) return prevObjects;
+    
+                                setAppliedForce(true);
+    
+                                prevObjects[0].veloX = 7;
+                                prevObjects[0].veloY = 0;
+    
+                                prevObjects[1].veloX = -7;
+                                prevObjects[1].veloY = 0;
+    
+                                observer.unobserve(mountRef.current);
+    
+                                return prevObjects;
+                            })
+                        }
+                    });
+                },
+                { threshold: 0.25 }
+            );
+    
+            if (mountRef.current) { observer.observe(mountRef.current) }
+            
+        // This ultra-specific value calculated so that it will line up with the front-end fade-in terminal animation
+        }, ((TERMINAL_TEXT.length + TERMINAL_TYPING_BIAS) * TERMINAL_TYPING_SPEED) + 100)
+        })
 
         return () => {
             window.removeEventListener("resize", resizeCamera);
