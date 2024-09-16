@@ -65,7 +65,7 @@ setTimeout(() => {
 const fadeOutAndShowSite = () => {
     fadeOut.animate(
         [
-            { height: "100vh" },
+            { height: "100lvh" },
             { height: 0 }
         ],
         {
