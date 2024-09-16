@@ -32,6 +32,9 @@ function BallSim() {
     const mountRef = useRef(null);
     const loader = new THREE.TextureLoader();
 
+    let secret = false;
+    let keys = [];
+
     const createBallMesh = (obj) => {
         const ballMeshResolution = document.documentElement.clientWidth < 768 ? 64 : 256;
     
@@ -263,7 +266,24 @@ function BallSim() {
                 observer.unobserve(physicsRootRef.current);
             }
         };
+
+
     }, []);
+
+    useEffect(() => {
+        function trackKeySequence(event) {
+            if(event.key === "Shift") return;
+            keys.push(event.key);
+
+            if (keys.length > 3) { keys.shift(); }
+            if (keys.join('') === "OwO") {
+                secret = true;
+                console.log("Secret codeword detected! Activating unlimited balls");
+                document.removeEventListener('keydown', trackKeySequence);
+            }
+        }
+        document.addEventListener('keydown', trackKeySequence);
+    }, [])
     
 
     const createBallAtClick = (e, scene) => {
@@ -287,7 +307,7 @@ function BallSim() {
 
             let seed, prototype;
 
-            if(prevObjects.length >= MAX_BALLS) return prevObjects;
+            if(!secret && prevObjects.length >= MAX_BALLS) return prevObjects;
 
             if(possibleSkills.length === 0) {
                 seed = Math.floor(Math.random() * allSkills.length);
