@@ -26,6 +26,7 @@ const textInterval = setInterval(() => {
 
     if (index >= TERMINAL_TEXT.length) {
         clearInterval(textInterval);
+        showSpinner();
     }
 }, TERMINAL_TYPING_SPEED);
 
@@ -36,10 +37,11 @@ const cursorInterval = setInterval(() => {
     cursor.innerHTML = showingCursor ? CURSOR_CHAR : "";
 }, 400);
 
-let spinnerInterval;
-let spinnerIndex = 0;
 
-setTimeout(() => {
+const showSpinner = () => {
+    let spinnerInterval;
+    let spinnerIndex = 0;
+    
     cursor.textContent = "";
     clearInterval(cursorInterval);
     terminalLoadingText.textContent = "Loading... ";
@@ -49,19 +51,20 @@ setTimeout(() => {
         spinner.innerText = spinnerGlyphs[spinnerIndex % spinnerGlyphs.length];
         spinnerIndex++;
     }, TERMINAL_TYPING_SPEED);
-
+    
     if(readyEarly) {
         setTimeout(() => {
             fadeOutAndShowSite();
         }, TERMINAL_TYPING_SPEED * TERMINAL_TYPING_BIAS)
         return;
     }
-
+    
     window.addEventListener("load", () => {
         fadeOutAndShowSite();
     })
+}
 
-}, TERMINAL_TYPING_SPEED * (TERMINAL_TEXT.length + TERMINAL_TYPING_BIAS));
+
 
 
 const fadeOutAndShowSite = () => {
