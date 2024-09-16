@@ -92,10 +92,14 @@
 
 .express-js {
     background-color: #f0db4f;
+    background: linear-gradient(135deg, #f0db4f 50%, #c4b030 50%);
     color: #323330;
 }
 
 .node-js {
     background: linear-gradient(135deg, #68A063 50%, #303030 50%);
-    
+}
+
+.auth0 {
+    background-color: #111;
 }
