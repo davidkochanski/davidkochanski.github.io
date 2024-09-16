@@ -65,10 +65,16 @@ body {
 
 
 .fade-in {
-    z-index: 10000000;
+    z-index: 100000000;
     background: black;
+    overflow: hidden;
+    /* animation: fade 0.75s ease-out 0.25s forwards; */
+}
 
-    animation: fade 0.75s ease-out 0.25s forwards;
+.terminal {
+    font-family: Consolas, monospace;
+    padding: 5px;
+    font-size: 20px;
 }
 
 @keyframes fade {
