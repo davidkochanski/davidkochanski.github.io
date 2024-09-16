@@ -42,7 +42,7 @@
 
         
     <title>davidkochanski.dev</title>
-  <script type="module" crossorigin src="./assets/index-b8948f75.js"></script>
+  <script type="module" crossorigin src="./assets/index-9f7ee91c.js"></script>
   <link rel="stylesheet" href="./assets/index-6d616a65.css">
 </head>
 
@@ -58,7 +58,11 @@
 
 <body>
     <div class="fade-in" id="fade-in">
-        <div class="terminal" id="terminal"><span id="terminal-text">$ davidkochanski.dev</span><span id="terminal-cursor">&#x2588;</span><div id="loading-text">Loading... <span id="terminal-spinner">|</span></div></div>
+        <!-- $ davidkochanski.dev  &#x2588; -->
+        <!-- Loading... | -->
+        <div class="terminal" id="terminal"><span id="terminal-text"></span><span id="terminal-cursor"></span>
+            <div id="loading-text"><span id="terminal-loading-text"></span><span id="terminal-spinner"></span></div>
+        </div>
     </div>
     <div class="background">
         <div id="hero-blob"></div>
