@@ -43,6 +43,14 @@ const POSSIBLE_SKILLS = [
         type: "nodejs.png",
         size: 75,
     },
+    {
+        type: "angular.png",
+        size: 150,
+    },
+    {
+        type: "cs.png",
+        size: 133,
+    },
 ]
 
 export default POSSIBLE_SKILLS

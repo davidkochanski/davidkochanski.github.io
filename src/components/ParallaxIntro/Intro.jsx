@@ -95,12 +95,15 @@ const TOKENS = [
     { text: "Unix", },
     // { text: "IntelliJ",  },
     { text: "Node.js", colour: "#6cc24a", },
+    { text: "Angular", colour: "#c3002f", },
+    { text: "C#", colour: "#9179E4", },
+
 
     // Links
     { text: "Github", colour: "#4078c0", link: "https://github.com/davidkochanski" },
     { text: "LinkedIn", colour: "#0077B5", link: "https://www.linkedin.com/in/davidkochanski" },
     // { text: "placefox.xyz", colour: "#FF964F", link: "https://placefox.xyz"},
-    { text: "Pokéguesser", colour: "#AFEEEE", link: "https://pokeguesser-d2651.web.app/"},
+    // { text: "Pokéguesser", colour: "#AFEEEE", link: "https://pokeguesser-d2651.web.app/"},
     // { text: "Twitter", colour: "#1DA1F2", link: "https://x.com/kochanskidavid"},
 
     // Adjectives
@@ -108,13 +111,13 @@ const TOKENS = [
     { text: "Developer", },
     { text: "Programmer", },
     // { text: "Aspiring", },
-    { text: "Enthusiast", },
-    { text: "Problem Solver", },
-    { text: "Designer", },
-    { text: "Creative", },
-    { text: "Curious", },
-    { text: "Coding", },
-    { text: "Detail-Oriented", },
+    // { text: "Enthusiast", },
+    // { text: "Problem Solver", },
+    // { text: "Designer", },
+    // { text: "Creative", },
+    // { text: "Curious", },
+    // { text: "Coding", },
+    // { text: "Detail-Oriented", },
     // { text: "Polish", colour: "red",},
     // { text: "Canadian", colour: "red",},
 

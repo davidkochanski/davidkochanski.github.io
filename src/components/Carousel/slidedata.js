@@ -9,7 +9,7 @@ export const slides = [
         githubURL: "https://github.com/davidkochanski/crazy-chess",
         content: [
             "A full-stack MERN webapp modeling a dynamic chess game that support custom user-made piece behaviours.",
-            "User authentication and authorization (there's a difference!) handled with a REST API using JWT (JSON Webtokens) for secure session validation.",
+            "User authentication and authorization handled with a REST API using JWT (JSON Webtokens) for secure session validation.",
             "Leverages inheritence and modular object design to make custom pieces as easy as possible to store and provide in MongoDB.",
             "Interactive chess board with legal move calculation based on properties. React.js component-based UI for adding, deleting, and updating pieces."
         ],
@@ -55,34 +55,6 @@ export const slides = [
         ],
     },
     {
-        title: "placefox.xyz",
-        date: "March - May 2023",
-        imageURL: "img/slide-images/fox-full.jpg",
-        imagePos: "50% 60%",
-        tagList: ["API", "Python", "JavaScript", "CSS"],
-        background: "#FF964F",
-        githubURL: "https://github.com/davidkochanski/placeholder-fox",
-        content: [
-            "An API providing high-quality fox images as placeholder images accessible via URL.",
-            "Images of different dimensions, filters, and fox species were automatically generated using a Python script for easy future expansion.",
-        ],
-    },
-    {
-        title: "Pokéguesser",
-        date: "February - April 2023",
-        imageURL: "img/slide-images/pokeguesser.jpg",
-        imagePos: "50% 50%",
-        tagList: ["React.js", "Firebase", "JavaScript", "CSS", "HTML"],
-        background: "#AFEEEE",
-        interactionURL: "https://pokeguesser-d2651.web.app/",
-        githubURL: "https://github.com/davidkochanski/pokeguesser-react",
-        content: [
-            "Pokémon guessing game developed with React.js - my first major React project.",
-            "Includes various game settings, user authentication (using Firebase), sharing capabilities, and a fully responsive layout.",
-            "Offers a user leaderboard to track and display user rankings within the game.",
-        ],
-    },
-    {
         title: "davidkochanski.dev",
         date: "February - July 2023",
         imageURL: "img/slide-images/website.jpg",
@@ -118,19 +90,6 @@ export const slides = [
         interactionURL: "../sites/mathify-tutor/index.html",
         content: [
             "Offline website, designed to advertise a fictional math tutor company. Used CSS and HTML with a hint of JavaScript to make some onscroll effects. Fully responsive.",
-        ],
-    },
-    {
-        title: "Midnight Fox",
-        date: "November - December 2022",
-        imageURL: "img/slide-images/midnightfox.jpg",
-        imagePos: "0 0",
-        tagList: ["VSCode", "JavaScript"],
-        background: "#D291BC",
-        interactionURL: "https://marketplace.visualstudio.com/items?itemName=davefoxxo.midnight-fox",
-        githubURL: "https://github.com/davidkochanski/midnight-fox",
-        content: [
-            "A deep, vibrant theme for the leading code editor VSCode. Includes UI color design and proper token and syntax highlighting. 200+ downloads on the VSCode Marketplace.",
         ],
     },
     {
